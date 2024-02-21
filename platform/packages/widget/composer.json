@@ -1,0 +1,25 @@
+{
+    "name": "obii/widget",
+    "description": "Widget package",
+    "type": "package",
+    "autoload": {
+        "psr-4": {
+            "Obii\\Widget\\": "src"
+        }
+    },
+    "require": {
+        "obii/platform": "*@dev",
+        "obii/theme": "*@dev"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Obii\\Widget\\Providers\\WidgetServiceProvider"
+            ],
+            "aliases": {
+                "Widget": "Obii\\Widget\\Facades\\WidgetFacade",
+                "WidgetGroup": "Obii\\Widget\\Facades\\WidgetGroupFacade"
+            }
+        }
+    }
+}

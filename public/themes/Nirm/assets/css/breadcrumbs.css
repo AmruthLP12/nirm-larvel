@@ -1,0 +1,33 @@
+.breadcrumbs-content {
+    background-color: var(--body-font-color);
+    padding: 10px 10px;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    content: "\f054";
+    display: inline-block;
+    font: normal normal normal 12px/1 FontAwesome;
+    font-size: 12px;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    color: #FFF;
+}
+
+.breadcrumb-item {
+    display: flex;
+    align-items: center;
+}
+
+.breadcrumb-item a {
+    color: var(--extra-font-color-light);
+    opacity: 0.8;
+    transition: 0.2s all;
+}
+
+.breadcrumb-item a:hover {
+    opacity:1;
+}
+
+.breadcrumb-item.active {
+    color: var(--extra-font-color-light) !important;
+}

@@ -1,0 +1,107 @@
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+.form-wrapper .input_box {
+    margin: 10px 0;
+    border: 1px solid #f6f3f3;
+    border-radius: 5px;
+    width: 100%;
+    background-color: #f6f3f3;
+    padding: 12px 15px;
+    color: #4453837a;
+}
+
+.form-wrapper .input_box::placeholder {
+    color: #4453837a;
+}
+
+.form-wrapper .input_box:focus {
+    outline: none;
+}
+
+.form-wrapper input[type=text] {
+    color: #4453837a;
+}
+
+.form-wrapper .Submit_button {
+    width: 178px;
+    height: 50px;
+}
+
+
+.form-wrapper select {
+    color: #4453837a;
+}
+
+.form-wrapper label {
+    color: #000000;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 30px;
+}
+
+.form-wrapper input:focus {
+    box-shadow: none;
+}
+
+.form-wrapper input[type="checkbox"],
+.form-wrapper input[type="radio"] {
+    background-color: #f6f6f6;
+    border: 1px solid #ACACAC;
+    border-radius: 5px;
+    width: 20px;
+    height: 20px;
+    appearance: none;
+}
+
+.form-wrapper input[type="radio"] {
+    border-radius: 50px;
+}
+
+.form-wrapper input[type="checkbox"]:checked {
+    background-image: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="white" viewBox="0 0 24 24"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 15px;
+    background-color: #ACACAC;
+}
+
+.form-wrapper input[type="radio"]:checked {
+    background-image: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="10" fill="white"/></svg>');
+    background-repeat: no-repeat;
+    background-size: 10px;
+    background-color: #ACACAC;
+}
+
+.submit-btn {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    line-height: 1.15rem;
+    text-align: center;
+    color: var(--extra-font-color-dark);
+    border: 1px solid var(--extra-font-color-dark);
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px 15px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: 0.3s all;
+    min-width: 160px;
+}
+
+.submit-btn:hover {
+    background-color: var(--extra-bgcolor);
+    color: white;
+}
+
+@media (max-width: 992px) {
+    .form-wrapper .Quick_Enquiry_form {
+        width: 100% !important;
+        min-width: 100px;
+    }
+}

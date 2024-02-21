@@ -1,0 +1,21 @@
+{
+	"name": "obii/sitemap",
+	"description": "Sitemap package for Laravel.",
+	"license": "MIT",
+	"require": {
+	},
+	"autoload": {
+		"psr-4": {
+			"Obii\\Sitemap\\": "src"
+		}
+	},
+	"extra": {
+		"laravel": {
+			"providers": [
+				"Obii\\Sitemap\\Providers\\SitemapServiceProvider"
+			]
+		}
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true
+}

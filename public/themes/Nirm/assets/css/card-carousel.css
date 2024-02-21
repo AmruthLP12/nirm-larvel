@@ -1,0 +1,8 @@
+.card-carousel .card-img-top {
+    height: 250px;
+    object-fit: cover;
+}
+
+.card-carousel  .card-text {
+    font-size: 14px;
+}

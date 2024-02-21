@@ -1,0 +1,21 @@
+{
+    "name": "obii/widget-generator",
+    "description": "Widget generator",
+    "type": "package",
+    "autoload": {
+        "psr-4": {
+            "Obii\\WidgetGenerator\\": "src"
+        }
+    },
+    "require": {
+        "obii/platform": "*@dev",
+        "obii/widget": "*@dev"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Obii\\WidgetGenerator\\Providers\\WidgetGeneratorServiceProvider"
+            ]
+        }
+    }
+}

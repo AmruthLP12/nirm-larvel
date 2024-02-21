@@ -1,0 +1,10 @@
+<?php
+
+namespace Obii\{Module}\Repositories\Eloquent;
+
+use Obii\Support\Repositories\Eloquent\RepositoriesAbstract;
+use Obii\{Module}\Repositories\Interfaces\{Name}Interface;
+
+class {Name}Repository extends RepositoriesAbstract implements {Name}Interface
+{
+}

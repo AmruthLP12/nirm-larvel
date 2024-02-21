@@ -1,0 +1,9 @@
+{
+    "name": "Analytics",
+    "namespace": "Obii\\Analytics\\",
+    "provider": "Obii\\Analytics\\Providers\\AnalyticsServiceProvider",
+    "author": "Nguyen Dac Huy",
+    "url": "https://github.com/nguyendachuy",
+    "version": "2.0.0",
+    "description": "Tracking data from Google Analytics"
+}

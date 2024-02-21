@@ -1,0 +1,24 @@
+{
+    "name": "obii/menu",
+    "description": "Menu package",
+    "type": "package",
+    "autoload": {
+        "psr-4": {
+            "Obii\\Menu\\": "src"
+        }
+    },
+    "require": {
+        "obii/platform": "*@dev",
+        "obii/theme": "*@dev"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Obii\\Menu\\Providers\\MenuServiceProvider"
+            ],
+            "aliases": {
+                "Menu": "Obii\\Menu\\Facades\\MenuFacade"
+            }
+        }
+    }
+}

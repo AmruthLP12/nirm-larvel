@@ -1,0 +1,11 @@
+<?php
+
+namespace Obii\{Module}\Repositories\Caches;
+
+use Obii\Support\Repositories\Caches\CacheAbstractDecorator;
+use Obii\{Module}\Repositories\Interfaces\{Name}Interface;
+
+class {Name}CacheDecorator extends CacheAbstractDecorator implements {Name}Interface
+{
+
+}

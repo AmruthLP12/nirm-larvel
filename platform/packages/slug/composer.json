@@ -1,0 +1,23 @@
+{
+    "name": "obii/slug",
+    "description": "Slug/Permalink",
+    "type": "package",
+    "autoload": {
+        "psr-4": {
+            "Obii\\Slug\\": "src"
+        }
+    },
+    "require": {
+        "obii/platform": "*@dev"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Obii\\Slug\\Providers\\SlugServiceProvider"
+            ],
+            "aliases": {
+                "SlugHelper": "Obii\\Slug\\Facades\\SlugHelperFacade"
+            }
+        }
+    }
+}

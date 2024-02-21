@@ -1,0 +1,1 @@
+$(document).ready((function(){Cms.initCodeEditor("custom_css")}));

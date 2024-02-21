@@ -1,0 +1,21 @@
+{
+    "name": "obii/theme-generator",
+    "description": "Theme generator",
+    "type": "package",
+    "autoload": {
+        "psr-4": {
+            "Obii\\ThemeGenerator\\": "src"
+        }
+    },
+    "require": {
+        "obii/platform": "*@dev",
+        "obii/theme": "*@dev"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Obii\\ThemeGenerator\\Providers\\ThemeGeneratorServiceProvider"
+            ]
+        }
+    }
+}

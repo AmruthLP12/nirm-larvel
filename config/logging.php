@@ -21,19 +21,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Deprecations Log Channel
-    |--------------------------------------------------------------------------
-    |
-    | This option controls the log channel that should be used to log warnings
-    | regarding deprecated PHP and library features. This allows you to get
-    | your application ready for upcoming major versions of dependencies.
-    |
-    */
-
-    'deprecations' => env('LOG_DEPRECATIONS_CHANNEL', 'null'),
-
-    /*
-    |--------------------------------------------------------------------------
     | Log Channels
     |--------------------------------------------------------------------------
     |
@@ -58,6 +45,12 @@ return [
             'driver' => 'single',
             'path' => storage_path('logs/laravel.log'),
             'level' => env('LOG_LEVEL', 'debug'),
+        ],
+        'campaign' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/campaign.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'days' => 14,
         ],
 
         'daily' => [

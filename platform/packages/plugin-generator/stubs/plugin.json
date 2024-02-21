@@ -1,0 +1,9 @@
+{
+    "name": "{Module}",
+    "namespace": "Obii\\{Module}\\",
+    "provider": "Obii\\{Module}\\Providers\\{Module}ServiceProvider",
+    "author": "Nguyen Dac Huy",
+    "url": "N/A",
+    "version": "1.0",
+    "description": "The description for module {module}"
+}

@@ -1,0 +1,30 @@
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 120px;
+    margin: 50px auto;
+    gap: 15px;
+}
+
+.navigation .swiper-button-next,
+.navigation .swiper-button-prev {
+    position: unset;
+    margin: 0px;
+    width: 40px;
+    height: 40px;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navigation .swiper-button-next {
+    order: 1;
+}
+
+.navigation .swiper-button-next:after,
+.navigation .swiper-button-prev:after {
+    font-size: 16px;
+}

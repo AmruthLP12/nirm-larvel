@@ -1,0 +1,9 @@
+{
+    "name": "Audit Log",
+    "namespace": "Obii\\AuditLog\\",
+    "provider": "Obii\\AuditLog\\Providers\\AuditLogServiceProvider",
+    "author": "CMS Technologies",
+    "url": "https://www.obiikriationz.com",
+    "version": "5.8",
+    "description": "Record activities logs"
+}

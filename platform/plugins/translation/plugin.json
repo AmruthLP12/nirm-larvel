@@ -1,0 +1,9 @@
+{
+    "name": "Translation",
+    "namespace": "Obii\\Translation\\",
+    "provider": "Obii\\Translation\\Providers\\TranslationServiceProvider",
+    "author": "CMS Technologies",
+    "url": "https://www.obiikriationz.com",
+    "version": "5.8",
+    "description": "Manage translation text"
+}

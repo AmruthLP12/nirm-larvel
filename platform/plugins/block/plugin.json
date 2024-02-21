@@ -1,0 +1,9 @@
+{
+    "name": "Block",
+    "namespace": "Obii\\Block\\",
+    "provider": "Obii\\Block\\Providers\\BlockServiceProvider",
+    "author": "CMS Technologies",
+    "url": "https://www.obiikriationz.com",
+    "version": "5.8",
+    "description": "Manage static block (HTML, Text) on your theme"
+}

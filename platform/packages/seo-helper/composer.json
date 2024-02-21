@@ -1,0 +1,24 @@
+{
+    "name": "obii/seo-helper",
+    "description": "SEO helper package",
+    "type": "package",
+    "autoload": {
+        "psr-4": {
+            "Obii\\SeoHelper\\": "src"
+        }
+    },
+    "require": {
+        "obii/platform": "*@dev",
+        "obii/theme": "*@dev"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Obii\\SeoHelper\\Providers\\SeoHelperServiceProvider"
+            ],
+            "aliases": {
+                "SeoHelper": "Obii\\SeoHelper\\Facades\\SeoHelperFacade"
+            }
+        }
+    }
+}

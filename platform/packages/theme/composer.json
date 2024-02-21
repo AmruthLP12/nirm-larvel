@@ -1,0 +1,32 @@
+{
+    "name": "obii/theme",
+    "description": "Theme package",
+    "type": "package",
+    "autoload": {
+        "psr-4": {
+            "Obii\\Theme\\": "src"
+        }
+    },
+    "require": {
+        "obii/platform": "*@dev",
+        "obii/sitemap": "*@dev",
+        "obii/widget": "*@dev",
+        "obii/slug": "*@dev",
+        "obii/seo-helper": "*@dev"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Obii\\Theme\\Providers\\ThemeServiceProvider",
+                "Obii\\Theme\\Providers\\RouteServiceProvider"
+            ],
+            "aliases": {
+                "Theme": "Obii\\Theme\\Facades\\ThemeFacade",
+                "ThemeOption": "Obii\\Theme\\Facades\\ThemeOptionFacade",
+                "ThemeManager": "Obii\\Theme\\Facades\\ManagerFacade",
+                "AdminBar": "Obii\\Theme\\Facades\\AdminBarFacade",
+                "SiteMapManager": "Obii\\Theme\\Facades\\SiteMapManagerFacade"
+            }
+        }
+    }
+}

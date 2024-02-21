@@ -1,0 +1,9 @@
+{
+    "name": "Sliders",
+    "namespace": "Obii\\Slider\\",
+    "provider": "Obii\\Slider\\Providers\\SliderServiceProvider",
+    "author": "Nguyen Huy",
+    "url": "https://github.com/nguyendachuy",
+    "version": "1.0",
+    "description": "Manage Sliders"
+}

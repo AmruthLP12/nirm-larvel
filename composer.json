@@ -1,25 +1,53 @@
 {
     "name": "laravel/laravel",
-    "type": "project",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
+    "type": "project",
     "require": {
         "php": "^7.3|^8.0",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-zip": "*",
+        "aws/aws-php-sns-message-validator": "^1.8",
+        "doctrine/dbal": "^3.0",
+        "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
-        "laravel/framework": "^8.75",
-        "laravel/sanctum": "^2.11",
-        "laravel/tinker": "^2.5",
-        "spatie/crawler": "6.0.2"
+        "laravel/framework": "^8.12",
+        "league/flysystem-aws-s3-v3": "^1.0",
+        "mailgun/mailgun-php": "*",
+        "obii/api": "*@dev",
+        "obii/menu": "*@dev",
+        "obii/optimize": "*@dev",
+        "obii/page": "*@dev",
+        "obii/platform": "*@dev",
+        "obii/plugin-management": "*@dev",
+        "obii/shortcode": "*@dev",
+        "obii/theme": "*@dev",
+        "php-http/guzzle7-adapter": "^1.0",
+        "predis/predis": "^2.2",
+        "sendgrid/sendgrid": "~7",
+        "sparkpost/sparkpost": "^2.3",
+        "wikimedia/composer-merge-plugin": "^2.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
-        "fakerphp/faker": "^1.9.1",
+        "fakerphp/faker": "^1.10",
         "laravel/sail": "^1.0.1",
-        "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^5.10",
-        "phpunit/phpunit": "^9.5.10"
+        "mockery/mockery": "^1.4.2",
+        "nunomaduro/collision": "^5.2",
+        "phpunit/phpunit": "^9.3.3",
+        "laravel/tinker": "^2.5",
+        "barryvdh/laravel-debugbar": "^3.2",
+        "barryvdh/laravel-ide-helper": "^2.6",
+        "obii/dev-tool": "*@dev",
+        "obii/plugin-generator": "*@dev",
+        "obii/theme-generator": "*@dev",
+        "obii/widget-generator": "*@dev"
     },
     "autoload": {
         "psr-4": {
@@ -33,31 +61,62 @@
             "Tests\\": "tests/"
         }
     },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        },
+        "merge-plugin": {
+            "include": [
+                "./platform/plugins/*/composer.json",
+                "./platform/themes/*/composer.json"
+            ],
+            "recurse": false,
+            "replace": false,
+            "ignore-duplicates": false,
+            "merge-dev": false,
+            "merge-extra": false,
+            "merge-extra-deep": false,
+            "merge-scripts": false
+        },
+        "google/apiclient-services": [
+            "Analytics"
+        ]
+    },
     "scripts": {
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
-        ],
-        "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
-        ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "Google\\Task\\Composer::cleanup",
+            "@php artisan cms:publish:assets"
         ]
     },
-    "extra": {
-        "laravel": {
-            "dont-discover": []
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "allow-plugins": {
+            "wikimedia/composer-merge-plugin": true,
+            "php-http/discovery": true
         }
     },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true
-    },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./platform/core"
+        },
+        {
+            "type": "path",
+            "url": "./platform/packages/*"
+        }
+    ]
 }

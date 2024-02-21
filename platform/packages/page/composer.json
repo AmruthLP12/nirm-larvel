@@ -1,0 +1,21 @@
+{
+    "name": "obii/page",
+    "description": "Page package",
+    "type": "package",
+    "autoload": {
+        "psr-4": {
+            "Obii\\Page\\": "src"
+        }
+    },
+    "require": {
+        "obii/platform": "*@dev",
+        "obii/revision": "*@dev"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Obii\\Page\\Providers\\PageServiceProvider"
+            ]
+        }
+    }
+}

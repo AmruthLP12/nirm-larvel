@@ -1,0 +1,77 @@
+{
+    "name": "obii/platform",
+    "description": "The Obii Platform based on Laravel Framework.",
+    "keywords": [
+        "obii",
+        "obii cms",
+        "obii platform"
+    ],
+    "homepage": "https://www.obiikriationz.com",
+    "support": {},
+    "authors": [
+        {
+            "name": "Technologies",
+            "email": "contact@obiikriationz.com"
+        }
+    ],
+    "type": "project",
+    "require": {
+        "barryvdh/laravel-dompdf": "*", 
+        "botble/assets": "^1.0",
+        "intervention/image": "^2.4",
+        "kris/laravel-form-builder": "*",
+        "laravelcollective/html": "^6.1",
+        "xantios/mimey": "^2.1",
+        "tightenco/ziggy": "^1.0",
+        "yajra/laravel-datatables-buttons": "^4.9",
+        "yajra/laravel-datatables-oracle": "^9.9",
+        "guzzlehttp/guzzle": "^6.0|^7.0",
+        "mews/purifier": "^3.2",
+        "s-ichikawa/laravel-sendgrid-driver": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Obii\\Support\\": "support/src",
+            "Obii\\ACL\\": "acl/src",
+            "Obii\\Base\\": "base/src",
+            "Obii\\Dashboard\\": "dashboard/src",
+            "Obii\\Media\\": "media/src",
+            "Obii\\Setting\\": "setting/src",
+            "Obii\\Table\\": "table/src",
+            "Obii\\JsValidation\\": "js-validation/src",
+            "Obii\\Chart\\": "chart/src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Obii\\Base\\Providers\\BaseServiceProvider",
+                "Obii\\Base\\Providers\\CommandServiceProvider",
+                "Obii\\Base\\Providers\\EventServiceProvider",
+                "Obii\\Base\\Providers\\BreadcrumbsServiceProvider",
+                "Obii\\Base\\Providers\\ComposerServiceProvider",
+                "Obii\\Base\\Providers\\MailConfigServiceProvider",
+                "Obii\\Base\\Providers\\FormServiceProvider",
+                "Obii\\Support\\Providers\\SupportServiceProvider",
+                "Obii\\Table\\Providers\\TableServiceProvider",
+                "Obii\\ACL\\Providers\\AclServiceProvider",
+                "Obii\\Dashboard\\Providers\\DashboardServiceProvider",
+                "Obii\\Media\\Providers\\MediaServiceProvider",
+                "Obii\\JsValidation\\Providers\\JsValidationServiceProvider",
+                "Obii\\Chart\\Providers\\ChartServiceProvider"
+            ],
+            "aliases": {
+                "Assets": "Obii\\Base\\Facades\\AssetsFacade",
+                "BaseHelper": "Obii\\Base\\Facades\\BaseHelperFacade",
+                "MetaBox": "Obii\\Base\\Facades\\MetaBoxFacade",
+                "Action": "Obii\\Base\\Facades\\ActionFacade",
+                "Filter": "Obii\\Base\\Facades\\FilterFacade",
+                "EmailHandler": "Obii\\Base\\Facades\\EmailHandlerFacade",
+                "Breadcrumbs": "Obii\\Base\\Facades\\BreadcrumbsFacade",
+                "JsValidator": "Obii\\JsValidation\\Facades\\JsValidatorFacade"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

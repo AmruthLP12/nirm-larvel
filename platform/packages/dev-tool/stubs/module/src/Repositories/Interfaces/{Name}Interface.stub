@@ -1,0 +1,9 @@
+<?php
+
+namespace Obii\{Module}\Repositories\Interfaces;
+
+use Obii\Support\Repositories\Interfaces\RepositoryInterface;
+
+interface {Name}Interface extends RepositoryInterface
+{
+}

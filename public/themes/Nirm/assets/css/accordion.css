@@ -1,0 +1,75 @@
+.accordion {
+    --bs-accordion-bg: transparent;
+}
+
+.accordion-item {
+    margin: 15px 0px;
+}
+
+.accordion-item {
+    border-radius: 10px !important;
+    border: 1px solid #DEDEDE !important;
+    background: rgba(255, 255, 255, 0.50);
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.06);
+    padding: 0px;
+}
+
+.accordion-item.active {
+    border-radius: 12px;
+    border: 1px solid var(--extra-bgcolor);
+    background: #FFF;
+    box-shadow: 0px 4px 36px 0px rgba(0, 0, 0, 0.12);
+}
+
+button.accordion-button.collapsed {
+    color: rgb(0, 0, 0, 0.5);
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.accordion-button::after {
+    background-image: url('data:image/svg+xml,<svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path opacity="0.5" d="M2 2L10 10L18 2" stroke="%23333333" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    margin-left: 20px;
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url('data:image/svg+xml,<svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 10L10 2L18 10" stroke="%232A348B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    filter: brightness(10);
+    transform: rotate(0deg) !important;
+}
+
+.accordion-button:not(.collapsed) {
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: capitalize;
+    border: none;
+    box-shadow: none;
+    background-color: var(--extra-bgcolor);
+}
+
+.accordion-button {
+    justify-content: space-between;
+    border-radius: 10px 10px 0px 0px !important;
+}
+
+.accordion-body {
+    padding-top: 0px;
+}
+
+.accordion-body p {
+    color: #3E3E3E;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 26px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+.accordion-collapse {
+    padding-top: 20px;
+}
