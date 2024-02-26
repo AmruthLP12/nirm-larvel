@@ -177,6 +177,7 @@
         },
         {
             "name": "aws/aws-sdk-php",
+<<<<<<< HEAD
             "version": "3.300.1",
             "source": {
                 "type": "git",
@@ -187,6 +188,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/fb67a49453c2b1a51268156b70adeba6c619e743",
                 "reference": "fb67a49453c2b1a51268156b70adeba6c619e743",
+=======
+            "version": "3.300.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aws/aws-sdk-php.git",
+                "reference": "27d59c22c121ce9c0041c563dc9d7270e180925c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/27d59c22c121ce9c0041c563dc9d7270e180925c",
+                "reference": "27d59c22c121ce9c0041c563dc9d7270e180925c",
+>>>>>>> 195387cfd46cbf6c362a75b1cd4cc21ac33799f3
                 "shasum": ""
             },
             "require": {
@@ -266,9 +279,15 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/aws/aws-sdk-php/tree/3.300.1"
             },
             "time": "2024-02-20T19:05:00+00:00"
+=======
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.300.4"
+            },
+            "time": "2024-02-23T19:10:30+00:00"
+>>>>>>> 195387cfd46cbf6c362a75b1cd4cc21ac33799f3
         },
         {
             "name": "barryvdh/laravel-dompdf",
@@ -2150,6 +2169,7 @@
         },
         {
             "name": "google/apiclient-services",
+<<<<<<< HEAD
             "version": "v0.336.0",
             "source": {
                 "type": "git",
@@ -2160,6 +2180,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/3b854a073508a6d4887319b1101647501861ab9a",
                 "reference": "3b854a073508a6d4887319b1101647501861ab9a",
+=======
+            "version": "v0.337.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/googleapis/google-api-php-client-services.git",
+                "reference": "0f2a9a00c91a903b2f30f4f531a09af948df384e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/0f2a9a00c91a903b2f30f4f531a09af948df384e",
+                "reference": "0f2a9a00c91a903b2f30f4f531a09af948df384e",
+>>>>>>> 195387cfd46cbf6c362a75b1cd4cc21ac33799f3
                 "shasum": ""
             },
             "require": {
@@ -2188,6 +2220,7 @@
             ],
             "support": {
                 "issues": "https://github.com/googleapis/google-api-php-client-services/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.336.0"
             },
             "time": "2024-02-18T01:04:15+00:00"
@@ -2204,6 +2237,24 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/googleapis/google-auth-library-php/zipball/155c61a63b2d87ac6623ec580312e3fcfeba7f0a",
                 "reference": "155c61a63b2d87ac6623ec580312e3fcfeba7f0a",
+=======
+                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.337.0"
+            },
+            "time": "2024-02-26T01:00:27+00:00"
+        },
+        {
+            "name": "google/auth",
+            "version": "v1.37.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/googleapis/google-auth-library-php.git",
+                "reference": "5f16f67375b6f202b857183d7ef4e076acd7d4aa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/googleapis/google-auth-library-php/zipball/5f16f67375b6f202b857183d7ef4e076acd7d4aa",
+                "reference": "5f16f67375b6f202b857183d7ef4e076acd7d4aa",
+>>>>>>> 195387cfd46cbf6c362a75b1cd4cc21ac33799f3
                 "shasum": ""
             },
             "require": {
@@ -2246,9 +2297,15 @@
             "support": {
                 "docs": "https://googleapis.github.io/google-auth-library-php/main/",
                 "issues": "https://github.com/googleapis/google-auth-library-php/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/googleapis/google-auth-library-php/tree/v1.36.0"
             },
             "time": "2024-02-20T15:28:37+00:00"
+=======
+                "source": "https://github.com/googleapis/google-auth-library-php/tree/v1.37.0"
+            },
+            "time": "2024-02-21T17:03:52+00:00"
+>>>>>>> 195387cfd46cbf6c362a75b1cd4cc21ac33799f3
         },
         {
             "name": "google/common-protos",
@@ -5742,7 +5799,7 @@
         },
         {
             "name": "obii/api",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/api",
@@ -5774,7 +5831,7 @@
         },
         {
             "name": "obii/menu",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/menu",
@@ -5807,7 +5864,7 @@
         },
         {
             "name": "obii/optimize",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/optimize",
@@ -5836,7 +5893,7 @@
         },
         {
             "name": "obii/page",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/page",
@@ -5866,7 +5923,7 @@
         },
         {
             "name": "obii/platform",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./platform/core",
@@ -5949,7 +6006,7 @@
         },
         {
             "name": "obii/plugin-management",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/plugin-management",
@@ -5978,7 +6035,7 @@
         },
         {
             "name": "obii/revision",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/revision",
@@ -6007,7 +6064,7 @@
         },
         {
             "name": "obii/seo-helper",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/seo-helper",
@@ -6040,7 +6097,7 @@
         },
         {
             "name": "obii/shortcode",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/shortcode",
@@ -6069,7 +6126,7 @@
         },
         {
             "name": "obii/sitemap",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/sitemap",
@@ -6098,7 +6155,7 @@
         },
         {
             "name": "obii/slug",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/slug",
@@ -6130,7 +6187,7 @@
         },
         {
             "name": "obii/theme",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/theme",
@@ -6171,7 +6228,7 @@
         },
         {
             "name": "obii/widget",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/widget",
@@ -13053,6 +13110,7 @@
         },
         {
             "name": "nikic/php-parser",
+<<<<<<< HEAD
             "version": "v5.0.0",
             "source": {
                 "type": "git",
@@ -13063,6 +13121,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/4a21235f7e56e713259a6f76bf4b5ea08502b9dc",
                 "reference": "4a21235f7e56e713259a6f76bf4b5ea08502b9dc",
+=======
+            "version": "v5.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nikic/PHP-Parser.git",
+                "reference": "2218c2252c874a4624ab2f613d86ac32d227bc69"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/2218c2252c874a4624ab2f613d86ac32d227bc69",
+                "reference": "2218c2252c874a4624ab2f613d86ac32d227bc69",
+>>>>>>> 195387cfd46cbf6c362a75b1cd4cc21ac33799f3
                 "shasum": ""
             },
             "require": {
@@ -13105,13 +13175,19 @@
             ],
             "support": {
                 "issues": "https://github.com/nikic/PHP-Parser/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/nikic/PHP-Parser/tree/v5.0.0"
             },
             "time": "2024-01-07T17:17:35+00:00"
+=======
+                "source": "https://github.com/nikic/PHP-Parser/tree/v5.0.1"
+            },
+            "time": "2024-02-21T19:24:10+00:00"
+>>>>>>> 195387cfd46cbf6c362a75b1cd4cc21ac33799f3
         },
         {
             "name": "obii/dev-tool",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/dev-tool",
@@ -13147,7 +13223,7 @@
         },
         {
             "name": "obii/plugin-generator",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/plugin-generator",
@@ -13177,7 +13253,7 @@
         },
         {
             "name": "obii/theme-generator",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/theme-generator",
@@ -13207,7 +13283,7 @@
         },
         {
             "name": "obii/widget-generator",
-            "version": "dev-main",
+            "version": "dev-master",
             "dist": {
                 "type": "path",
                 "url": "./platform/packages/widget-generator",
@@ -13521,6 +13597,7 @@
         },
         {
             "name": "phpdocumentor/type-resolver",
+<<<<<<< HEAD
             "version": "1.8.1",
             "source": {
                 "type": "git",
@@ -13531,11 +13608,23 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/bc3dc91a5e9b14aa06d1d9e90647c5c5a2cc5353",
                 "reference": "bc3dc91a5e9b14aa06d1d9e90647c5c5a2cc5353",
+=======
+            "version": "1.8.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpDocumentor/TypeResolver.git",
+                "reference": "153ae662783729388a584b4361f2545e4d841e3c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/153ae662783729388a584b4361f2545e4d841e3c",
+                "reference": "153ae662783729388a584b4361f2545e4d841e3c",
+>>>>>>> 195387cfd46cbf6c362a75b1cd4cc21ac33799f3
                 "shasum": ""
             },
             "require": {
                 "doctrine/deprecations": "^1.0",
-                "php": "^7.4 || ^8.0",
+                "php": "^7.3 || ^8.0",
                 "phpdocumentor/reflection-common": "^2.0",
                 "phpstan/phpdoc-parser": "^1.13"
             },
@@ -13573,9 +13662,15 @@
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
             "support": {
                 "issues": "https://github.com/phpDocumentor/TypeResolver/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.8.1"
             },
             "time": "2024-01-18T19:15:27+00:00"
+=======
+                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.8.2"
+            },
+            "time": "2024-02-23T11:10:43+00:00"
+>>>>>>> 195387cfd46cbf6c362a75b1cd4cc21ac33799f3
         },
         {
             "name": "phpmd/phpmd",
@@ -13662,6 +13757,7 @@
         },
         {
             "name": "phpstan/phpdoc-parser",
+<<<<<<< HEAD
             "version": "1.25.0",
             "source": {
                 "type": "git",
@@ -13672,6 +13768,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/bd84b629c8de41aa2ae82c067c955e06f1b00240",
                 "reference": "bd84b629c8de41aa2ae82c067c955e06f1b00240",
+=======
+            "version": "1.26.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpstan/phpdoc-parser.git",
+                "reference": "231e3186624c03d7e7c890ec662b81e6b0405227"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpstan/phpdoc-parser/zipball/231e3186624c03d7e7c890ec662b81e6b0405227",
+                "reference": "231e3186624c03d7e7c890ec662b81e6b0405227",
+>>>>>>> 195387cfd46cbf6c362a75b1cd4cc21ac33799f3
                 "shasum": ""
             },
             "require": {
@@ -13703,9 +13811,15 @@
             "description": "PHPDoc parser with support for nullable, intersection and generic types",
             "support": {
                 "issues": "https://github.com/phpstan/phpdoc-parser/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/phpstan/phpdoc-parser/tree/1.25.0"
             },
             "time": "2024-01-04T17:06:16+00:00"
+=======
+                "source": "https://github.com/phpstan/phpdoc-parser/tree/1.26.0"
+            },
+            "time": "2024-02-23T16:05:55+00:00"
+>>>>>>> 195387cfd46cbf6c362a75b1cd4cc21ac33799f3
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -14028,6 +14142,7 @@
         },
         {
             "name": "phpunit/phpunit",
+<<<<<<< HEAD
             "version": "9.6.16",
             "source": {
                 "type": "git",
@@ -14038,6 +14153,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3767b2c56ce02d01e3491046f33466a1ae60a37f",
                 "reference": "3767b2c56ce02d01e3491046f33466a1ae60a37f",
+=======
+            "version": "9.6.17",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sebastianbergmann/phpunit.git",
+                "reference": "1a156980d78a6666721b7e8e8502fe210b587fcd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1a156980d78a6666721b7e8e8502fe210b587fcd",
+                "reference": "1a156980d78a6666721b7e8e8502fe210b587fcd",
+>>>>>>> 195387cfd46cbf6c362a75b1cd4cc21ac33799f3
                 "shasum": ""
             },
             "require": {
@@ -14111,7 +14238,11 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
+<<<<<<< HEAD
                 "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.16"
+=======
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/9.6.17"
+>>>>>>> 195387cfd46cbf6c362a75b1cd4cc21ac33799f3
             },
             "funding": [
                 {
@@ -14127,7 +14258,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< HEAD
             "time": "2024-01-19T07:03:14+00:00"
+=======
+            "time": "2024-02-23T13:14:51+00:00"
+>>>>>>> 195387cfd46cbf6c362a75b1cd4cc21ac33799f3
         },
         {
             "name": "psy/psysh",
