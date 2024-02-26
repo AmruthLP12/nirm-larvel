@@ -19,17 +19,14 @@ class Plugin extends PluginOperationAbstract
         InformationSection::create([
             'name' => 'What is new',
             'type' => 'what-is-new',
-            'options' => []
         ]);
         InformationSection::create([
             'name' => 'Announcement',
-            'type' => 'announcement',
-            'options' => []
+            'type' => 'announcement'
         ]);
         InformationSection::create([
             'name' => 'Press Release',
             'type' => 'press-release',
-            'options' => []
         ]);
     }
 }
