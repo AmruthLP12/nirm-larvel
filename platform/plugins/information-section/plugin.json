@@ -1,0 +1,9 @@
+{
+    "name": "Information Section",
+    "namespace": "Obii\\InformationSection\\",
+    "provider": "Obii\\InformationSection\\Providers\\InformationSectionServiceProvider",
+    "author": "Nguyen Dac Huy",
+    "url": "N/A",
+    "version": "1.0",
+    "description": "The description for module information_section"
+}
