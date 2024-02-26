@@ -12,7 +12,7 @@
                     <div class="swiper-wrapper">
                         @foreach ($sliders as $item)
                         <div class="swiper-slide">
-                            <img src="{{RvMedia::getImageUrl($item->image ?? null)}}" class="img-fluid" alt="{!! $item->title !!}">
+                            <img src="{{RvMedia::getImageUrl($item->image ?? null)}}" class="img-fluid" alt="{{$item->title}}">
                         </div>
                         @endforeach
                     </div>
