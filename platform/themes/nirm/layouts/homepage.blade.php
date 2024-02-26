@@ -27,51 +27,51 @@
     @else
         {!! Theme::content() !!}
     @endif
-
-    @php
-        $information_sections = getInformationSectionPublished();
-    @endphp
-    @if (!empty($information_sections))
-    <section class="information-content section_padding">
-        <div class="container">
-            <div class="row align-items-center justify-content-center">
-                @foreach ($information_sections as $item)
-                <div class="col-lg-4 col-12 info-box">
-                    <div class="info border_radias_5px">
-                        <div class="info-wrap">
-                            <div>
-                                <h4>
-                                    {{ $item->name }}
-                                </h4>
+    @if (function_exists('getInformationSectionPublished'))
+        @php
+            $information_sections = getInformationSectionPublished();
+        @endphp
+        @if (!empty($information_sections))
+        <section class="information-content section_padding">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    @foreach ($information_sections as $item)
+                    <div class="col-lg-4 col-12 info-box">
+                        <div class="info border_radias_5px">
+                            <div class="info-wrap">
+                                <div>
+                                    <h4>
+                                        {{ $item->name }}
+                                    </h4>
+                                </div>
+                                <div class="info-footer">
+                                    <a class="read-btn border_radias_5px" href="{{ $item->link_readmore ?? '#' }}" title="Read More">Read More &gt;&nbsp;</a>
+                                </div>
                             </div>
-                            <div class="info-footer">
-                                <a class="read-btn border_radias_5px" href="{{ $item->link_readmore ?? '#' }}" title="Read More">Read More &gt;&nbsp;</a>
-                            </div>
-                        </div>
-                        <div class="info-box-wrapper">
-                            <div class="marquee">
-                                <div class="info-contant">
-                                    @php
-                                        $options = shortOptionsByShortOrder(json_decode($item->options));
-                                    @endphp
-                                    <ul>
-                                        @foreach ($options as $option)
-                                            <li class="news1">
-                                                <a href="{{ $option['link'] ?? '#' }}">{{ $option['title'] }}</a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
+                            <div class="info-box-wrapper">
+                                <div class="marquee">
+                                    <div class="info-contant">
+                                        @php
+                                            $options = shortOptionsByShortOrder(json_decode($item->options));
+                                        @endphp
+                                        <ul>
+                                            @foreach ($options as $option)
+                                                <li class="news1">
+                                                    <a href="{{ $option['link'] ?? '#' }}">{{ $option['title'] }}</a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
-                @endforeach
             </div>
-        </div>
-    </section>
+        </section>
+        @endif
     @endif
-    
     @include('theme.'.Theme::getThemeName().'::views.custom-fields.quick_links')
     @include('theme.'.Theme::getThemeName().'::views.custom-fields.external_links')
     @include('theme.'.Theme::getThemeName().'::views.custom-fields.galleries')
