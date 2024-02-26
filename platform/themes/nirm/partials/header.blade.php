@@ -34,13 +34,13 @@
                         <div class="col-lg-8 header-images d-lg-flex d-none align-items-center justify-content-lg-end">
                             <div class="header-ministry text-lg-end">
                                 <a href="#" class="ministry-logo d-block">
-                                    <img src="assets/image/Ministry_of_Mines_India.svg" class="img-fluid" alt="Ministry of Mines Logo">
+                                    <img src="/themes/nirm/assets/image/Ministry_of_Mines_India.svg" class="img-fluid" alt="Ministry of Mines Logo">
                                     
                                 </a>
                             </div>
                             <div class="header-azadi text-lg-end">
                                 <a href="#" class="azadi-logo d-block" title="Azadi ka-amrit-mahotsav,">
-                                    <img src="assets/image/azadi.jpg" class="img-fluid" alt="75th Indian Independence Day">
+                                    <img src="/themes/nirm/assets/image/azadi.jpg" class="img-fluid" alt="75th Indian Independence Day">
                                 </a>
                             </div>
                         </div>

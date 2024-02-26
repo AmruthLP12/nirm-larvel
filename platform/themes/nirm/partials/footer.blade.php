@@ -15,7 +15,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 text-center mb-4">
-                            <a href="https://india.gov.in" target="_blank"><img src="assets/image/logo1.png" alt="Logo one"
+                            <a href="https://india.gov.in" target="_blank"><img src="/themes/nirm/assets/image/logo1.png" alt="Logo one"
                                     class="text-center"></a>
                         </div>
                     </div>
@@ -137,17 +137,17 @@
                         
                         <li>
                             <a href="#" class="social" target="_blank">
-                                <img src="assets/image/facebook.png" alt="facebook">
+                                <img src="/themes/nirm/assets/image/facebook.png" alt="facebook">
                             </a>
                         </li>
                         <li>
                             <a href="#" class="social" target="_blank">
-                                <img src="assets/image/twitter.png" alt="twitter">
+                                <img src="/themes/nirm/assets/image/twitter.png" alt="twitter">
                             </a>
                         </li>
                         <li>
                             <a href="#" class="social" target="_blank">
-                                <img src="assets/image/linkedin.png" alt="linkedin">
+                                <img src="/themes/nirm/assets/image/linkedin.png" alt="linkedin">
                             </a>
                         </li>
                     </ul>
@@ -167,10 +167,10 @@
             <section class="footer-copyright">
                 <div class="container">
                     <div class="copy">
-                        <p><img src="assets/image/calendar.svg"> Last Updated: Feb 19, 2024</p>
+                        <p><img src="/themes/nirm/assets/image/calendar.svg"> Last Updated: Feb 19, 2024</p>
                         <p>
                             <a href="#" class="copy-img">
-                                <img src="assets/image/copy.png" alt="copy-img">
+                                <img src="/themes/nirm/assets/image/copy.png" alt="copy-img">
                             </a>
                         </p>
                         <p> Visitors : 256530166</p>
