@@ -98,35 +98,38 @@ body {
     background: var(--body-bgcolor);
 }
 
-p
-{
+p {
     font-family: "Open Sans", sans-serif;
     font-size: 16px;
     line-height: 28px;
     color: var(--extra-font-color-dark);
 }
-h1,h2,h3,h4,h5,h6
-{
-    
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+
     font-family: "Open Sans", sans-serif;
 
 }
-h1 
-{
+
+h1 {
     font-weight: 700;
 }
 
-.list{}
+.list {}
 
-.list li
-{
+.list li {
     font-size: 16px;
     line-height: 28px;
     font-family: "Open Sans", sans-serif;
     color: var(--extra-font-color-dark);
 }
-.list li::before
-{
+
+.list li::before {
     content: "\f00c";
     color: #063099;
     position: relative;
@@ -136,12 +139,11 @@ h1
     font-family: FontAwesome;
 }
 
-.ptb-100
-{
+.ptb-100 {
     padding: 100px 0px;
 }
-.ptb-100 h1
-{
+
+.ptb-100 h1 {
     color: var(--extra-font-color-dark);
 }
 
@@ -388,7 +390,7 @@ button.navbar-toggler:focus {
 .top-bar-element ul.top-ul li.top-li a {
     color: var(--extra-font-color-dark);
     text-align: right;
-     font-family: "Open Sans", sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -646,7 +648,7 @@ button.navbar-toggler:focus {
 
 .header-bottom-area ul.navbar-nav li.nav-item a.nav-link {
     color: var(--extra-font-color-light);
-     font-family: "Open Sans", sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 15px;
     font-style: normal;
     font-weight: 600;
@@ -695,9 +697,9 @@ button.navbar-toggler:focus {
     border: none;
     border-radius: 0px;
 }
-.dropdown-menu li 
-{
-   
+
+.dropdown-menu li {
+
     border-bottom: 1px solid #d2d2d2;
 }
 
@@ -833,7 +835,7 @@ button.navbar-toggler:focus {
     color: var(--extra-bgcolor);
     font-size: 16px;
     font-weight: 700;
-     font-family: "Open Sans", sans-serif;
+    font-family: "Open Sans", sans-serif;
     display: flex;
     align-items: center;
     line-height: 22px;
@@ -942,7 +944,7 @@ button.navbar-toggler:focus {
     font-size: 3rem;
     color: var(--extra-font-color-dark);
     display: inline-block;
-     font-family: "Open Sans", sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-style: normal;
     font-weight: 700;
     text-transform: capitalize;
@@ -957,12 +959,12 @@ button.navbar-toggler:focus {
 .blog-content .blog-text-content p.blog-description {
     padding-top: 30px;
     color: var(--extra-font-color-dark);
-     font-family: "Open Sans", sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 16;
     font-style: normal;
     font-weight: 400;
     line-height: 28px;
-   
+
 }
 
 @media(max-width: 992px) {
@@ -1084,7 +1086,7 @@ button.navbar-toggler:focus {
 }
 
 a.blog-button {
-     font-family: "Open Sans", sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 14px;
     line-height: 1.15rem;
     text-align: center;
@@ -1217,7 +1219,7 @@ svg:not(:root).svg-inline--fa {
 
 .info-contant .news1 {
     color: var(--extra-font-color-dark);
-     font-family: "Open Sans", sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 1.15rem;
     font-weight: 400;
     line-height: normal;
@@ -1297,7 +1299,7 @@ svg:not(:root).svg-inline--fa {
 
 .press-desc a {
     color: var(--extra-font-color-dark);
-     font-family: "Open Sans", sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 1.165rem;
     font-style: normal;
     font-weight: 400;
@@ -1368,7 +1370,7 @@ svg:not(:root).svg-inline--fa {
     font-size: 3rem;
     color: var(--extra-font-color-dark);
     display: inline-block;
-     font-family: "Open Sans", sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-style: normal;
     font-weight: 700;
     text-transform: capitalize;
@@ -1598,7 +1600,7 @@ ul.footer-menu-ul li.footer-menu-li {
 ul.footer-menu-ul li.footer-menu-li a.menu-item {
     font-size: 1.15rem;
     font-weight: 400;
-     font-family: "Open Sans", sans-serif;
+    font-family: "Open Sans", sans-serif;
     color: var(--extra-font-color-light);
     transition: 0.3s all;
 }
@@ -1647,7 +1649,7 @@ ul.footer-ul li.footer-li {
 ul.footer-ul li.footer-li a.menu-item2 {
     font-size: 1.15rem;
     font-weight: 400;
-     font-family: "Open Sans", sans-serif;
+    font-family: "Open Sans", sans-serif;
     color: var(--extra-font-color-dark);
 }
 
@@ -1732,7 +1734,7 @@ ul.social-ul li.social-li a.social {
 
 
 
-.footer-copyright img{
+.footer-copyright img {
     width: 40px;
 }
 
@@ -1776,7 +1778,7 @@ ul.social-ul li.social-li a.social {
 
 .f-title {
     font-size: 1.9rem;
-     font-family: "Open Sans", sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-weight: 600;
     color: var(--extra-font-color-dark);
 }
@@ -1784,7 +1786,7 @@ ul.social-ul li.social-li a.social {
 .list-wrapper li {
     margin-bottom: 12px;
     font-size: 1.15rem;
-     font-family: "Open Sans", sans-serif;
+    font-family: "Open Sans", sans-serif;
     color: var(--extra-font-color-dark);
 }
 
@@ -1801,7 +1803,7 @@ ul.social-ul li.social-li a.social {
 
 .list-wrapper li a {
     font-size: 1.15rem;
-     font-family: "Open Sans", sans-serif;
+    font-family: "Open Sans", sans-serif;
     color: var(--extra-font-color-dark);
     transition: 0.3s all;
 }
@@ -1994,18 +1996,22 @@ a.VIpgJd-ZVi9od-l4eHX-hSRGPd {
 }
 
 .language-wrapper .dropdown-toggle::after {
-    display: none!important;
+    display: none !important;
 }
-.language-wrapper button{
+
+.language-wrapper button {
     color: black !important;
 }
-.language-wrapper .btn img{
+
+.language-wrapper .btn img {
     width: 16px;
     height: 16px;
 }
+
 .language-wrapper .dropdown-menu li img {
     height: 16px;
 }
-.language-wrapper .dropdown-menu{
+
+.language-wrapper .dropdown-menu {
     line-height: 50px;
 }

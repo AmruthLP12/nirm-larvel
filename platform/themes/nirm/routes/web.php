@@ -5,7 +5,7 @@
 Route::group(['namespace' => 'Theme\Nirm\Http\Controllers', 'middleware' => ['web', 'core']], function () {
     Route::group(apply_filters(BASE_FILTER_GROUP_PUBLIC_ROUTE, []), function () {
         Route::get('/assets/image/{image}', function ($image) {
-            return redirect('/themes/nirm/assets/image/'. $image, 301);
+            return redirect('/themes/Nirm/assets/image/'. $image, 301);
         });
     });
 });
