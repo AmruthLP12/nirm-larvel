@@ -14,6 +14,27 @@
             }
         </style> --}}
 
+        <style type="text/css">
+            .ptb-100 li 
+            {
+                    font-size: 16px;
+    line-height: 28px;
+    font-family: "Open Sans", sans-serif;
+    color: var(--extra-font-color-dark);
+            }
+            .ptb-100 li::before
+            {
+                    content: "\f00c";
+    color: #063099;
+    position: relative;
+    top: 2px;
+    display: inline-block;
+    margin-right: 10px;
+    font-family: FontAwesome;
+            }
+
+        </style>
+
         {!! Theme::header() !!}
     </head>
     <body @if (BaseHelper::siteLanguageDirection() == 'rtl') dir="rtl" @endif>

@@ -2015,3 +2015,23 @@ a.VIpgJd-ZVi9od-l4eHX-hSRGPd {
 .language-wrapper .dropdown-menu {
     line-height: 50px;
 }
+
+.ptb-100 li 
+{
+	font-size: 16px;
+    line-height: 28px;
+    font-family: "Open Sans", sans-serif;
+    color: var(--extra-font-color-dark);
+}
+
+.ptb-100 li::before 
+{
+
+    content: "\f00c";
+    color: #063099;
+    position: relative;
+    top: 2px;
+    display: inline-block;
+    margin-right: 10px;
+    font-family: FontAwesome;
+}
