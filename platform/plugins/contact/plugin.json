@@ -1,0 +1,9 @@
+{
+    "name": "Contact Form",
+    "namespace": "Obii\\Contact\\",
+    "provider": "Obii\\Contact\\Providers\\ContactServiceProvider",
+    "author": "CMS Technologies",
+    "url": "https://www.obiikriationz.com",
+    "version": "5.8",
+    "description": "Contact Form"
+}
