@@ -167,13 +167,25 @@
             <section class="footer-copyright">
                 <div class="container">
                     <div class="copy">
-                        <p><img src="/themes/nirm/assets/image/calendar.svg"> Last Updated: Feb 19, 2024</p>
+                        @php
+                            $last_updated = 'Feb 19, 2024';
+                            if (function_exists('get_last_updated')) {
+                                $last_updated = get_last_updated();
+                            }
+                        @endphp
+                        <p><img src="/themes/nirm/assets/image/calendar.svg"> Last Updated: {{$last_updated}}</p>
                         <p>
                             <a href="#" class="copy-img">
                                 <img src="/themes/nirm/assets/image/copy.png" alt="copy-img">
                             </a>
                         </p>
-                        <p> Visitors : 256530166</p>
+                        @php
+                            $count_visitors = 632;
+                            if (function_exists('count_visitors')) {
+                                $count_visitors = count_visitors();
+                            }
+                        @endphp
+                        <p> Visitors : {{$count_visitors}}</p>
                     </div>
                 </div>
             </section>
