@@ -106,7 +106,6 @@ class PluginService
                 if ($this->files->isDirectory(plugin_path($plugin . '/database/migrations'))) {
                     $this->app->make('migrator')->run(plugin_path($plugin . '/database/migrations'));
                 }
-
                 $this->app->register($content['provider']);
             }
 

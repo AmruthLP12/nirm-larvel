@@ -36,8 +36,6 @@ class ContactServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->app->register(HookServiceProvider::class);
-        
         $this->setNamespace('plugins/contact')
             ->loadAndPublishConfigurations(['permissions', 'email'])
             ->loadRoutes(['web'])
@@ -59,5 +57,6 @@ class ContactServiceProvider extends ServiceProvider
 
             EmailHandler::addTemplateSettings(CONTACT_MODULE_SCREEN_NAME, config('plugins.contact.email', []));
         });
+        $this->app->register(HookServiceProvider::class);
     }
 }
