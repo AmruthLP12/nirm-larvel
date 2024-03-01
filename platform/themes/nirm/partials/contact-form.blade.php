@@ -35,6 +35,12 @@
         color: #ccc;
         font-size: 14px;
     }
+    .darkTheme label, .darkTheme h4{
+        color: #fff;
+    }
+    .darkTheme input::placeholder, .darkTheme textarea::placeholder{
+        color: #6e6464;
+    }
 </style>
 
 {!! Form::open(['route' => 'public.send.contact', 'method' => 'POST']) !!}
