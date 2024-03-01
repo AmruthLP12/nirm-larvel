@@ -13,19 +13,19 @@ class RecordVisitor
     public function handle(Request $request, Closure $next)
     {
         $cacheKey = 'visitors_' . $request->ip() . '_' . Carbon::now()->toDateString();
-        $exists = cache()->remember($cacheKey, 60 * 24, function () use ($request) {
-            return Visitors::whereRaw('date(visited_at) = ?', [Carbon::now()->toDateString()])
+        cache()->remember($cacheKey, 60 * 24, function () use ($request) {
+            $exists = Visitors::whereRaw('date(visited_at) = ?', [Carbon::now()->toDateString()])
                 ->where('ip_address', $request->ip())
                 ->exists();
+            if (!$exists) {
+                Visitors::create([
+                    'ip_address' => $request->ip(),
+                    'user_agent' => $request->header('User-Agent'),
+                    'visited_at' => Carbon::now()
+                ]);
+            }
         });
-
-        if (!$exists) {
-            Visitors::create([
-                'ip_address' => $request->ip(),
-                'user_agent' => $request->header('User-Agent'),
-                'visited_at' => Carbon::now()
-            ]);
-        }
+        
         return $next($request);
     }
 }
