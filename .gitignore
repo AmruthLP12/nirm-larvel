@@ -44,3 +44,6 @@ resources/docs
 
 storage/framework/laravel-excel/
 composer.lock
+
+public/data.json
+error_log
