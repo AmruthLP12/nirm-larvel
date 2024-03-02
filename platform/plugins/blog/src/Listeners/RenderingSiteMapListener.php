@@ -59,10 +59,10 @@ class RenderingSiteMapListener
             SiteMapManager::add($category->url, $category->updated_at, '0.8');
         }
 
-        $tags = $this->tagRepository->getDataSiteMap();
+        // $tags = $this->tagRepository->getDataSiteMap();
 
-        foreach ($tags as $tag) {
-            SiteMapManager::add($tag->url, $tag->updated_at, '0.3', 'weekly');
-        }
+        // foreach ($tags as $tag) {
+        //     SiteMapManager::add($tag->url, $tag->updated_at, '0.3', 'weekly');
+        // }
     }
 }

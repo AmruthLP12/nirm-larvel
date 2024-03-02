@@ -1,66 +1,59 @@
 @php $relatedPosts = get_related_posts($post->id, 5); @endphp
-<section id="page-content" class="blog-details">
+<style>
+
+</style>
+<div class="blog-single gray-bg">
     <div class="container">
-        <div class="row m-b-20">
-            <div class="@if ($relatedPosts->count() > 0 ) col-lg-9 @else col-lg-12 @endif">
-                <h1 class="value">{{$post->name}}</h1>
-                <hr>
-                <div class="icon-box effect medium light square" style="margin-bottom: 0px;">
-                    <div class="icon"> 
-                        <a href="#"><i class="fa fa-user"></i></a> 
+        <div class="row align-items-start">
+            <div class="@if ($relatedPosts->count() > 0 ) col-lg-8 @else col-lg-12 @endif m-15px-tb">
+                <article class="article">
+                    <div class="article-img">
+                        <img src="{{RvMedia::getImageUrl($post->image, 'thumb', false, RvMedia::getDefaultImage())}}" title="" alt="{{$post->name}}">
                     </div>
-                    <h3 class="author">{{\MetaBox::getMetaData($post, 'author', true)}}</h3>
-                    <p>{{\MetaBox::getMetaData($post, 'author_bio', true)}}</p>
-                </div>
-                <div id="blog" class="single-post">
-                    <!-- Post single item-->
-                    <div class="post-item">
-                        <div class="post-item-wrap">
-                           
-                            <div class="post-item-description">
-                                <div class="post-meta">
-                                    <span class="post-meta-date"><i class="fa fa-calendar-o"></i>{{$post->created_at->format('M d, Y')}}</span>
-                                    @include('theme.'.Theme::getThemeName().'::views.common.share', [
-                                        'url' => request()->fullUrl(),
-                                        'description' => $post->description,
-                                        'title' => $post->name,
-                                        'image' => RvMedia::getImageUrl($post->image, 'thumb', false, RvMedia::getDefaultImage()),
-                                        'tags' => $post->tags->pluck('name')->all()
-                                    ])
-                                </div>
-                                {!! $post->content !!}
-                            </div>
-                            @if ($post->tags->count() > 0)
-                            <div class="post-tags">
-                                @foreach ($post->tags as $tag)
-                                <a href="{{$tag->url}}" title="{{$tag->name}}"><span class="badge badge-obii">{{$tag->name}}</span></a>
-                                @endforeach
-                            </div>
-                            @endif
-                        </div>
+                    <div class="article-title">
+                        <h6><a href="#">{{$post->created_at->format('M d, Y')}}</a></h6>
+                        <h2>{{$post->name}}</h2>
                     </div>
-                    <!-- end: Post single item-->
-                </div>
+                    <div class="article-content">
+                        {!! $post->content !!}
+                    </div>
+                </article>
             </div>
             @if ($relatedPosts->count() > 0)
-            <div class="col-lg-3">
-                <h4>Related Posts</h4>
-                <div class="post-thumbnail-list">
-                    @foreach($relatedPosts as $relatedItem)
-                    <div class="post-thumbnail-entry">
-                        <img class="lazyload" data-src="{{ RvMedia::getImageUrl($relatedItem->image, 'thumb', false, RvMedia::getDefaultImage()) }}" alt="{{$relatedItem->NAME}}">
-                        <div class="post-thumbnail-content">
-                            <a class="sidemenu" href="{{$relatedItem->url}}">{{$relatedItem->name}}</a>
-                            <span class="post-date"><i class="far fa-clock"></i> {{$relatedItem->created_at->format('M d, Y')}}</span>
-                        </div>
+            <div class="col-lg-4 m-15px-tb blog-aside">
+                <!-- Latest Post -->
+                <div class="widget widget-latest-post">
+                    <div class="widget-title">
+                        <h3>Latest Post</h3>
                     </div>
-                    @endforeach
+                    <div class="widget-body">
+                        @foreach($relatedPosts as $relatedItem)
+                        <div class="latest-post-aside media">
+                            <div class="lpa-left media-body">
+                                <div class="lpa-title">
+                                    <h5><a href="{{$relatedItem->url}}">{{$relatedItem->name}}</a></h5>
+                                </div>
+                                <div class="lpa-meta">
+                                    <a class="date" href="#">
+                                        {{$relatedItem->created_at->format('M d, Y')}}
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="lpa-right">
+                                <a href="{{$relatedItem->url}}">
+                                    <img src="{{ RvMedia::getImageUrl($relatedItem->image, 'thumb', false, RvMedia::getDefaultImage()) }}" title="" alt="{{$relatedItem->name}}">
+                                </a>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
                 </div>
+                <!-- End Latest Post -->
             </div>
             @endif
         </div>
     </div>
-</section>
+</div>
 <!-- JSON-LD markup generated by Google Structured Data Markup Helper. -->
 
 <script type="application/ld+json">
@@ -80,7 +73,7 @@
   },  
   "publisher": {
     "@type": "Organization",
-    "name": "Obii Kriationz Web LLP",
+    "name": "Nirm",
     "logo": {
       "@type": "ImageObject",
       "url": "{{RvMedia::getImageUrl(theme_option('logo'))}}"

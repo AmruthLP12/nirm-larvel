@@ -5,7 +5,7 @@
             <div class="col-lg-12">
                 <h1 class="value">Tag #{{ $tag->name }}</h1>
                 <hr>
-                <p>Welcome to the Obii Kriationz Web LLP | Tag #{{ $tag->name }}</p>                        
+                <p>Welcome to the Nirm | Tag #{{ $tag->name }}</p>                        
                 <hr>
             </div>
 			<div class="col-lg-12">

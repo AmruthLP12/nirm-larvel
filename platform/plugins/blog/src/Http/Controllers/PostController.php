@@ -158,7 +158,7 @@ class PostController extends BaseController
 
         event(new UpdatedContentEvent(POST_MODULE_SCREEN_NAME, $request, $post));
 
-        $tagService->execute($request, $post);
+        // $tagService->execute($request, $post);
 
         $categoryService->execute($request, $post);
 
