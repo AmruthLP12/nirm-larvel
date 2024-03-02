@@ -16,16 +16,16 @@
                         aria-haspopup="true" aria-expanded="false" aria-current="page">About
                         NIRM</a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">About NIRM</a></li>
-                        <li><a href="#">About Ministry of Mines</a></li>
-                        <li><a href="#">Our Vision and Mission</a></li>
-                        <li><a href="#">Quality Policy & Objectives</a></li>
-                        <li><a href="#">Organizational Chart</a></li>
-                        <li><a href="#">Governing Body</a></li>
-                        <li><a href="#">Peer Review Committee</a></li>
-                        <li><a href="#">Our Directors </a></li>
-                        <li><a href="#">Major Facilities</a></li>
-                        <li><a href="#">Current Events</a></li>
+                        <li><a href="http://staging.nirm.in/about-national-institute-of-rock-mechanics">About NIRM</a></li>
+                        <li><a href="http://staging.nirm.in/ministry-of-mines">About Ministry of Mines</a></li>
+                        <li><a href="http://staging.nirm.in/our-vision-and-mission">Our Vision and Mission</a></li>
+                        <li><a href="http://staging.nirm.in/quality-policy-and-objectives">Quality Policy & Objectives</a></li>
+                        <li><a href="http://staging.nirm.in/organizational-chart">Organizational Chart</a></li>
+                        <li><a href="http://staging.nirm.in/governing-body-general-body">Governing Body</a></li>
+                        <li><a href="http://staging.nirm.in/peer-review-committee">Peer Review Committee</a></li>
+                        <li><a href="http://staging.nirm.in/our-directors">Our Directors </a></li>
+                        <li><a href="http://staging.nirm.in/major-facilities">Major Facilities</a></li>
+                      
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -38,9 +38,9 @@
                                 <div class="mega-menu">
                                     <h4 class="mega-menu-title">Underground Mines</h4>
                                     <ul class="inner-mega-menu">
-                                        <li><a href="#">Areas of involvement </a></li>
-                                        <li><a href="#">Work highlights </a></li>
-                                        <li><a href="#">Clientele</a></li>
+                                        <li><a href="http://staging.nirm.in/underground-mines-areas-of-involvement">Areas of involvement </a></li>
+                                        <li><a href="http://staging.nirm.in/underground-mines-work-highlights">Work highlights </a></li>
+                                        <li><a href="http://staging.nirm.in/underground-mines-clientele">Clientele</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -48,9 +48,9 @@
                                 <div class="mega-menu">
                                     <h4 class="mega-menu-title">Opencast Mines</h4>
                                     <ul class="inner-mega-menu">
-                                        <li><a href="#">Areas of involvement </a></li>
-                                        <li><a href="#">Work highlights</a></li>
-                                        <li><a href="#">Clientele</a></li>
+                                        <li><a href="http://staging.nirm.in/opencast-mines">Areas of involvement </a></li>
+                                        <li><a href="http://staging.nirm.in/opencast-mines-work-highlights">Work highlights</a></li>
+                                        <li><a href="http://staging.nirm.in/opencast-mines-clientele">Clientele</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -58,9 +58,9 @@
                                 <div class="mega-menu">
                                     <h4 class="mega-menu-title">Hydroelectric Projects</h4>
                                     <ul class="inner-mega-menu">
-                                        <li><a href="#">Areas of involvement</a></li>
-                                        <li><a href="#">Work highlights </a></li>
-                                        <li><a href="#">Clientele</a></li>
+                                        <li><a href="http://staging.nirm.in/hydroelectric-projects-areas-of-involvement">Areas of involvement</a></li>
+                                        <li><a href="http://staging.nirm.in/hydroelectric-projects-work-highlights">Work highlights </a></li>
+                                        <li><a href="http://staging.nirm.in/hydroelectric-projects-clientele">Clientele</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -68,10 +68,9 @@
                                 <div class="mega-menu">
                                     <h4 class="mega-menu-title">Nuclear Power Projects</h4>
                                     <ul class="inner-mega-menu">
-                                        <li><a href="#">Areas of involvement</a></li>
-                                        <li><a href="#">Work highlights </a></li>
-                                        <li><a href="#">Clientele</a></li>
-                                    </ul>
+                                        <li><a href="http://staging.nirm.in/nuclear-power-projects-area-of-involvement">Areas of involvement</a></li>
+                                        <li><a href="http://staging.nirm.in/nuclear-power-projects-work-highlights">Work highlights </a></li>
+                                     </ul>
                                 </div>
                             </div>
                         </div>
@@ -80,40 +79,39 @@
                                 <div class="mega-menu">
                                     <h4 class="mega-menu-title">Infrastructures Projects</h4>
                                     <ul class="inner-mega-menu">
-                                        <li><a href="#">Areas of involvement</a></li>
-                                        <li><a href="#">Work highlights </a></li>
-                                        <li><a href="#">Clientele</a></li>
+                                        <li><a href="http://staging.nirm.in/infrastructures-projects-areas-of-involvement">Areas of involvement</a></li>
+                                        <li><a href="http://staging.nirm.in/infrastructures-projects-work-highlights">Work highlights </a></li>
+                                        <li><a href="http://staging.nirm.in/infrastructures-projects-clientele">Clientele</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-12 my-3">
                                 <div class="mega-menu">
                                     <h4 class="mega-menu-title">Tunneling</h4>
-                                    <ul class="inner-mega-menu">
+                                    <!--<ul class="inner-mega-menu">
                                         <li><a href="#">Areas of involvement</a></li>
                                         <li><a href="#">Work highlights </a></li>
                                         <li><a href="#">Clientele</a></li>
-                                    </ul>
+                                    </ul>-->
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-12 my-3">
                                 <div class="mega-menu">
                                     <h4 class="mega-menu-title">Testing Services</h4>
                                     <ul class="inner-mega-menu">
-                                        <li><a href="#">Areas of involvement</a></li>
-                                        <li><a href="#">Work highlights </a></li>
-                                        <li><a href="#">Clientele</a></li>
+                                       <!-- <li><a href="#">Areas of involvement</a></li>-->
+                                        <li><a href="http://staging.nirm.in/testing-services-work-highlights">Work highlights </a></li>
+                                        <li><a href="http://staging.nirm.in/testing-services-clientele">Clientele</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-6 col-sm-12 my-3">
                                 <div class="mega-menu">
                                     <h4 class="mega-menu-title">Training & Seminars</h4>
-                                    <ul class="inner-mega-menu">
-                                        <li><a href="#">Areas of involvement</a></li>
-                                        <li><a href="#">Work highlights </a></li>
-                                        <li><a href="#">Clientele</a></li>
-                                    </ul>
+                                   <ul class="inner-mega-menu">
+                                        <!--<li><a href="#">Areas of involvement</a></li>-->
+                                        <li><a href="http://staging.nirm.in/training-programme">Work highlights </a></li>
+                                                                            </ul>
                                 </div>
                             </div>
                         </div>
@@ -124,8 +122,8 @@
                         aria-haspopup="true" aria-expanded="false" aria-current="page">Project
                         Activities</a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">On-going Projects</a></li>
-                        <li><a href="#">Completed Projects</a></li>
+                        <li><a href="http://staging.nirm.in/ongoing-projects">On-going Projects</a></li>
+                        <li><a href="http://staging.nirm.in/completed-projects">Completed Projects</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -137,9 +135,9 @@
                                 <div class="mega-menu">
                                     <h4 class="mega-menu-title">Engineering Geology</h4>
                                     <ul class="inner-mega-menu">
-                                        <li><a href="#">Areas of involvement </a></li>
-                                        <li><a href="#">Work highlights </a></li>
-                                        <li><a href="#">Manpower</a></li>
+                                        <li><a href="http://staging.nirm.in/engineering-geological-investigations">Areas of Activities </a></li>
+                                        <!--<li><a href="#">Work highlights </a></li>-->
+                                        <li><a href="http://staging.nirm.in/engineering-geological-investigations-manpower">Manpower</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -147,9 +145,9 @@
                                 <div class="mega-menu">
                                     <h4 class="mega-menu-title">Engineering Geophysics</h4>
                                     <ul class="inner-mega-menu">
-                                        <li><a href="#">Areas of involvement </a></li>
-                                        <li><a href="#">Work highlights </a></li>
-                                        <li><a href="#">Manpower</a></li>
+                                        <li><a href="http://staging.nirm.in/engineering-geophysics-areas-of-activties">Areas of Activities</a></li>
+                                       <!-- <li><a href="#">Work highlights </a></li>-->
+                                        <li><a href="http://staging.nirm.in/engineering-geophysics-manpower">Manpower</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -157,9 +155,9 @@
                                 <div class="mega-menu">
                                     <h4 class="mega-menu-title">Engineering Seismology</h4>
                                     <ul class="inner-mega-menu">
-                                        <li><a href="#">Areas of involvement </a></li>
-                                        <li><a href="#">Work highlights </a></li>
-                                        <li><a href="#">Manpower</a></li>
+                                        <li><a href="http://staging.nirm.in/engineering-seismology-areas-of-activities">Areas of Activities </a></li>
+                                        <!--<li><a href="#">Work highlights </a></li>-->
+                                        <li><a href="http://staging.nirm.in/engineering-seismology-man-power">Manpower</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -167,9 +165,10 @@
                                 <div class="mega-menu">
                                     <h4 class="mega-menu-title">Geotechnical Engineering</h4>
                                     <ul class="inner-mega-menu">
-                                        <li><a href="#">Areas of involvement </a></li>
-                                        <li><a href="#">Work highlights </a></li>
-                                        <li><a href="#">Manpower</a></li>
+                                        <li><a href="http://staging.nirm.in/geotechnical-engineering-areas-of-activities">Areas of Activties </a></li>
+                                    <!--<li><a href="#">Work highlights </a></li>-->
+
+                                        <li><a href="http://staging.nirm.in/geotechnical-engineering-man-power">Manpower</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -179,9 +178,9 @@
                                 <div class="mega-menu">
                                     <h4 class="mega-menu-title">Numerical Modelling</h4>
                                     <ul class="inner-mega-menu">
-                                        <li><a href="#">Areas of involvement </a></li>
-                                        <li><a href="#">Work highlights </a></li>
-                                        <li><a href="#">Manpower</a></li>
+                                        <li><a href="http://staging.nirm.in/numerical-modeling-areas-of-activities">Areas of Activities </a></li>
+                                        <!-- <li><a href="#">Work highlights </a></li>-->
+                                       <li><a href="http://staging.nirm.in/numerical-modeling-man-power">Manpower</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -189,9 +188,9 @@
                                 <div class="mega-menu">
                                     <h4 class="mega-menu-title">geomechanics & Ground Control</h4>
                                     <ul class="inner-mega-menu">
-                                        <li><a href="#">Areas of involvement </a></li>
-                                        <li><a href="#">Work highlights </a></li>
-                                        <li><a href="#">Manpower</a></li>
+                                        <li><a href="http://staging.nirm.in/geomechanics-ground-control-area-of-activities">Areas of Activities </a></li>
+                                        <!--<li><a href="#">Work highlights </a></li>-->
+                                        <li><a href="http://staging.nirm.in/geomechanics-ground-control-man-power">Manpower</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -199,9 +198,10 @@
                                 <div class="mega-menu">
                                     <h4 class="mega-menu-title">Rock Blasting & Excavation Engineering</h4>
                                     <ul class="inner-mega-menu">
-                                        <li><a href="#">Areas of involvement </a></li>
-                                        <li><a href="#">Work highlights </a></li>
-                                        <li><a href="#">Manpower</a></li>
+                                        <li><a href="http://staging.nirm.in/rock-blasting-excavation-engineering">Areas of Activities</a></li>
+                                        <!--<li><a href="#">Work highlights </a></li>-->
+
+                                        <li><a href="http://staging.nirm.in/rock-blasting-excavation-engineering-man-power">Manpower</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -209,9 +209,9 @@
                                 <div class="mega-menu">
                                     <h4 class="mega-menu-title">Testing Services</h4>
                                     <ul class="inner-mega-menu">
-                                        <li><a href="#">Areas of involvement </a></li>
-                                        <li><a href="#">Work highlights </a></li>
-                                        <li><a href="#">Manpower</a></li>
+                                      <!--  <li><a href="#">Areas of involvement </a></li>
+                                        <li><a href="#">Work highlights </a></li>-->
+                                        <li><a href="http://staging.nirm.in/testing-services-man-power">Manpower</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -222,9 +222,9 @@
                                 <div class="mega-menu">
                                     <h4 class="mega-menu-title">Seismotectonics </h4>
                                     <ul class="inner-mega-menu">
-                                        <li><a href="#">Areas of involvement </a></li>
-                                        <li><a href="#">Work highlights </a></li>
-                                        <li><a href="#">Manpower</a></li>
+                                        <li><a href="http://staging.nirm.in/seismotectonics-area-of-activties">Areas of Activities </a></li>
+                                        <!--<li><a href="#">Work highlights </a></li>-->
+                                        <li><a href="http://staging.nirm.in/seismotectonics-man-power">Manpower</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -232,9 +232,9 @@
                                 <div class="mega-menu">
                                     <h4 class="mega-menu-title">Administration & Finance</h4>
                                     <ul class="inner-mega-menu">
-                                        <li><a href="#">Areas of involvement </a></li>
-                                        <li><a href="#">Work highlights </a></li>
-                                        <li><a href="#">Manpower</a></li>
+                                       <!-- <li><a href="#">Areas of involvement </a></li>
+                                        <li><a href="#">Work highlights </a></li>-->
+                                        <li><a href="http://staging.nirm.in/administration-and-finance-man-power">Manpower</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -242,9 +242,9 @@
                                 <div class="mega-menu">
                                     <h4 class="mega-menu-title">Project Monitoring Cell</h4>
                                     <ul class="inner-mega-menu">
-                                        <li><a href="#">Areas of involvement </a></li>
-                                        <li><a href="#">Work highlights </a></li>
-                                        <li><a href="#">Manpower</a></li>
+                                        <!--<li><a href="#">Areas of involvement </a></li>
+                                        <li><a href="#">Work highlights </a></li>-->
+                                        <li><a href="http://staging.nirm.in/project-monitoring-cell-man-power">Manpower</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -256,15 +256,18 @@
                         aria-haspopup="true" aria-expanded="false"
                         aria-current="page">Announcements</a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Activities</a></li>
-                        <li><a href="#">News</a></li>
-                        <li><a href="#">ICC(Women)</a></li>
-                        <li><a href="#">Cancellation of Advt</a></li>
-                        <li><a href="#">Training programme</a></li>
-                        <li><a href="#">Tender Notice</a></li>
-                        <li><a href="#">Contract Employment</a></li>
-                        <li><a href="#">Technical Info</a></li>
-                        <li><a href="#">NIRM Academics</a></li>
+			
+                        <li><a href="http://staging.nirm.in/activities">Activities</a></li>
+                        <li><a href="http://staging.nirm.in/news">News</a></li>
+  			<li><a href="http://staging.nirm.in/press-release">Press Releases</a></li>
+			<li><a href="http://staging.nirm.in/publications">Publications</a></li>
+                        <li><a href="http://staging.nirm.in/constitution-of-icc-for-considering-complaints-of-sexual-harassment-of-women-employees-at-nirm">ICC(Women)</a></li>
+                        <li><a href="http://staging.nirm.in/cancellation-of-advertisement">Cancellation of Advt</a></li>
+                        <li><a href="http://staging.nirm.in/training-programme">Training programme</a></li>
+                        <li><a href="http://staging.nirm.in/tenders">Tender Notice</a></li>
+                        <li><a href="http://staging.nirm.in/contractual-appointment-for-projects">Contract Employment</a></li>
+                        <li><a href="http://staging.nirm.in/technical-information">Technical Info</a></li>
+                        <li><a href="http://staging.nirm.in/nirm-academics">NIRM Academics</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -280,7 +283,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link" data-toggle="dropdown" role="button"
+                    <a href="http://staging.nirm.in/contact-us" class="nav-link" data-toggle="dropdown" role="button"
                         aria-haspopup="true" aria-expanded="false" aria-current="page">Contact
                         Us </a>
                 
