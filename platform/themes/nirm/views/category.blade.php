@@ -5,48 +5,46 @@
             <div class="col-lg-12">
                 <h1 class="value">{{ $category->name }}</h1>
                 <hr>
-                @if (!empty($category->description))
+                {{-- @if (!empty($category->description))
                 <p>{{ $category->description }}</p>                        
                 <hr>
-                @endif
-            </div>
-			<div class="col-lg-12">
-                <!-- Blog -->
-               	<div class="row">
-					@forelse($posts as $post)
-					<!-- Post item-->
-                    <div class="col-lg-4 m-b-20 m-t-20">
-                        <div class="post-item-wrap">
-                            <div class="post-image">
-                                <a href="{{ $post->url }}">
-                                    <img 
-                                        class="img-fluid rounded lazyload"
-                                        data-src="{{ RvMedia::getImageUrl($post->image, 'medium', false, RvMedia::getDefaultImage()) }}" 
-                                        alt="{{ $post->name }}">
-                                </a>
-                            </div>
-                            <div class="post-item-description">
-                                <span class="post-meta-date">
-									<i class="fa fa-calendar-o"></i>  {{$post->created_at->format('M d, Y')}}
-								</span>
-                              
-                                <h2 class="cta-2615"><a class="sidemenu" href="{{ $post->url }}">{{ $post->name }}</a></h2>
-                                <p class="blogp">{{$post->description}}</p>
-								<a href="{{$post->url}}" class="item-link">Read More <i class="icon-chevron-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end: Post item-->
-                   	@empty
-					<div class="col-lg-4">
-						There is no data to display!
-					</div>
-					@endforelse
-				</div>
-                <!-- end: Blog -->
-
-                {{$posts->appends(request()->all())->links()}}
+                @endif --}}
             </div>
 		</div>
-	</div>
+        <div class="row mt-n5">
+            @forelse($posts as $post)
+            <div class="col-md-6 col-lg-4 mt-5 wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                <div class="blog-grid">
+                    <div class="blog-grid-img position-relative">
+                        <a href="{{ $post->url }}">
+                            <img 
+                                class="img-fluid rounded lazyload"
+                                data-src="{{ RvMedia::getImageUrl($post->image, 'medium', false, RvMedia::getDefaultImage()) }}" 
+                                alt="{{ $post->name }}">
+                        </a>
+                    </div>
+                    <div class="blog-grid-text p-4">
+                        <h3 class="h5 mb-3"><a href="{{ $post->url }}">{{ $post->name }}</a></h3>
+                        <p class="display-30">{{ $post->description }}</p>
+                        <div class="meta meta-style2">
+                            <ul>
+                                <li><a href="#!"><i class="fas fa-calendar-alt"></i>  {{$post->created_at->format('M d, Y')}}</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            @empty
+            <div class="col-md-6 col-lg-4 mt-5 wow fadeInUp" data-wow-delay=".2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                There is no data to display!
+            </div>
+            @endforelse
+        </div>
+        <div class="row mt-6 wow fadeInUp" data-wow-delay=".6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
+            <div class="col-12">
+                {{$posts->appends(request()->all())->links()}}
+            </div>
+        </div>
+    </div>
 </section>

@@ -162,4 +162,17 @@ class CategoryRepository extends RepositoriesAbstract implements CategoryInterfa
 
         return $this->applyBeforeExecuteQuery($data)->get();
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getCategoryByName($name)
+    {
+        $data = $this->model->with('slugable')->where([
+            'name'   => $name,
+            'status' => BaseStatusEnum::PUBLISHED,
+        ]);
+
+        return $this->applyBeforeExecuteQuery($data, true)->first();
+    }
 }

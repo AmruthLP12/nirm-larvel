@@ -11,6 +11,7 @@ use Obii\Table\Abstracts\TableAbstract;
 use Html;
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Support\Facades\Auth;
+use Obii\Blog\Models\Category;
 use Yajra\DataTables\DataTables;
 
 class PostTable extends TableAbstract
@@ -87,14 +88,14 @@ class PostTable extends TableAbstract
             ->editColumn('created_at', function ($item) {
                 return BaseHelper::formatDate($item->created_at);
             })
-            ->editColumn('updated_at', function ($item) {
-                $categories = '';
-                foreach ($item->categories as $category) {
-                    $categories .= Html::link(route('categories.edit', $category->id), $category->name) . ', ';
-                }
+            // ->editColumn('updated_at', function ($item) {
+            //     $categories = '';
+            //     foreach ($item->categories as $category) {
+            //         $categories .= Html::link(route('categories.edit', $category->id), $category->name) . ', ';
+            //     }
 
-                return rtrim($categories, ', ');
-            })
+            //     return rtrim($categories, ', ');
+            // })
             ->editColumn('author_id', function ($item) {
                 return $item->getMetaData('author', true);
                 // return $item->author ? $item->author->name : null;
@@ -135,6 +136,18 @@ class PostTable extends TableAbstract
                 'author_id',
                 'author_type',
             ]);
+        $category_id = Category::where('name', request()->get('type', 'News'))->first();
+        if (!is_null($category_id)) {
+            $category_id = $category_id->id;
+            if (!BaseHelper::isJoined($query, 'post_categories')) {
+                $query = $query
+                    ->join('post_categories', 'post_categories.post_id', '=', 'posts.id')
+                    ->join('categories', 'post_categories.category_id', '=', 'categories.id')
+                    ->select($query->getModel()->getTable() . '.*');
+            }
+
+            $query->where('post_categories.category_id', $category_id);
+        }
 
         return $this->applyScopes($query);
     }
@@ -157,12 +170,12 @@ class PostTable extends TableAbstract
                 'title' => trans('core/base::tables.name'),
                 'class' => 'text-left',
             ],
-            'updated_at' => [
-                'title'     => trans('plugins/blog::posts.categories'),
-                'width'     => '150px',
-                'class'     => 'no-sort text-center',
-                'orderable' => false,
-            ],
+            // 'updated_at' => [
+            //     'title'     => trans('plugins/blog::posts.categories'),
+            //     'width'     => '150px',
+            //     'class'     => 'no-sort text-center',
+            //     'orderable' => false,
+            // ],
             'author_id'  => [
                 'title'     => trans('plugins/blog::posts.author'),
                 'width'     => '150px',
@@ -215,12 +228,12 @@ class PostTable extends TableAbstract
                 'choices'  => BaseStatusEnum::labels(),
                 'validate' => 'required|in:' . implode(',', BaseStatusEnum::values()),
             ],
-            'category'         => [
-                'title'    => trans('plugins/blog::posts.category'),
-                'type'     => 'select-search',
-                'validate' => 'required',
-                'callback' => 'getCategories',
-            ],
+            // 'category'         => [
+            //     'title'    => trans('plugins/blog::posts.category'),
+            //     'type'     => 'select-search',
+            //     'validate' => 'required',
+            //     'callback' => 'getCategories',
+            // ],
             'created_at' => [
                 'title'    => trans('core/base::tables.created_at'),
                 'type'     => 'date',
@@ -251,19 +264,19 @@ class PostTable extends TableAbstract
                 $value = BaseHelper::formatDate($value);
 
                 return $query->whereDate($key, $operator, $value);
-            case 'category':
-                if (!$value) {
-                    break;
-                }
+                // case 'category':
+                //     if (!$value) {
+                //         break;
+                //     }
 
-                if (!BaseHelper::isJoined($query, 'post_categories')) {
-                    $query = $query
-                        ->join('post_categories', 'post_categories.post_id', '=', 'posts.id')
-                        ->join('categories', 'post_categories.category_id', '=', 'categories.id')
-                        ->select($query->getModel()->getTable() . '.*');
-                }
+                //     if (!BaseHelper::isJoined($query, 'post_categories')) {
+                //         $query = $query
+                //             ->join('post_categories', 'post_categories.post_id', '=', 'posts.id')
+                //             ->join('categories', 'post_categories.category_id', '=', 'categories.id')
+                //             ->select($query->getModel()->getTable() . '.*');
+                //     }
 
-                return $query->where('post_categories.category_id', $value);
+                //     return $query->where('post_categories.category_id', $value);
         }
 
         return parent::applyFilterCondition($query, $key, $operator, $value);
@@ -274,11 +287,11 @@ class PostTable extends TableAbstract
      */
     public function saveBulkChangeItem($item, string $inputKey, ?string $inputValue)
     {
-        if ($inputKey === 'category') {
-            $item->categories()->sync([$inputValue]);
+        // if ($inputKey === 'category') {
+        //     $item->categories()->sync([$inputValue]);
 
-            return $item;
-        }
+        //     return $item;
+        // }
 
         return parent::saveBulkChangeItem($item, $inputKey, $inputValue);
     }

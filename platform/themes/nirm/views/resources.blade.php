@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row m-b-20">
             <div class="col-lg-12">
-                <h1 class="cta-2614">{{$data->name ?? 'Resources'}} from Obii Kriationz Web LLP</h1>
+                <h1 class="cta-2614">{{$data->name ?? 'Resources'}} from Nirm</h1>
                 <br>
             </div>
             <div class="@if(!empty($html_menu)) col-lg-9 col-md-9 @else col-lg-12 col-md-12 @endif">

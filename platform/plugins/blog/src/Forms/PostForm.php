@@ -37,12 +37,12 @@ class PostForm extends FormAbstract
                 ->all();
         }
 
-        $tags = null;
+        // $tags = null;
 
-        if ($this->getModel()) {
-            $tags = $this->getModel()->tags()->pluck('name')->all();
-            $tags = implode(',', $tags);
-        }
+        // if ($this->getModel()) {
+        //     $tags = $this->getModel()->tags()->pluck('name')->all();
+        //     $tags = implode(',', $tags);
+        // }
 
         if (!$this->formHelper->hasCustomField('categoryMulti')) {
             $this->formHelper->addCustomField('categoryMulti', CategoryMultiField::class);
@@ -52,7 +52,7 @@ class PostForm extends FormAbstract
             ->setupModel(new Post)
             ->setValidatorClass(PostRequest::class)
             ->withCustomFields()
-            ->addCustomField('tags', TagField::class)
+            // ->addCustomField('tags', TagField::class)
             ->add('name', 'text', [
                 'label'      => trans('core/base::forms.name'),
                 'label_attr' => ['class' => 'control-label required'],
@@ -99,15 +99,15 @@ class PostForm extends FormAbstract
                 'label'      => trans('core/base::forms.image'),
                 'label_attr' => ['class' => 'control-label'],
             ])
-            ->add('tag', 'tags', [
-                'label'      => trans('plugins/blog::posts.form.tags'),
-                'label_attr' => ['class' => 'control-label'],
-                'value'      => $tags,
-                'attr'       => [
-                    'placeholder' => trans('plugins/blog::base.write_some_tags'),
-                    'data-url'    => route('tags.all'),
-                ],
-            ])
+            // ->add('tag', 'tags', [
+            //     'label'      => trans('plugins/blog::posts.form.tags'),
+            //     'label_attr' => ['class' => 'control-label'],
+            //     'value'      => $tags,
+            //     'attr'       => [
+            //         'placeholder' => trans('plugins/blog::base.write_some_tags'),
+            //         'data-url'    => route('tags.all'),
+            //     ],
+            // ])
             ->setBreakFieldPoint('status');
 
         $postFormats = get_post_formats(true);

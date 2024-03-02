@@ -9,7 +9,7 @@ Route::group([
     Route::get('search', 'PostController@getSearch');
     Route::get('posts', 'PostController@index');
     Route::get('categories', 'CategoryController@index');
-    Route::get('tags', 'TagController@index');
+    // Route::get('tags', 'TagController@index');
 
     Route::get('posts/filters', 'PostController@getFilters');
     Route::get('posts/{slug}', 'PostController@findBySlug');

@@ -30,7 +30,7 @@ class HookServiceProvider extends ServiceProvider
     {
         if (defined('MENU_ACTION_SIDEBAR_OPTIONS')) {
             Menu::addMenuOptionModel(Category::class);
-            Menu::addMenuOptionModel(Tag::class);
+            // Menu::addMenuOptionModel(Tag::class);
             add_action(MENU_ACTION_SIDEBAR_OPTIONS, [$this, 'registerMenuOptions'], 2);
         }
         add_filter(DASHBOARD_FILTER_ADMIN_LIST, [$this, 'registerDashboardWidgets'], 21, 2);
@@ -128,9 +128,9 @@ class HookServiceProvider extends ServiceProvider
             Menu::registerMenuOptions(Category::class, trans('plugins/blog::categories.menu'));
         }
 
-        if (Auth::user()->hasPermission('tags.index')) {
-            Menu::registerMenuOptions(Tag::class, trans('plugins/blog::tags.menu'));
-        }
+        // if (Auth::user()->hasPermission('tags.index')) {
+        //     Menu::registerMenuOptions(Tag::class, trans('plugins/blog::tags.menu'));
+        // }
     }
 
     /**

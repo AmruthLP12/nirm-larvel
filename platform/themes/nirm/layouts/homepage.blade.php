@@ -27,9 +27,9 @@
     @else
         {!! Theme::content() !!}
     @endif
-    @if (function_exists('getInformationSectionPublished'))
+    @if (function_exists('get_posts_by_category_name'))
         @php
-            $information_sections = getInformationSectionPublished();
+            $information_sections = get_posts_by_category_name();
         @endphp
         @if (!empty($information_sections))
         <section class="information-content section_padding">
@@ -41,23 +41,23 @@
                             <div class="info-wrap">
                                 <div>
                                     <h4>
-                                        {{ $item->name }}
+                                        {{ $item['category']->name }}
                                     </h4>
                                 </div>
                                 <div class="info-footer">
-                                    <a class="read-btn border_radias_5px" href="{{ $item->link_readmore ?? '#' }}" title="Read More">Read More &gt;&nbsp;</a>
+                                    <a class="read-btn border_radias_5px" href="{{ $item['category']->url }}" title="Read More">Read More &gt;&nbsp;</a>
                                 </div>
                             </div>
                             <div class="info-box-wrapper">
                                 <div class="marquee">
                                     <div class="info-contant">
                                         @php
-                                            $options = shortOptionsByShortOrder(json_decode($item->options));
+                                            $posts = $item['posts'];
                                         @endphp
                                         <ul>
-                                            @foreach ($options as $option)
+                                            @foreach ($posts as $post)
                                                 <li class="news1">
-                                                    <a href="{{ $option['link'] ?? '#' }}">{{ $option['title'] }}</a>
+                                                    <a href="{{ $post->url }}">{{ $post->name }}</a>
                                                 </li>
                                             @endforeach
                                         </ul>

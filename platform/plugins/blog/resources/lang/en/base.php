@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'menu_name'                         => 'Blog',
-    'blog_page'                         => 'Blog Page',
+    'menu_name'                         => 'Information sections',
+    'blog_page'                         => 'Information section Page',
     'select'                            => '-- Select --',
-    'blog_page_id'                      => 'Blog page',
+    'blog_page_id'                      => 'Information section page',
     'number_posts_per_page'             => 'Number posts per page',
     'write_some_tags'                   => 'Write some tags',
     'short_code_name'                   => 'Blog posts',

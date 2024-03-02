@@ -53,9 +53,8 @@ class BlogServiceProvider extends ServiceProvider
     {
         SlugHelper::registerModule(Post::class, 'Blog Posts');
         SlugHelper::registerModule(Category::class, 'Blog Categories');
-        SlugHelper::registerModule(Tag::class, 'Blog Tags');
-
-        SlugHelper::setPrefix(Tag::class, 'tag');
+        // SlugHelper::registerModule(Tag::class, 'Blog Tags');
+        // SlugHelper::setPrefix(Tag::class, 'tag');
 
         $this->setNamespace('plugins/blog')
             ->loadAndPublishConfigurations(['permissions'])
@@ -73,42 +72,64 @@ class BlogServiceProvider extends ServiceProvider
                     'id'          => 'cms-plugins-blog',
                     'priority'    => 3,
                     'parent_id'   => null,
-                    'name'        => 'plugins/blog::base.menu_name',
+                    'name'        => 'Information sections',
                     'icon'        => 'fa fa-edit',
-                    'url'         => route('posts.index'),
+                    'url'         => route('posts.index', ['type' => 'News']),
                     'permissions' => ['posts.index'],
                 ])
                 ->registerItem([
                     'id'          => 'cms-plugins-blog-post',
                     'priority'    => 1,
                     'parent_id'   => 'cms-plugins-blog',
-                    'name'        => 'plugins/blog::posts.menu_name',
+                    'name'        => 'News',
                     'icon'        => null,
-                    'url'         => route('posts.index'),
+                    'url'         => route('posts.index', ['type' => 'News']),
                     'permissions' => ['posts.index'],
                 ])
                 ->registerItem([
-                    'id'          => 'cms-plugins-blog-categories',
-                    'priority'    => 2,
+                    'id'          => 'cms-plugins-blog-post',
+                    'priority'    => 1,
                     'parent_id'   => 'cms-plugins-blog',
-                    'name'        => 'plugins/blog::categories.menu_name',
+                    'name'        => 'Announcements',
                     'icon'        => null,
-                    'url'         => route('categories.index'),
-                    'permissions' => ['categories.index'],
+                    'url'         => route('posts.index', ['type' => 'Announcements']),
+                    'permissions' => ['posts.index'],
                 ])
                 ->registerItem([
-                    'id'          => 'cms-plugins-blog-tags',
-                    'priority'    => 3,
+                    'id'          => 'cms-plugins-blog-post',
+                    'priority'    => 1,
                     'parent_id'   => 'cms-plugins-blog',
-                    'name'        => 'plugins/blog::tags.menu_name',
+                    'name'        => 'Press Release',
                     'icon'        => null,
-                    'url'         => route('tags.index'),
-                    'permissions' => ['tags.index'],
-                ]);
+                    'url'         => route('posts.index', ['type' => 'Press Release']),
+                    'permissions' => ['posts.index'],
+                ])
+                // ->registerItem([
+                //     'id'          => 'cms-plugins-blog-categories',
+                //     'priority'    => 2,
+                //     'parent_id'   => 'cms-plugins-blog',
+                //     'name'        => 'plugins/blog::categories.menu_name',
+                //     'icon'        => null,
+                //     'url'         => route('categories.index'),
+                //     'permissions' => ['categories.index'],
+                // ])
+                // ->registerItem([
+                //     'id'          => 'cms-plugins-blog-tags',
+                //     'priority'    => 3,
+                //     'parent_id'   => 'cms-plugins-blog',
+                //     'name'        => 'plugins/blog::tags.menu_name',
+                //     'icon'        => null,
+                //     'url'         => route('tags.index'),
+                //     'permissions' => ['tags.index'],
+                // ])
+                ;
         });
 
         $this->app->booted(function () {
-            $models = [Post::class, Category::class, Tag::class];
+            $models = [
+                Post::class, Category::class, 
+                // Tag::class
+            ];
 
             if (defined('LANGUAGE_MODULE_SCREEN_NAME')) {
                 Language::registerModule($models);
@@ -130,7 +151,7 @@ class BlogServiceProvider extends ServiceProvider
             view()->composer([
                 'plugins/blog::themes.post',
                 'plugins/blog::themes.category',
-                'plugins/blog::themes.tag',
+                // 'plugins/blog::themes.tag',
             ], function (View $view) {
                 $view->withShortcodes();
             });

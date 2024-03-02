@@ -64,4 +64,10 @@ interface CategoryInterface extends RepositoryInterface
      * @return mixed
      */
     public function getPopularCategories(int $limit, array $with = ['slugable'], array $withCount = ['posts']);
+
+    /**
+     * @param string $name
+     * @return mixed
+     */
+    public function getCategoryByName($name);
 }
