@@ -16,6 +16,9 @@ if (!function_exists('get_last_updated')) {
             if (file_exists(public_path('data.json'))) {
                 $json = file_get_contents(public_path('data.json'));
                 $data = json_decode($json, true);
+                if (empty($data['last_updated'])) {
+                    return now()->format('M d, Y');
+                }
                 return now()->parse($data['last_updated'])->format('M d, Y');
             }
             return now()->format('M d, Y');

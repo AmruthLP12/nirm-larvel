@@ -61,6 +61,15 @@ class PostForm extends FormAbstract
                     'data-counter' => 120,
                 ],
             ])
+            ->add('created_at', 'text', [
+                'label'      => 'Created At',
+                'label_attr' => ['class' => 'control-label'],
+                'attr'       => [
+                    'class' => 'form-control datepicker',
+                    'data-date-format' => 'yyyy-mm-dd',
+                ],
+                'default_value' => now(config('app.timezone'))->format('Y-m-d'),
+            ])
             ->add('description', 'textarea', [
                 'label'      => trans('core/base::forms.description'),
                 'label_attr' => ['class' => 'control-label'],
