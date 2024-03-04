@@ -61,7 +61,7 @@ return [
             $theme->asset()->container('footer')->usePath()->add('script-swiper', 'assets/swiper/js/swiper-bundle.min.js');
             $theme->asset()->container('footer')->usePath(false)->add(
             'script-magnific', 'https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js');
-            $theme->asset()->container('footer')->usePath(false)->add('script-translate', 'http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate');
+            $theme->asset()->container('footer')->usePath(false)->add('script-translate', 'https://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate');
             $theme->asset()->container('footer')->usePath()->add('script-theme', 'assets/js/theme.js');
 
             if (function_exists('shortcode')) {
