@@ -6,7 +6,7 @@
     <section class="client-slider section_padding ">
         <div class="client-slide">
             <div class="quick-content container">
-                <h2 class="quick-heading">External Links</h2>
+                <h2 class="quick-heading">Important Website Links</h2>
                 <div class="swiper mySwiper" id="client-slider">
                     <div class="swiper-wrapper">
                         @foreach ($external_links as $item)
