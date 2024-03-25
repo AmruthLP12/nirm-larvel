@@ -11,6 +11,10 @@
                         <li class="top-li d-flex align-items-center">
                             <a href="http://staging.nirm.in/sitemap" target="_blank"> Sitemap</a>
                         </li>
+ 			<li class="top-li d-flex align-items-center">
+                            <a href="http://staging.nirm.in/screen-reader" target="_blank"> Screen Reader</a>
+                        </li>
+
                     </ul>
                 </div>
             </div>

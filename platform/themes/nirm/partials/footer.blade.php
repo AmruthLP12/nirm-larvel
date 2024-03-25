@@ -32,7 +32,7 @@
                                         <a href="tel:+918026934414">+91-80–2693 4414</a>
                                     </li>
                                     <li><i class="fa fa-fax"></i><a href="fax:918026934401">+91-80-26934401</a></li>
-                                    <li><i class="fa fa-envelope-square"></i><a href="mailto:dto@nirm.in">dto@nirm.in</a>
+                                    <li><i class="fa fa-envelope-square"></i><a href="mailto:dto@nirm.in">dto[at]nirm[dot]in</a>
                                     </li>
                                 </ul>
                             </div>
@@ -49,7 +49,7 @@
                                     <li><i class="fa fa-phone-square"></i><a href="tel:+918153275000">+91-8153-275000</a>
                                     </li>
                                     <li><i class="fa fa-fax"></i><a href="fax:918153275002">+91-8153-275002</a></li>
-                                    <li><i class="fa fa-envelope-square"></i><a href="mailto:dto@nirm.in">dto@nirm.in</a>
+                                    <li><i class="fa fa-envelope-square"></i><a href="mailto:dto@nirm.in">dto[at]nirm[dot]in</a>
                                     </li>
                                 </ul>
                             </div>
@@ -98,55 +98,23 @@
                     </div>
                 </div>
             </section>
-            <!-- <section class="footer-nav-two">
-                <div class="container">
-                    <ul class="footer-ul">
-                        <li class="footer-li">
-                            <a href="#" class="menu-item2">Home</a>
-                        </li>
-                        <li class="footer-li">
-                            <a href="#" class="menu-item2">About Us</a>
-                        </li>
-                        <li class="footer-li">
-                            <a href="#" class="menu-item2">Website Policy</a>
-                        </li>
-                        <li class="footer-li">
-                            <a href="#" class="menu-item2">Feedback</a>
-                        </li>
-                        <li class="footer-li">
-                            <a href="#" class="menu-item2">View-feedback</a>
-                        </li>
-                        <li class="footer-li">
-                            <a href="#" class="menu-item2">Sitemap</a>
-                        </li>
-                        <li class="footer-li">
-                            <a href="#" class="menu-item2">Disclaimer</a>
-                        </li>
-                        <li class="footer-li">
-                            <a href="#" class="menu-item2">Help</a>
-                        </li>
-                        <li class="footer-li">
-                            <a href="#" class="menu-item2">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-            </section> -->
+         
             <section class="footer-nav-three">
                 <div class="container">
                     <ul class="social-ul">
                         
                         <li>
-                            <a href="#" class="social" target="_blank">
+                            <a href="https://www.facebook.com/NIRMIndia" class="social" target="_blank">
                                 <img src="/themes/nirm/assets/image/facebook.png" alt="facebook">
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="social" target="_blank">
+                            <a href="https://twitter.com/nirmrockmech" class="social" target="_blank">
                                 <img src="/themes/nirm/assets/image/twitter.png" alt="twitter">
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="social" target="_blank">
+                            <a href="https://in.linkedin.com/company/national-institute-of-rock-mechanics-nirm-" class="social" target="_blank">
                                 <img src="/themes/nirm/assets/image/linkedin.png" alt="linkedin">
                             </a>
                         </li>
@@ -174,11 +142,7 @@
                             }
                         @endphp
                         <p><img src="/themes/nirm/assets/image/calendar.svg"> Last Updated: {{$last_updated}}</p>
-                        <p>
-                            <a href="#" class="copy-img">
-                                <img src="/themes/nirm/assets/image/copy.png" alt="copy-img">
-                            </a>
-                        </p>
+                       
                         @php
                             $count_visitors = 632;
                             if (function_exists('count_visitors')) {
