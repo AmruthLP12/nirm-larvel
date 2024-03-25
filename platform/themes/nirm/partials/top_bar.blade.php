@@ -9,10 +9,10 @@
                             <a href="#main_content">Skip to Main Content </a>
                         </li>
                         <li class="top-li d-flex align-items-center">
-                            <a href="https://nirm.in/sitemap" target="_blank"> Sitemap</a>
+                            <a href="/sitemap" target="_blank"> Sitemap</a>
                         </li>
  			<li class="top-li d-flex align-items-center">
-                            <a href="https://nirm.in/screen-reader" target="_blank"> Screen Reader</a>
+                            <a href="/screen-reader" target="_blank"> Screen Reader</a>
                         </li>
 
                     </ul>
