@@ -2016,16 +2016,14 @@ a.VIpgJd-ZVi9od-l4eHX-hSRGPd {
     line-height: 50px;
 }
 
-.ptb-100 li 
-{
-	font-size: 16px;
+.ptb-100 li {
+    font-size: 16px;
     line-height: 28px;
     font-family: "Open Sans", sans-serif;
     color: var(--extra-font-color-dark);
 }
 
-.ptb-100 li::before 
-{
+.ptb-100 li::before {
 
     content: "\f00c";
     color: #063099;
@@ -2035,6 +2033,7 @@ a.VIpgJd-ZVi9od-l4eHX-hSRGPd {
     margin-right: 10px;
     font-family: FontAwesome;
 }
+
 .blog-grid {
     position: relative;
     box-shadow: 0 1rem 1.75rem 0 rgba(45, 55, 75, 0.1);
