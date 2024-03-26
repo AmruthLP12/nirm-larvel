@@ -97,7 +97,7 @@ class PostRepository extends RepositoriesAbstract implements PostInterface
             ->select('posts.*')
             ->distinct()
             ->with('slugable')
-            ->orderBy('posts.created_at', 'desc');
+            ->orderBy('posts.created_at', 'asc');
 
         if ($paginate != 0) {
             return $this->applyBeforeExecuteQuery($data)->paginate($paginate);
