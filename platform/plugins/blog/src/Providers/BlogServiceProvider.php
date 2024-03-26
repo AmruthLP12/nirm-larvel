@@ -95,15 +95,15 @@ class BlogServiceProvider extends ServiceProvider
                     'url'         => route('posts.index', ['type' => 'Announcements']),
                     'permissions' => ['posts.index'],
                 ])
-                ->registerItem([
-                    'id'          => 'cms-plugins-blog-post',
-                    'priority'    => 1,
-                    'parent_id'   => 'cms-plugins-blog',
-                    'name'        => 'Press Release',
-                    'icon'        => null,
-                    'url'         => route('posts.index', ['type' => 'Press Release']),
-                    'permissions' => ['posts.index'],
-                ])
+                // ->registerItem([
+                //     'id'          => 'cms-plugins-blog-post',
+                //     'priority'    => 1,
+                //     'parent_id'   => 'cms-plugins-blog',
+                //     'name'        => 'Press Release',
+                //     'icon'        => null,
+                //     'url'         => route('posts.index', ['type' => 'Press Release']),
+                //     'permissions' => ['posts.index'],
+                // ])
                 // ->registerItem([
                 //     'id'          => 'cms-plugins-blog-categories',
                 //     'priority'    => 2,
