@@ -36,26 +36,6 @@
             <div class="container">
                 <div class="row align-items-center justify-content-center">
                     @foreach ($information_sections as $item)
-                    {{-- last category --}}
-                    @if ($loop->last)
-                    <div class="col-lg-4 col-12 info-box">
-                        <div class="info border_radias_5px" style="background: none">
-                            <div class="info-box-wrapper" style="padding: 0">
-                                {{-- <a class="twitter-timeline"
-                                href="https://twitter.com/nirmrockmech"
-                                data-aria-polite="assertive"
-                                data-chrome="nofooter noborders">
-                                Tweets by nirmrockmech
-                                </a>
-                                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
-                                <a class='twitter-timeline' data-height='450' data-handle='nirmrockmech' data-aria-polite="assertive"
-                                data-chrome="nofooter noborders"></a>
-                                <script src='https://www.athabasca.dev/content/scripts/widget.js'></script>
-                                {{-- <a class="twitter-timeline" href="https://twitter.com/nirmrockmech?ref_src=twsrc%5Etfw">Tweets by nirmrockmech</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  --}}
-                            </div>
-                        </div>
-                    </div>
-                    @else
                     <div class="col-lg-4 col-12 info-box">
                         <div class="info border_radias_5px">
                             <div class="info-wrap">
@@ -86,8 +66,24 @@
                             </div>
                         </div>
                     </div>
-                    @endif
                     @endforeach
+                    <div class="col-lg-4 col-12 info-box">
+                        <div class="info border_radias_5px" style="background: none">
+                            <div class="info-box-wrapper" style="padding: 0">
+                                {{-- <a class="twitter-timeline"
+                                href="https://twitter.com/nirmrockmech"
+                                data-aria-polite="assertive"
+                                data-chrome="nofooter noborders">
+                                Tweets by nirmrockmech
+                                </a>
+                                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
+                                <a class='twitter-timeline' data-height='450' data-handle='nirmrockmech' data-aria-polite="assertive"
+                                data-chrome="nofooter noborders"></a>
+                                <script src='https://www.athabasca.dev/content/scripts/widget.js'></script>
+                                {{-- <a class="twitter-timeline" href="https://twitter.com/nirmrockmech?ref_src=twsrc%5Etfw">Tweets by nirmrockmech</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  --}}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
