@@ -63,7 +63,7 @@
                                         <i class="fa fa-user"></i>
                                         Director: <br>
                                         <span>
-                                            Dr.H. S. Venkatesh
+                                            Dr.H. S. Venkatesh <br>
                                             <a href="tel:+918026934400">+91-80-26934400</a> / <a
                                                 href="tel:918026934402">+91-80-26934402</a>
                                         </span>
@@ -78,16 +78,18 @@
                                     </li>
                                     <li>
                                         <i class="fa fa-user"></i>
-                                        Controller of Adminstration: Dr. Sandeep Nelliat <br>
+                                        Controller of Administration: <br>
                                         <span>
+                                            Dr. Sandeep Nelliat <br>
                                             <a href="tel:+918026934400">+91-80-26934400</a> / <a
                                                 href="tel:+918026934402">+91-80-26934402</a>
                                         </span>
                                     </li>
                                     <li>
                                         <i class="fa fa-user"></i>
-                                        Web Information Manager:<br> Dr. V R Balasubramaniam 
+                                        Web Information Manager:<br> 
                                         <span>
+                                            Dr. V R Balasubramaniam <br> 
                                             <a href="tel:+918026934400">+91-80-26934400</a> / <a
                                                 href="tel:+918026934402">+91-80-26934402</a>
                                         </span>

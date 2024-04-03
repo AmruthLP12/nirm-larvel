@@ -9,7 +9,7 @@ use Obii\Contact\Repositories\Interfaces\ContactInterface;
 use EmailHandler;
 use Exception;
 use Illuminate\Routing\Controller;
-
+use Illuminate\Support\Facades\RateLimiter;
 class PublicController extends Controller
 {
     /**
@@ -33,6 +33,13 @@ class PublicController extends Controller
      */
     public function postSendContact(ContactRequest $request, BaseHttpResponse $response)
     {
+        if (!RateLimiter::tooManyAttempts('contact', 1)) {
+            RateLimiter::hit('contact', 60);
+        } else {
+            return $response
+                ->setError()
+                ->setMessage(__('Too many attempts, please try again later 1 minute!'));
+        }
         try {
             $contact = $this->contactRepository->getModel(); 
             $data = $request->only([

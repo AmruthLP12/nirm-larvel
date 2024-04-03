@@ -3,7 +3,7 @@
         content: " *";
         color: red;
     }
-    button[type="submit"] {
+    .form-contact button[type="submit"] {
         background-color: #10399d;
         color: #fff;
         border: none;
@@ -12,11 +12,11 @@
         cursor: pointer;
         transition: 0.3s;
     }
-    button[type="submit"]:hover {
+    .form-contact button[type="submit"]:hover {
         background-color: #3d5eb3;
         color: #fff;
     }
-    input[type="text"], input[type="email"], textarea {
+    .form-contact input[type="text"], .form-contact input[type="email"], .form-contact textarea {
         width: 100%;
         padding: 10px;
         border: 1px solid #ccc!important;
@@ -24,26 +24,26 @@
         margin-bottom: 10px;
         transition: 0.3s;
     }
-    textarea{
+    .form-contact textarea{
         height: 150px!important;
     }
-    label {
+    .form-contact label {
         font-size: 16px;
         font-weight: 600;
     }
-    input::placeholder, textarea::placeholder {
+    .form-contact input::placeholder, .form-contact textarea::placeholder {
         color: #ccc;
         font-size: 14px;
     }
-    .darkTheme label, .darkTheme h4{
+    .darkTheme .form-contact label, .darkTheme .form-contact h4{
         color: #fff;
     }
-    .darkTheme input::placeholder, .darkTheme textarea::placeholder{
+    .darkTheme .form-contact input::placeholder, .darkTheme .form-contact textarea::placeholder{
         color: #6e6464;
     }
 </style>
 
-{!! Form::open(['route' => 'public.send.contact', 'method' => 'POST']) !!}
+{!! Form::open(['route' => 'public.send.contact', 'method' => 'POST', 'class' => 'form-contact']) !!}
 @if(session()->has('success_msg') || session()->has('error_msg') || isset($errors))
     @if (session()->has('success_msg'))
         <div class="alert alert-success">
@@ -76,7 +76,7 @@
                    placeholder="{{ trans('plugins/contact::contact.form_email') }}" required>
         </div>
         <div class="form-group">
-            <label for="contact_phone" class="control-label">{{ trans('plugins/contact::contact.form_phone') }}</label>
+            <label for="contact_phone" class="control-label required">{{ trans('plugins/contact::contact.form_phone') }}</label>
             <input type="text" class="form-control" name="phone_number" value="{{ old('phone_number') }}" id="contact_phone"
                    placeholder="{{ trans('plugins/contact::contact.form_phone') }}">
         </div>
