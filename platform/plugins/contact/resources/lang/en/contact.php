@@ -22,6 +22,9 @@ return [
         'name'    => [
             'required' => 'Name is required',
         ],
+        'subject'    => [
+            'required' => 'Subject is required',
+        ],
         'phone_number'    => [
             'required' => 'Phone number is required',
         ],
