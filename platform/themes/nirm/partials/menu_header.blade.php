@@ -1,3 +1,7 @@
+@php
+    $page = Theme::get('page');
+    $slug = !empty($page) ? $page->slug : null;
+@endphp
 <div class="header-menu start-0 end-0">
     <nav class="navbar navbar-expand-xl">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -8,8 +12,8 @@
         </button>
         <div class="collapse navbar-collapse justify-content-start" id="navbarSupportedContent">
             <ul class="navbar-nav mb-2 mb-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link active" title="NIRM Home Page" aria-current="page" href="/">Home</a>
+                <li class="nav-item @if($slug == 'homepage') active @endif">
+                    <a class="nav-link @if($slug == 'homepage') active @endif" title="NIRM Home Page" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link" data-toggle="dropdown" role="button"
@@ -282,11 +286,10 @@
                         <li><a href="https://digitalindia.gov.in/">Digital India</a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="/contact-us" class="nav-link" data-toggle="dropdown" role="button"
+                <li class="nav-item @if($slug == 'contact-us') active @endif">
+                    <a href="/contact-us" class="nav-link @if($slug == 'contact-us') active @endif" data-toggle="dropdown" role="button"
                         aria-haspopup="true" aria-expanded="false" aria-current="page">Contact
                         Us </a>
-                
                 </li>
             </ul>
         </div>
