@@ -1,0 +1,8 @@
+{
+  "name": "obii/captcha",
+  "description": "Captcha for higher security",
+  "homepage": "https://www.obiikriationz.com",
+  "require": {
+    "google/recaptcha": "^1.2"
+  }
+}

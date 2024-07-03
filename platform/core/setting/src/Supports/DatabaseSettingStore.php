@@ -57,7 +57,6 @@ class DatabaseSettingStore extends SettingStore
         $insertData = Arr::dot($data);
         $updateData = [];
         $deleteKeys = [];
-
         foreach ($keys as $key) {
             if (isset($insertData[$key])) {
                 $updateData[$key] = $insertData[$key];
@@ -66,7 +65,6 @@ class DatabaseSettingStore extends SettingStore
             }
             unset($insertData[$key]);
         }
-
         foreach ($updateData as $key => $value) {
             Setting::where('key', $key)
                 ->update(['value' => $value]);
@@ -76,9 +74,9 @@ class DatabaseSettingStore extends SettingStore
             Setting::insert($this->prepareInsertData($insertData));
         }
 
-        // if ($deleteKeys) {
-            // Setting::whereIn('key', $deleteKeys)->delete();
-        // }
+        if ($deleteKeys) {
+            Setting::whereIn('key', $deleteKeys)->delete();
+        }
 
         if (config('core.setting.general.cache.enabled')) {
             try {
