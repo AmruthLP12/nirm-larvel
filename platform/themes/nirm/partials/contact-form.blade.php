@@ -93,9 +93,7 @@
     @if (setting('enable_captcha') && is_plugin_active('captcha'))
         <div class="col-md-12">
             <div class="form-group">
-                <label for="contact_robot" class="control-label required">{{ trans('plugins/contact::contact.confirm_not_robot') }}</label>
                 {!! Captcha::display('captcha') !!}
-                {!! Captcha::script() !!}
             </div>
         </div>
     @endif

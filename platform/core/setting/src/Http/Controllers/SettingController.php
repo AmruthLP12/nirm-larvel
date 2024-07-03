@@ -102,9 +102,11 @@ class SettingController extends BaseController
     protected function saveSettings(array $data)
     {
         foreach ($data as $settingKey => $settingValue) {
+            if (is_array($settingValue)) {
+                setting()->forget($settingKey);
+            }
             setting()->set($settingKey, $settingValue);
         }
-
         setting()->save();
     }
 

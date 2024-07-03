@@ -77,4 +77,5 @@ return [
     'shortcode_description'         => 'Add a contact form',
     'shortcode_content_description' => 'Add shortcode [contact-form][/contact-form] to editor?',
     'message_sent_success'          => 'Message sent successfully!',
+    'confirm_not_robot'             => 'Please confirm that you are not a robot!',
 ];
