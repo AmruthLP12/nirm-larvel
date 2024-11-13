@@ -60,7 +60,7 @@ if (!function_exists('get_posts_by_category')) {
 if (!function_exists('get_posts_by_category_name')) {
     function get_posts_by_category_name($paginate = 12, $limit = 0)
     {
-        $categoryName = ['News', 'Announcements'];
+        $categoryName = ['News', 'Press Releases'];
         $results = [];
         foreach ($categoryName as $name) {
             $category = app(CategoryInterface::class)->getCategoryByName($name);
