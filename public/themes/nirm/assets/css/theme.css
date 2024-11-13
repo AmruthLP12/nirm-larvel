@@ -1198,6 +1198,7 @@ svg:not(:root).svg-inline--fa {
     position: absolute;
     will-change: transform;
     animation: marquee 10s linear infinite;
+    padding-top: 10px;
 }
 
 .info-contant:hover,
