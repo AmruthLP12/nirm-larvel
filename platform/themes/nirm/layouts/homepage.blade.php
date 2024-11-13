@@ -50,10 +50,10 @@
                             </div>
                             <div class="info-box-wrapper">
                                 <div class="marquee">
-                                    <div class="info-contant">
-                                        @php
-                                            $posts = $item['posts'];
-                                        @endphp
+                                    @php
+                                        $posts = $item['posts'];
+                                    @endphp
+                                    <div class="info-contant" @if($posts->count() < 4) style="animation: unset!important" @endif>
                                         <ul>
                                             @foreach ($posts as $post)
                                                 <li class="news1">
