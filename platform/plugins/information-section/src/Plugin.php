@@ -25,7 +25,7 @@ class Plugin extends PluginOperationAbstract
             'type' => 'announcement'
         ]);
         InformationSection::create([
-            'name' => 'Press Release',
+            'name' => 'Press Releases',
             'type' => 'press-release',
         ]);
     }

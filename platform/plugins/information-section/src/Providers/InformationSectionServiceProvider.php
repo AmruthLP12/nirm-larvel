@@ -70,7 +70,7 @@ class InformationSectionServiceProvider extends ServiceProvider
                     'id'          => 'cms-plugins-information-press-release',
                     'priority'    => 5,
                     'parent_id'   => 'cms-plugins-information-section',
-                    'name'        => 'Press Release',
+                    'name'        => 'Press Releases',
                     'icon'        => 'fa fa-list',
                     'url'         => route('information-section.edit', 'press-release'),
                     'permissions' => ['information-section.create'],

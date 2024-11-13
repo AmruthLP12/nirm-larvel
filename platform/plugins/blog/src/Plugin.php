@@ -36,11 +36,11 @@ class Plugin extends PluginOperationAbstract
                 'name' => 'News',
                 'is_default' => true,
             ],
+            // [
+            //     'name' => 'Announcements',
+            // ],
             [
-                'name' => 'Announcements',
-            ],
-            [
-                'name' => 'Press Release',
+                'name' => 'Press Releases',
             ]
         ];
         foreach ($categories as $index => $item) {
