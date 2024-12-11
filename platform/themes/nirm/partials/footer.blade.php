@@ -23,13 +23,12 @@
                         <div class="col-lg-4">
                             <div class="add-wrapper">
                                 <h4 class="f-title mb-2">Head Office</h4>
-                                <address class="col-lg-10">National Institute of Rock Mechanics
-                                    Eshwar Nagar, Outer Ring Road,
-                                    Banashankari 2nd Stage
-                                    Bengaluru - 560 070 Karnataka, India</address>
+                                <address class="col-lg-10">National Institute of Rock Mechanics Eshwar Nagar,
+                            Outer Ring Road, Banashankari 2nd Stage
+                            Bengaluru - 560 070 Karnataka, India</address>
                                 <ul class="ps-0 list-wrapper">
                                     <li><i class="fa fa-phone-square"></i><a href="tel:+91802694402">+91-80–2693 4402</a> /
-                                        <a href="tel:+918026934414">+91-80–2693 4414</a>
+                                        <a href="tel:+918026934406">+91-80–26934406</a>
                                     </li>
                                     <li><i class="fa fa-fax"></i><a href="fax:918026934401">+91-80-26934401</a></li>
                                     <li><i class="fa fa-envelope-square"></i><a href="mailto:dto@nirm.in">dto[at]nirm[dot]in</a>
@@ -54,44 +53,40 @@
                                 </ul>
                             </div>
                         </div>
-
                         <div class="col-lg-4">
                             <div class="add-wrapper">
-                                <h4 class="f-title mb-2">Activities & Initiatives </h4>
+                                <h4 class="f-title mb-2">Activities & Contacts</h4>
                                 <ul class="ps-0 list-wrapper">
                                     <li>
                                         <i class="fa fa-user"></i>
-                                        Director: <br>
+                                        Director <br>
                                         <span>
-                                            Dr.H. S. Venkatesh <br>
                                             <a href="tel:+918026934400">+91-80-26934400</a> / <a
-                                                href="tel:918026934402">+91-80-26934402</a>
+                                                href="tel:918026934402">+91-80-26934402</a> (PA)
                                         </span>
                                     </li>
                                     <li>
                                         <i class="fa fa-user"></i>
-                                        Project Monitoring Cell <br>
+                                        Head, Project Monitoring Cell <br>
                                         <span>
-                                            <a href="tel:+918026934413">+91-80-26934413</a> / <a
-                                                href="tel:+919611785711">+91-9611785711</a>
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-user"></i>
-                                        Controller of Administration: <br>
-                                        <span>
-                                            Dr. Sandeep Nelliat <br>
-                                            <a href="tel:+918026934400">+91-80-26934400</a> / <a
+                                            <a href="tel:+918026934414">+91-80-26934414</a> / <a
                                                 href="tel:+918026934402">+91-80-26934402</a>
                                         </span>
                                     </li>
                                     <li>
                                         <i class="fa fa-user"></i>
-                                        Web Information Manager:<br> 
+                                        Controller of Administration <br>
                                         <span>
-                                            Dr. V R Balasubramaniam <br> 
-                                            <a href="tel:+918026934400">+91-80-26934400</a> / <a
+                                            <a href="tel:+918026934407">+91-80-26934407</a> / <a
                                                 href="tel:+918026934402">+91-80-26934402</a>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-user"></i>
+                                        Web Information Manager<br> 
+                                        <span>
+                                            <a href="tel:+918026934414">+91-80-26934414</a> / <a
+                                                href="tel:+918026934408">+91-80-26934408</a>
                                         </span>
                                     </li>
                                 </ul>
