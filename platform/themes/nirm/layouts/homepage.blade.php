@@ -105,13 +105,13 @@
                                                 <div class="tweet-content">
                                                     <p>{!! $tweet->content['full_text'] !!}</p>
                                                     <a href="{{ $tweet->content['tweet_url'] }}" target="_blank">View on
-                                                        Twitter</a>
+                                                        X</a>
                                                 </div>
                                                 <div class="tweet-meta">
                                                     @if (!empty($tweet->content['referenced_tweet_url']))
                                                         <div class="referenced-tweet">
                                                             <a href="{{ $tweet->content['referenced_tweet_url'] }}"
-                                                                target="_blank">Referenced Tweet</a>
+                                                                target="_blank">Referenced X</a>
                                                         </div>
                                                     @endif
                                                     @if (!empty($tweet->content['media']))
