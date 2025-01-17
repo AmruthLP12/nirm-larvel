@@ -173,6 +173,7 @@
         max-height: 400px;
         animation: none;
         overflow-y: auto;
+        width: 100%;
     }
 
     .tweet {
