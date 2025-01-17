@@ -38,7 +38,8 @@ class TwitterfeedServiceProvider extends ServiceProvider
 
         $this->app->booted(function () {
             $schedule = $this->app->make(Schedule::class);
-            $schedule->command('cms:twitter:clone')->everyHour();
+            //every hour
+            $schedule->command('cms:twitter:clone')->cron('0 * * * *');
         });
     }
 }
