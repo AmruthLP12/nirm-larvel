@@ -18,9 +18,11 @@ class RecordVisitor
                 ->where('ip_address', $request->ip())
                 ->exists();
             if (!$exists) {
+                $user_agent = $request->header('User-Agent');
+                $user_agent = substr($user_agent, 0, 191);
                 Visitors::create([
                     'ip_address' => $request->ip(),
-                    'user_agent' => $request->header('User-Agent'),
+                    'user_agent' => $user_agent,
                     'visited_at' => Carbon::now()
                 ]);
             }
