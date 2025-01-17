@@ -2,15 +2,14 @@
 
 namespace Obii\Twitterfeed\Providers;
 
+use Illuminate\Console\Scheduling\Schedule;
 use Obii\Twitterfeed\Models\Twitterfeed;
 use Illuminate\Support\ServiceProvider;
 use Obii\Twitterfeed\Repositories\Caches\TwitterfeedCacheDecorator;
 use Obii\Twitterfeed\Repositories\Eloquent\TwitterfeedRepository;
 use Obii\Twitterfeed\Repositories\Interfaces\TwitterfeedInterface;
 use Obii\Base\Supports\Helper;
-use Illuminate\Support\Facades\Event;
 use Obii\Base\Traits\LoadAndPublishDataTrait;
-use Illuminate\Routing\Events\RouteMatched;
 
 class TwitterfeedServiceProvider extends ServiceProvider
 {
@@ -36,5 +35,10 @@ class TwitterfeedServiceProvider extends ServiceProvider
                 \Obii\Twitterfeed\Commands\CloneTwitterCommand::class,
             ]);
         }
+
+        $this->app->booted(function () {
+            $schedule = $this->app->make(Schedule::class);
+            $schedule->command('cms:twitter:clone')->everyHour();
+        });
     }
 }
