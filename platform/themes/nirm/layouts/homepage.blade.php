@@ -211,6 +211,8 @@
     .tweet-content a {
         color: #1da1f2;
         text-decoration: none;
+        margin-right: 5px;
+        display: inline flow-root list-item;
     }
 
     .tweet-meta {
