@@ -86,7 +86,7 @@
                                     </div>
                                     <div class="info-footer">
                                         <a class="read-btn border_radias_5px" href="https://x.com/nirmrockmech"
-                                            title="Follow on X">Follow on X</a>
+                                            title="Follow on X" target="_blank">Follow on X</a>
                                     </div>
                                 </div>
                                 <div class="info-box-wrapper marquee" style="padding: 0">
