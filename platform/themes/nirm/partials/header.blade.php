@@ -61,7 +61,7 @@
                             </div>
                             <div class="header-azadi text-lg-end">
                                 <a href="https://amritmahotsav.nic.in/" class="azadi-logo d-block" title="Azadi ka-amrit-mahotsav,">
-                                    <img src="/themes/nirm/assets/image/international.jpg" class="img-fluid" alt="75th Indian Independence Day">
+                                    <img src="/themes/nirm/assets/image/international.jpg" class="img-fluid" alt="75th Indian Independence Day" style="width: 200px;">
                                 </a>
                             </div>
                         </div>
