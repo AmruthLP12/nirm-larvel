@@ -1,0 +1,5 @@
+{
+  "Description": "Domain ownership verification file for Microsoft 365 - place in the website root",
+  "Domain": "NIRM.in",
+  "Id": "4204f2ef-057f-4064-bf4c-51cae6f63b5b"
+}

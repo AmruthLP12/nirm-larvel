@@ -266,9 +266,7 @@
   			<li><a href="/press-release">Press Releases</a></li>
 			<li><a href="/publications">Publications</a></li>
                         <li><a href="/constitution-of-icc-for-considering-complaints-of-sexual-harassment-of-women-employees-at-nirm">ICC(Women)</a></li>
-                        <li><a href="/cancellation-of-advertisement">Cancellation of Advt</a></li>
-                        <li><a href="/training-programme">Training programme</a></li>
-                        <li><a href="/tenders">Tender Notice</a></li>
+                                             <li><a href="/tenders">Tender Notice</a></li>
                         <li><a href="/contractual-appointment-for-projects">Contract Employment</a></li>
                         <li><a href="/technical-information">Technical Info</a></li>
                         <li><a href="/nirm-academics">NIRM Academics</a></li>
