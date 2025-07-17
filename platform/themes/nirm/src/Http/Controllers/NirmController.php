@@ -54,6 +54,6 @@ class NirmController extends PublicController
             ->add($title, route('public.search'));
 
         return Theme::scope('search', compact('pages'))
-        ->render();
+            ->render();
     }
 }

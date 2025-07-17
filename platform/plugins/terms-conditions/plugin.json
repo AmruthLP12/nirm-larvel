@@ -1,0 +1,9 @@
+{
+    "name": "TermsConditions",
+    "namespace": "Obii\\TermsConditions\\",
+    "provider": "Obii\\TermsConditions\\Providers\\TermsConditionsServiceProvider",
+    "author": "Nguyen Dac Huy",
+    "url": "N/A",
+    "version": "1.0",
+    "description": "The description for module terms_conditions"
+}
