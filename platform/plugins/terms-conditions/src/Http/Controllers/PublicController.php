@@ -238,11 +238,11 @@ class PublicController extends Controller
                     'New Application Submitted'   // subject tùy chỉnh
                 );
 
-            return redirect()->route('public.terms-and-conditions')
+            return redirect()->route('public.job-application')
                 ->with('success', __('Your application has been submitted successfully!'));
         } catch (Exception $exception) {
             info($exception->getMessage(), ['exception' => $exception]);
-            return redirect()->route('public.terms-and-conditions')
+            return redirect()->route('public.job-application')
                 ->withInput()
                 ->with('error', __('Unable to submit application right now, please try again later.'));
         }

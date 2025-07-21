@@ -15,10 +15,10 @@ Route::group(['namespace' => 'Obii\TermsConditions\Http\Controllers', 'middlewar
     });
     if (defined('THEME_MODULE_SCREEN_NAME')) {
         Route::group(apply_filters(BASE_FILTER_GROUP_PUBLIC_ROUTE, []), function () {
-            Route::get('terms-and-conditions', 'PublicController@index')
-                ->name('public.terms-and-conditions');
-            Route::post('terms-and-conditions', 'PublicController@store')
-                ->name('public.terms-and-conditions.store');
+            Route::get('job-application', 'PublicController@index')
+                ->name('public.job-application');
+            Route::post('job-application', 'PublicController@store')
+                ->name('public.job-application.store');
         });
     }
 });

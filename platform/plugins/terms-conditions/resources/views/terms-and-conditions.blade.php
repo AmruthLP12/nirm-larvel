@@ -100,7 +100,7 @@
             </div>
         @endif
         
-        <form action="{{ route('public.terms-and-conditions.store') }}" method="post" enctype="multipart/form-data"
+        <form action="{{ route('public.job-application.store') }}" method="post" enctype="multipart/form-data"
             data-parsley-validate>
             @csrf
 

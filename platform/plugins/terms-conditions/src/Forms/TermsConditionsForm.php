@@ -41,18 +41,27 @@ class TermsConditionsForm extends FormAbstract
                 $html = '<p><strong>' . e($labelText) . ':</strong></p>';
 
                 // If it is a list of associative arrays, render as data table
-                // Attempt to decode JSON string items into arrays
-                if (array_is_list($arrayValue) && isset($arrayValue[0]) && is_string($arrayValue[0])) {
-                    $decodedItems = collect($arrayValue)->map(function ($item) {
-                        $decoded = json_decode($item, true);
-                        return json_last_error() === JSON_ERROR_NONE && is_array($decoded) ? $decoded : $item;
-                    })->all();
-                    // If all items became arrays, replace original
-                    if (collect($decodedItems)->every(function ($v) {
-                        return is_array($v);
-                    })) {
-                        $arrayValue = $decodedItems;
+                // Normalize list items: decode JSON strings and wrap scalar values
+                if (array_is_list($arrayValue)) {
+                    $normalized = [];
+                    $allArrays  = true;
+                    foreach ($arrayValue as $item) {
+                        if (is_string($item)) {
+                            $decoded = json_decode($item, true);
+                            if (json_last_error() === JSON_ERROR_NONE && is_array($decoded)) {
+                                $normalized[] = $decoded;
+                            } else {
+                                $normalized[] = ['value' => $item];
+                                $allArrays = false;
+                            }
+                        } elseif (is_array($item)) {
+                            $normalized[] = $item;
+                        } else {
+                            $normalized[] = ['value' => (string)$item];
+                            $allArrays = false;
+                        }
                     }
+                    $arrayValue = $normalized;
                 }
 
                 if (array_is_list($arrayValue) && isset($arrayValue[0]) && is_array($arrayValue[0])) {
@@ -61,9 +70,8 @@ class TermsConditionsForm extends FormAbstract
                         return array_keys($item);
                     })->unique()->values()->all();
                     if (empty($headers)) {
-                        // Fallback single column
-                        $headers = ['value'];
-                        $arrayValue = collect($arrayValue)->map(fn($v) => ['value' => $v])->all();
+                        // Build headers from keys of first row
+                        $headers = array_keys($arrayValue[0]);
                     }
 
                     $html .= '<table class="table table-bordered"><thead><tr>';
