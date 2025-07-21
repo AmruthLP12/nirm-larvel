@@ -26,7 +26,7 @@
                 HEAD OFFICE, OUTER RING ROAD, ESHWAR NAGAR, BSK-II STAGE, BENGALURU-560 070
             </p>
             <div class="contact-info">
-                <p>Website: <a href="https://nirm.in/">https://nirm.in</a> e-mail: <a
+                <p>Website: <a href="https://www.nirm.in/">https://www.nirm.in</a> e-mail: <a
                         href="mailto:dto@nirm.in">dto@nirm.in</a></p>
                 <p>Phone: 080-26934400 (Director); Other #080-269344 02 to 14 Fax: 080-26934401</p>
             </div>
