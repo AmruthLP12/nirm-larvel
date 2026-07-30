@@ -19,6 +19,7 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
         "league/flysystem-aws-s3-v3": "^1.0",
+        "aws/aws-sdk-php": "3.173.0",
         "mailgun/mailgun-php": "*",
         "obii/api": "*@dev",
         "obii/menu": "*@dev",
@@ -105,6 +106,12 @@
         "allow-plugins": {
             "wikimedia/composer-merge-plugin": true,
             "php-http/discovery": true
+        },
+        "platform": {
+            "php": "8.0.30"
+        },
+        "audit": {
+            "block-insecure": false
         }
     },
     "minimum-stability": "dev",

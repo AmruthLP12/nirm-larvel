@@ -10,3 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\Route;
+
+Route::prefix('cmsadmin')->middleware(['auth'])->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
+});
