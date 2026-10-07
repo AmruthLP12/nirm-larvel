@@ -216,8 +216,8 @@
     }
 
     .tweet-content a[href*="/hashtag/"] {
-        color: #e0245e; /* 👈 Set your desired hashtag color here */
-        font-weight: 600; /* (optional) make it bold */
+        color: #e0245e; 
+        font-weight: 600; 
     }
 
     .tweet-meta {

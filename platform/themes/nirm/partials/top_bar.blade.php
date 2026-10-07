@@ -38,7 +38,11 @@
                             class="cust-switch-slide position-absolute top-0 end-0 bottom-0 start-0 d-flex align-items-center"></span>
                     </label>
                 </div>
-                <div id="google_element"></div>
+                <div class="lang-button">
+                    <div class="language-wrapper">
+                        {!! apply_filters('language_switcher') !!}
+                    </div>
+                </div>
             </div>
         </div>
     </div>

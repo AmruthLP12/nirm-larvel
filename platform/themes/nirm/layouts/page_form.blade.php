@@ -2,9 +2,6 @@
 
     <div id="preloader"></div>
     <div class="body-inner">
-        {!! Theme::partial('top_bar') !!}
-        {!! Theme::partial('menu_header') !!}
-
         {!! Theme::partial('breadcrumbs') !!}
         @php
             $page = Theme::get('page');

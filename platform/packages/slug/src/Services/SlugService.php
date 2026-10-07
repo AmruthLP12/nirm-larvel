@@ -39,7 +39,7 @@ class SlugService
             $prefix = SlugHelper::getPrefix($model);
         }
 
-        while ($this->checkIfExistedSlug($slug, $slugId, $prefix)) {
+        while ($this->checkIfExistedSlug($slug, $slugId, $prefix, $model)) {
             $slug = apply_filters(FILTER_SLUG_EXISTED_STRING, $baseSlug . '-' . $index++, $baseSlug, $index, $model);
         }
 
@@ -54,17 +54,38 @@ class SlugService
      * @param string $slug
      * @param string $slugId
      * @param string $prefix
+     * @param string|null $model
      * @return bool
      */
-    protected function checkIfExistedSlug($slug, $slugId, $prefix)
+    protected function checkIfExistedSlug($slug, $slugId, $prefix, $model = null)
     {
-        return $this->slugRepository
+        $existing = $this->slugRepository
                 ->getModel()
                 ->where([
                     'key'    => $slug,
                     'prefix' => $prefix,
                 ])
                 ->where('id', '!=', (int)$slugId)
-                ->count() > 0;
+                ->first();
+
+        if (!$existing) {
+            return false;
+        }
+
+        // Allow identical slugs across different languages (e.g. /about vs /kn/about)
+        if (is_plugin_active('language') && $existing->reference_type && $existing->reference_id) {
+            $existingMeta = \Obii\Language\Models\LanguageMeta::where([
+                'reference_type' => $existing->reference_type,
+                'reference_id'   => $existing->reference_id,
+            ])->first();
+
+            $currentAdminLang = class_exists('\Language') ? \Language::getCurrentAdminLocale() : null;
+
+            if ($existingMeta && $currentAdminLang && $existingMeta->lang_meta_code !== $currentAdminLang) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
