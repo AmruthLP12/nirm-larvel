@@ -215,6 +215,11 @@
         display: inline flow-root list-item;
     }
 
+    .tweet-content a[href*="/hashtag/"] {
+        color: #e0245e; /* 👈 Set your desired hashtag color here */
+        font-weight: 600; /* (optional) make it bold */
+    }
+
     .tweet-meta {
         display: flex;
         flex-wrap: wrap;
