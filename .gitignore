@@ -48,3 +48,4 @@ composer.lock
 
 public/data.json
 error_log
+database
