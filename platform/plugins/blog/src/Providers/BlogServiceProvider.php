@@ -78,7 +78,7 @@ class BlogServiceProvider extends ServiceProvider
                     'permissions' => ['posts.index'],
                 ])
                 ->registerItem([
-                    'id'          => 'cms-plugins-blog-post',
+                    'id'          => 'cms-plugins-blog-post-news',
                     'priority'    => 1,
                     'parent_id'   => 'cms-plugins-blog',
                     'name'        => 'News',
@@ -86,43 +86,24 @@ class BlogServiceProvider extends ServiceProvider
                     'url'         => route('posts.index', ['type' => 'News']),
                     'permissions' => ['posts.index'],
                 ])
-                // ->registerItem([
-                //     'id'          => 'cms-plugins-blog-post',
-                //     'priority'    => 1,
-                //     'parent_id'   => 'cms-plugins-blog',
-                //     'name'        => 'Announcements',
-                //     'icon'        => null,
-                //     'url'         => route('posts.index', ['type' => 'Announcements']),
-                //     'permissions' => ['posts.index'],
-                // ])
                 ->registerItem([
-                    'id'          => 'cms-plugins-blog-post',
-                    'priority'    => 1,
+                    'id'          => 'cms-plugins-blog-post-press',
+                    'priority'    => 2,
                     'parent_id'   => 'cms-plugins-blog',
                     'name'        => 'Press Releases',
                     'icon'        => null,
                     'url'         => route('posts.index', ['type' => 'Press Releases']),
                     'permissions' => ['posts.index'],
                 ])
-                // ->registerItem([
-                //     'id'          => 'cms-plugins-blog-categories',
-                //     'priority'    => 2,
-                //     'parent_id'   => 'cms-plugins-blog',
-                //     'name'        => 'plugins/blog::categories.menu_name',
-                //     'icon'        => null,
-                //     'url'         => route('categories.index'),
-                //     'permissions' => ['categories.index'],
-                // ])
-                // ->registerItem([
-                //     'id'          => 'cms-plugins-blog-tags',
-                //     'priority'    => 3,
-                //     'parent_id'   => 'cms-plugins-blog',
-                //     'name'        => 'plugins/blog::tags.menu_name',
-                //     'icon'        => null,
-                //     'url'         => route('tags.index'),
-                //     'permissions' => ['tags.index'],
-                // ])
-                ;
+                ->registerItem([
+                    'id'          => 'cms-plugins-blog-categories',
+                    'priority'    => 3,
+                    'parent_id'   => 'cms-plugins-blog',
+                    'name'        => 'plugins/blog::categories.menu_name',
+                    'icon'        => null,
+                    'url'         => route('categories.index'),
+                    'permissions' => ['categories.index'],
+                ]);
         });
 
         $this->app->booted(function () {
