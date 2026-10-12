@@ -94,7 +94,7 @@ class LanguageServiceProvider extends ServiceProvider
                     'name'        => 'plugins/language::language.name',
                     'icon'        => null,
                     'url'         => route('languages.index'),
-                    'permissions' => ['languages.index'],
+                    'permissions' => [],
                 ]);
 
             Assets::addScriptsDirectly('vendor/core/plugins/language/js/language-global.js')

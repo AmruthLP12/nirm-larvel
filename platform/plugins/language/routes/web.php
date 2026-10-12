@@ -4,45 +4,48 @@ Route::group(['namespace' => 'Obii\Language\Http\Controllers', 'middleware' => [
     Route::group(['prefix' => BaseHelper::getAdminPrefix(), 'middleware' => 'auth'], function () {
         Route::group(['prefix' => 'settings/languages'], function () {
             Route::get('', [
-                'as'   => 'languages.index',
-                'uses' => 'LanguageController@index',
+                'as'         => 'languages.index',
+                'uses'       => 'LanguageController@index',
+                'permission' => false,
             ]);
 
             Route::post('store', [
                 'as'         => 'languages.store',
                 'uses'       => 'LanguageController@postStore',
-                'permission' => 'languages.create',
+                'permission' => false,
                 'middleware' => 'preventDemo',
             ]);
 
             Route::post('edit', [
                 'as'         => 'languages.edit',
                 'uses'       => 'LanguageController@update',
+                'permission' => false,
                 'middleware' => 'preventDemo',
             ]);
 
             Route::delete('delete/{id}', [
                 'as'         => 'languages.destroy',
                 'uses'       => 'LanguageController@destroy',
+                'permission' => false,
                 'middleware' => 'preventDemo',
             ]);
 
             Route::get('set-default', [
                 'as'         => 'languages.set.default',
                 'uses'       => 'LanguageController@getSetDefault',
-                'permission' => 'languages.edit',
+                'permission' => false,
             ]);
 
             Route::get('get', [
                 'as'         => 'languages.get',
                 'uses'       => 'LanguageController@getLanguage',
-                'permission' => 'languages.edit',
+                'permission' => false,
             ]);
 
             Route::post('edit-setting', [
                 'as'         => 'languages.settings',
                 'uses'       => 'LanguageController@postEditSettings',
-                'permission' => 'languages.edit',
+                'permission' => false,
             ]);
         });
 
