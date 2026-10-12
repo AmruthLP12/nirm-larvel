@@ -28,7 +28,6 @@ __MACOSX
 public/vendor/core
 
 _ide_helper.php
-package-lock.json
 yarn.lock
 /.sass-cache
 
@@ -44,7 +43,7 @@ resources/docs
 /log
 
 storage/framework/laravel-excel/
-composer.lock
+
 
 public/data.json
 error_log
