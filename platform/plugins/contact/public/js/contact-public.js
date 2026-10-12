@@ -1,1 +1,85 @@
-$(document).ready((function(){var e=function(e){$(".contact-error-message").html(e).show()},t=function(t){var s="";$.each(t,(function(e,t){""!==s&&(s+="<br />"),s+=t})),e(s)};$(document).on("click",".contact-form button[type=submit]",(function(s){var o=this;s.preventDefault(),s.stopPropagation(),$(this).addClass("button-loading"),$(".contact-success-message").html("").hide(),$(".contact-error-message").html("").hide(),$.ajax({type:"POST",cache:!1,url:$(this).closest("form").prop("action"),data:new FormData($(this).closest("form")[0]),contentType:!1,processData:!1,success:function(t){var s;t.error?e(t.message):($(o).closest("form").find("input[type=text]").val(""),$(o).closest("form").find("input[type=email]").val(""),$(o).closest("form").find("input[type=tel]").val(""),$(o).closest("form").find("textarea").val(""),s=t.message,$(".contact-success-message").html(s).show()),$(o).removeClass("button-loading"),"undefined"!=typeof refreshRecaptcha&&refreshRecaptcha()},error:function(s){var r;"undefined"!=typeof refreshRecaptcha&&refreshRecaptcha(),$(o).removeClass("button-loading"),void 0!==(r=s).errors&&r.errors.length?t(r.errors):void 0!==r.responseJSON?void 0!==r.responseJSON.errors?422===r.status&&t(r.responseJSON.errors):void 0!==r.responseJSON.message?e(r.responseJSON.message):$.each(r.responseJSON,(function(t,s){$.each(s,(function(t,s){e(s)}))})):e(r.statusText)}})}))}));
+/******/ (() => { // webpackBootstrap
+/*!************************************************************************!*\
+  !*** ./platform/plugins/contact/resources/assets/js/contact-public.js ***!
+  \************************************************************************/
+$(document).ready(function () {
+  var showError = function showError(message) {
+    $('.contact-error-message').html(message).show();
+  };
+  var showSuccess = function showSuccess(message) {
+    $('.contact-success-message').html(message).show();
+  };
+  var handleError = function handleError(data) {
+    if (typeof data.errors !== 'undefined' && data.errors.length) {
+      handleValidationError(data.errors);
+    } else {
+      if (typeof data.responseJSON !== 'undefined') {
+        if (typeof data.responseJSON.errors !== 'undefined') {
+          if (data.status === 422) {
+            handleValidationError(data.responseJSON.errors);
+          }
+        } else if (typeof data.responseJSON.message !== 'undefined') {
+          showError(data.responseJSON.message);
+        } else {
+          $.each(data.responseJSON, function (index, el) {
+            $.each(el, function (key, item) {
+              showError(item);
+            });
+          });
+        }
+      } else {
+        showError(data.statusText);
+      }
+    }
+  };
+  var handleValidationError = function handleValidationError(errors) {
+    var message = '';
+    $.each(errors, function (index, item) {
+      if (message !== '') {
+        message += '<br />';
+      }
+      message += item;
+    });
+    showError(message);
+  };
+  $(document).on('click', '.contact-form button[type=submit]', function (event) {
+    var _this = this;
+    event.preventDefault();
+    event.stopPropagation();
+    $(this).addClass('button-loading');
+    $('.contact-success-message').html('').hide();
+    $('.contact-error-message').html('').hide();
+    $.ajax({
+      type: 'POST',
+      cache: false,
+      url: $(this).closest('form').prop('action'),
+      data: new FormData($(this).closest('form')[0]),
+      contentType: false,
+      processData: false,
+      success: function success(res) {
+        if (!res.error) {
+          $(_this).closest('form').find('input[type=text]').val('');
+          $(_this).closest('form').find('input[type=email]').val('');
+          $(_this).closest('form').find('input[type=tel]').val('');
+          $(_this).closest('form').find('textarea').val('');
+          showSuccess(res.message);
+        } else {
+          showError(res.message);
+        }
+        $(_this).removeClass('button-loading');
+        if (typeof refreshRecaptcha !== 'undefined') {
+          refreshRecaptcha();
+        }
+      },
+      error: function error(res) {
+        if (typeof refreshRecaptcha !== 'undefined') {
+          refreshRecaptcha();
+        }
+        $(_this).removeClass('button-loading');
+        handleError(res);
+      }
+    });
+  });
+});
+/******/ })()
+;

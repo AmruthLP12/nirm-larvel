@@ -109,26 +109,29 @@
                 {!! Form::open(['route' => 'languages.settings']) !!}
                     <div class="row">
                         <div class="col-md-6">
-                            <br>
-                            <div class="form-group @if ($errors->has('language_hide_default')) has-error @endif">
-                                <label class="text-title-field"
-                                       for="language_hide_default">{{ trans('plugins/language::language.language_hide_default') }}
+                            <h4 class="text-title-field"><strong>{{ trans('plugins/language::language.settings') }}</strong></h4>
+                            <hr>
+
+                            <div class="form-group @if ($errors->has('language_switcher_enabled')) has-error @endif">
+                                <label class="text-title-field" for="language_switcher_enabled">{{ trans('plugins/language::language.language_switcher_enabled') }}</label>
+                                <p><small class="text-muted">{{ trans('plugins/language::language.language_switcher_enabled_helper') }}</small></p>
+                                <label class="hrv-label">
+                                    <input type="radio" name="language_switcher_enabled" class="hrv-radio" value="1" @if (setting('language_switcher_enabled', 1)) checked @endif> {{ trans('core/setting::setting.general.yes') }}
                                 </label>
                                 <label class="hrv-label">
-                                    <input type="radio" name="language_hide_default" class="hrv-radio"
-                                           value="1"
-                                           @if (setting('language_hide_default', true)) checked @endif>{{ trans('core/setting::setting.general.yes') }}
-                                </label>
-                                <label class="hrv-label">
-                                    <input type="radio" name="language_hide_default" class="hrv-radio"
-                                           value="0"
-                                           @if (!setting('language_hide_default', true)) checked @endif>{{ trans('core/setting::setting.general.no') }}
+                                    <input type="radio" name="language_switcher_enabled" class="hrv-radio" value="0" @if (!setting('language_switcher_enabled', 1)) checked @endif> {{ trans('core/setting::setting.general.no') }}
                                 </label>
                             </div>
-                            <div class="form-group @if ($errors->has('language_display')) has-error @endif">
-                                <label for="language_display">{{ trans('plugins/language::language.language_display') }}</label>
+
+                            <div class="form-group @if ($errors->has('translation_mode')) has-error @endif">
+                                <label class="text-title-field" for="translation_mode">{{ trans('plugins/language::language.translation_mode') }}</label>
+                                <p><small class="text-muted">{{ trans('plugins/language::language.translation_mode_helper') }}</small></p>
                                 <div class="ui-select-wrapper">
-                                    {!! Form::select('language_display', ['all' => trans('plugins/language::language.language_display_all'), 'flag' => trans('plugins/language::language.language_display_flag_only'), 'name' => trans('plugins/language::language.language_display_name_only')], setting('language_display', 'all'), ['class' => 'ui-select', 'id' => 'language_display']) !!}
+                                    {!! Form::select('translation_mode', [
+                                        'both'   => trans('plugins/language::language.translation_mode_both'),
+                                        'google' => trans('plugins/language::language.translation_mode_google'),
+                                        'cms'    => trans('plugins/language::language.translation_mode_cms')
+                                    ], setting('translation_mode', 'both'), ['class' => 'ui-select', 'id' => 'translation_mode']) !!}
                                     <svg class="svg-next-icon svg-next-icon-size-16">
                                         <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#select-chevron"></use>
                                     </svg>
@@ -145,20 +148,30 @@
                                 </div>
                             </div>
 
-                            <div class="form-group @if ($errors->has('language_hide_languages')) has-error @endif">
-                                <label for="language_hide_languages">{{ trans('plugins/language::language.hide_languages') }}</label>
-                                <p><span style="font-size: 90%;">{{ trans('plugins/language::language.hide_languages_description') }}</span></p>
-                                <ul class="list-item-checkbox">
-                                    @foreach (Language::getActiveLanguage() as $language)
-                                        @if (!$language->lang_is_default)
-                                            <li style="padding-left: 10px;">
-                                                <input type="checkbox" name="language_hide_languages[]" value="{{ $language->lang_id }}" id="language_hide_languages_item-{{ $language->lang_code }}" @if (in_array($language->lang_id, json_decode(setting('language_hide_languages', '[]'), true))) checked="checked" @endif>
-                                                <label for="language_hide_languages_item-{{ $language->lang_code }}">{{ $language->lang_name }}</label>
-                                            </li>
-                                        @endif
-                                    @endforeach
-                                </ul>
-                                {!! Form::helper(trans_choice('plugins/language::language.hide_languages_helper_display_hidden', count(json_decode(setting('language_hide_languages', '[]'), true)), ['language' => Language::getHiddenLanguageText()])) !!}
+                            <div class="form-group @if ($errors->has('language_display')) has-error @endif">
+                                <label for="language_display">{{ trans('plugins/language::language.language_display') }}</label>
+                                <div class="ui-select-wrapper">
+                                    {!! Form::select('language_display', ['all' => trans('plugins/language::language.language_display_all'), 'flag' => trans('plugins/language::language.language_display_flag_only'), 'name' => trans('plugins/language::language.language_display_name_only')], setting('language_display', 'all'), ['class' => 'ui-select', 'id' => 'language_display']) !!}
+                                    <svg class="svg-next-icon svg-next-icon-size-16">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#select-chevron"></use>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div class="form-group @if ($errors->has('language_hide_default')) has-error @endif">
+                                <label class="text-title-field"
+                                       for="language_hide_default">{{ trans('plugins/language::language.language_hide_default') }}
+                                </label>
+                                <label class="hrv-label">
+                                    <input type="radio" name="language_hide_default" class="hrv-radio"
+                                           value="1"
+                                           @if (setting('language_hide_default', true)) checked @endif>{{ trans('core/setting::setting.general.yes') }}
+                                </label>
+                                <label class="hrv-label">
+                                    <input type="radio" name="language_hide_default" class="hrv-radio"
+                                           value="0"
+                                           @if (!setting('language_hide_default', true)) checked @endif>{{ trans('core/setting::setting.general.no') }}
+                                </label>
                             </div>
 
                             <div class="form-group">
@@ -177,8 +190,110 @@
                                 </label>
                             </div>
 
-                            <div class="text-left">
-                                <button type="submit" name="submit" value="save" class="btn btn-info button-save-language-settings">
+                            <div class="form-group @if ($errors->has('language_hide_languages')) has-error @endif">
+                                <label for="language_hide_languages">{{ trans('plugins/language::language.hide_languages') }}</label>
+                                <p><span style="font-size: 90%;">{{ trans('plugins/language::language.hide_languages_description') }}</span></p>
+                                <ul class="list-item-checkbox">
+                                    @foreach (Language::getActiveLanguage() as $language)
+                                        @if (!$language->lang_is_default)
+                                            <li style="padding-left: 10px;">
+                                                <input type="checkbox" name="language_hide_languages[]" value="{{ $language->lang_id }}" id="language_hide_languages_item-{{ $language->lang_code }}" @if (in_array($language->lang_id, json_decode(setting('language_hide_languages', '[]'), true))) checked="checked" @endif>
+                                                <label for="language_hide_languages_item-{{ $language->lang_code }}">{{ $language->lang_name }}</label>
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                                {!! Form::helper(trans_choice('plugins/language::language.hide_languages_helper_display_hidden', count(json_decode(setting('language_hide_languages', '[]'), true)), ['language' => Language::getHiddenLanguageText()])) !!}
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h4 class="text-title-field"><strong>Google Translate & Fallback Options</strong></h4>
+                            <hr>
+
+                            <div class="form-group @if ($errors->has('translation_manual_fallback')) has-error @endif">
+                                <label class="text-title-field" for="translation_manual_fallback">{{ trans('plugins/language::language.translation_manual_fallback') }}</label>
+                                <p><small class="text-muted">{{ trans('plugins/language::language.translation_manual_fallback_helper') }}</small></p>
+                                <div class="ui-select-wrapper">
+                                    {!! Form::select('translation_manual_fallback', [
+                                        'auto_google'   => trans('plugins/language::language.translation_manual_fallback_auto_google'),
+                                        'show_default'  => trans('plugins/language::language.translation_manual_fallback_show_default'),
+                                        'hide_language' => trans('plugins/language::language.translation_manual_fallback_hide_language'),
+                                    ], setting('translation_manual_fallback', 'auto_google'), ['class' => 'ui-select', 'id' => 'translation_manual_fallback']) !!}
+                                    <svg class="svg-next-icon svg-next-icon-size-16">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#select-chevron"></use>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div class="form-group @if ($errors->has('translation_show_machine_label')) has-error @endif">
+                                <label class="text-title-field" for="translation_show_machine_label">{{ trans('plugins/language::language.translation_show_machine_label') }}</label>
+                                <p><small class="text-muted">{{ trans('plugins/language::language.translation_show_machine_label_helper') }}</small></p>
+                                <label class="hrv-label">
+                                    <input type="radio" name="translation_show_machine_label" class="hrv-radio" value="1" @if (setting('translation_show_machine_label', 1)) checked @endif> {{ trans('core/setting::setting.general.yes') }}
+                                </label>
+                                <label class="hrv-label">
+                                    <input type="radio" name="translation_show_machine_label" class="hrv-radio" value="0" @if (!setting('translation_show_machine_label', 1)) checked @endif> {{ trans('core/setting::setting.general.no') }}
+                                </label>
+                            </div>
+
+                            <div class="form-group @if ($errors->has('translation_machine_label_text')) has-error @endif">
+                                <label class="text-title-field" for="translation_machine_label_text">{{ trans('plugins/language::language.translation_machine_label_text') }}</label>
+                                <input id="translation_machine_label_text" name="translation_machine_label_text" type="text" class="form-control" value="{{ setting('translation_machine_label_text', 'This page has been automatically translated using Google Translate.') }}">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="text-title-field">{{ trans('plugins/language::language.google_translate_languages') }}</label>
+                                <p><small class="text-muted">{{ trans('plugins/language::language.google_translate_languages_description') }}</small></p>
+                                <ul class="list-item-checkbox">
+                                    @php
+                                        $disabledGtLangs = json_decode(setting('google_translate_disabled_languages', '[]'), true) ?: [];
+                                    @endphp
+                                    @foreach (Language::getActiveLanguage() as $language)
+                                        @php
+                                            $gtCode = \Obii\Language\Services\GoogleTranslateService::getGoogleCode($language);
+                                            $isGtSupported = $gtCode !== null;
+                                        @endphp
+                                        <li style="padding-left: 10px; margin-bottom: 8px;">
+                                            <input type="checkbox" name="google_translate_disabled_languages[]" value="{{ $language->lang_id }}" id="gt_lang_{{ $language->lang_id }}" @if (in_array($language->lang_id, $disabledGtLangs)) checked="checked" @endif>
+                                            <label for="gt_lang_{{ $language->lang_id }}">
+                                                <strong>{{ $language->lang_name }}</strong> ({{ $language->lang_code }})
+                                                @if ($isGtSupported)
+                                                    <span class="badge badge-success" style="background-color: #28a745; color: white; padding: 2px 6px; border-radius: 3px; font-size: 11px;">
+                                                        ✓ {{ trans('plugins/language::language.google_translate_supported', ['code' => $gtCode]) }}
+                                                    </span>
+                                                @else
+                                                    <span class="badge badge-warning" style="background-color: #ffc107; color: #212529; padding: 2px 6px; border-radius: 3px; font-size: 11px;">
+                                                        ⚠ {{ trans('plugins/language::language.google_translate_unsupported') }}
+                                                    </span>
+                                                @endif
+                                            </label>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="text-title-field" for="google_translate_method">{{ trans('plugins/language::language.google_translate_method') }}</label>
+                                <div class="ui-select-wrapper">
+                                    {!! Form::select('google_translate_method', [
+                                        'website_translator' => trans('plugins/language::language.google_translate_method_website'),
+                                        'cloud_api'          => trans('plugins/language::language.google_translate_method_cloud'),
+                                    ], setting('google_translate_method', 'website_translator'), ['class' => 'ui-select', 'id' => 'google_translate_method']) !!}
+                                    <svg class="svg-next-icon svg-next-icon-size-16">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#select-chevron"></use>
+                                    </svg>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="text-title-field" for="google_translate_api_key">{{ trans('plugins/language::language.google_translate_api_key') }}</label>
+                                <input id="google_translate_api_key" name="google_translate_api_key" type="password" class="form-control" value="{{ setting('google_translate_api_key', '') }}" placeholder="AIzaSy...">
+                                <p><small class="text-muted">{{ trans('plugins/language::language.google_translate_api_key_helper') }}</small></p>
+                            </div>
+
+                            <div class="text-left" style="margin-top: 25px;">
+                                <button type="submit" name="submit" value="save" class="btn btn-info button-save-language-settings btn-lg">
                                     <i class="fa fa-save"></i> {{ trans('core/base::forms.save') }}
                                 </button>
                             </div>

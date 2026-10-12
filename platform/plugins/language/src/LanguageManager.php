@@ -3,6 +3,8 @@
 namespace Obii\Language;
 
 use Obii\Language\Models\Language;
+use Obii\Language\Models\LanguageMeta;
+use Obii\Language\Services\GoogleTranslateService;
 use Obii\Language\Repositories\Interfaces\LanguageInterface;
 use Obii\Language\Repositories\Interfaces\LanguageMetaInterface;
 use Eloquent;
@@ -1222,5 +1224,336 @@ class LanguageManager
     protected function useAcceptLanguageHeader()
     {
         return config('plugins.language.general.useAcceptLanguageHeader');
+    }
+
+    /**
+     * Cache for current page reference.
+     * @var array|null
+     */
+    protected $currentPageReference = null;
+
+    /**
+     * Cache for published translations of the current page.
+     * @var array|null
+     */
+    protected $currentPublishedTranslations = null;
+
+    /**
+     * Determine the current page reference (reference_type and reference_id).
+     *
+     * @return array|null
+     */
+    public function getCurrentPageReference(): ?array
+    {
+        if ($this->currentPageReference !== null) {
+            return $this->currentPageReference;
+        }
+
+        if ($this->app->has('cms_current_page_reference')) {
+            $this->currentPageReference = $this->app->make('cms_current_page_reference');
+            return $this->currentPageReference;
+        }
+
+        $currentRoute = $this->router->current();
+        if (!$currentRoute) {
+            return null;
+        }
+
+        $routeName = $currentRoute->getName();
+
+        if ($routeName === 'public.single') {
+            $slugKey = $currentRoute->parameter('slug');
+            if ($slugKey && class_exists('SlugHelper')) {
+                $slug = \SlugHelper::getSlug($slugKey, '');
+                if ($slug && !empty($slug->reference_id) && !empty($slug->reference_type)) {
+                    $this->currentPageReference = [
+                        'reference_type' => $slug->reference_type,
+                        'reference_id'   => $slug->reference_id,
+                    ];
+                    return $this->currentPageReference;
+                }
+            }
+        } elseif ($routeName === 'public.index') {
+            if (class_exists('BaseHelper') && class_exists('Obii\Page\Models\Page')) {
+                $homepageId = \BaseHelper::getHomepageId();
+                if ($homepageId) {
+                    $this->currentPageReference = [
+                        'reference_type' => 'Obii\Page\Models\Page',
+                        'reference_id'   => $homepageId,
+                    ];
+                    return $this->currentPageReference;
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Set the current page reference explicitly (e.g. from event or controller).
+     *
+     * @param string $referenceType
+     * @param int|string $referenceId
+     * @return $this
+     */
+    public function setCurrentPageReference(string $referenceType, $referenceId)
+    {
+        $this->currentPageReference = [
+            'reference_type' => $referenceType,
+            'reference_id'   => $referenceId,
+        ];
+        $this->currentPublishedTranslations = null;
+        return $this;
+    }
+
+    /**
+     * Get published manual translations for the current page across all languages.
+     *
+     * @return array<string, array> Keyed by locale code (e.g. 'en', 'hi', 'kn')
+     */
+    public function getPublishedTranslationsForCurrentPage(): array
+    {
+        if ($this->currentPublishedTranslations !== null) {
+            return $this->currentPublishedTranslations;
+        }
+
+        $ref = $this->getCurrentPageReference();
+        if (!$ref) {
+            $this->currentPublishedTranslations = [];
+            return [];
+        }
+
+        $currentMeta = LanguageMeta::where('reference_type', $ref['reference_type'])
+            ->where('reference_id', $ref['reference_id'])
+            ->first();
+
+        if (!$currentMeta || empty($currentMeta->lang_meta_origin)) {
+            $this->currentPublishedTranslations = [];
+            return [];
+        }
+
+        $relatedMetas = LanguageMeta::where('lang_meta_origin', $currentMeta->lang_meta_origin)
+            ->where('reference_type', $ref['reference_type'])
+            ->get();
+
+        $translations = [];
+        $defaultLocale = $this->getDefaultLocale();
+
+        foreach ($relatedMetas as $meta) {
+            $modelClass = $meta->reference_type;
+            if (!class_exists($modelClass)) {
+                continue;
+            }
+
+            $item = (new $modelClass)->find($meta->reference_id);
+            if (!$item) {
+                continue;
+            }
+
+            // Verify status if the model has a status attribute
+            if (isset($item->status) && (string) $item->status !== 'published') {
+                continue;
+            }
+
+            $url = null;
+            if (class_exists('SlugHelper')) {
+                $slug = \SlugHelper::getSlug(null, '', $modelClass, $item->id);
+                if ($slug) {
+                    $prefix = '';
+                    $langModel = $this->languageRepository->getFirstBy(['lang_code' => $meta->lang_meta_code]);
+                    $urlLocale = $langModel ? $langModel->lang_locale : $meta->lang_meta_code;
+                    if ($urlLocale !== $defaultLocale && (!setting('language_hide_default', true) || $urlLocale !== $defaultLocale)) {
+                        $prefix = $urlLocale . '/';
+                    }
+                    $url = url($prefix . $slug->key);
+                }
+            }
+
+            if (!$url && method_exists($item, 'url')) {
+                $url = $item->url;
+            }
+
+            if (!$url) {
+                $url = $this->getLocalizedURL($meta->lang_meta_code);
+            }
+
+            $translationData = [
+                'reference_id'   => $item->id,
+                'reference_type' => $modelClass,
+                'item'           => $item,
+                'url'            => $url,
+                'lang_code'      => $meta->lang_meta_code,
+            ];
+
+            $translations[$meta->lang_meta_code] = $translationData;
+
+            // Also key by 2-letter subtag if locale code has regional suffix (e.g. kn for kn_IN)
+            $parts = preg_split('/[_-]/', $meta->lang_meta_code);
+            if (!empty($parts[0])) {
+                $short = strtolower($parts[0]);
+                if (!isset($translations[$short])) {
+                    $translations[$short] = $translationData;
+                }
+            }
+        }
+
+        $this->currentPublishedTranslations = $translations;
+        return $translations;
+    }
+
+    /**
+     * Check if a published manual translation exists for a given locale/code.
+     *
+     * @param string $localeCode
+     * @return bool
+     */
+    public function hasPublishedTranslation(string $localeCode): bool
+    {
+        $translations = $this->getPublishedTranslationsForCurrentPage();
+        if (isset($translations[$localeCode])) {
+            return true;
+        }
+
+        $parts = preg_split('/[_-]/', $localeCode);
+        if (!empty($parts[0]) && isset($translations[strtolower($parts[0])])) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Get published translation URL for a given locale/code, if it exists.
+     *
+     * @param string $localeCode
+     * @return string|null
+     */
+    public function getPublishedTranslationUrl(string $localeCode): ?string
+    {
+        $translations = $this->getPublishedTranslationsForCurrentPage();
+        if (isset($translations[$localeCode]['url'])) {
+            return $translations[$localeCode]['url'];
+        }
+
+        $parts = preg_split('/[_-]/', $localeCode);
+        if (!empty($parts[0]) && isset($translations[strtolower($parts[0])]['url'])) {
+            return $translations[strtolower($parts[0])]['url'];
+        }
+
+        return null;
+    }
+
+    /**
+     * Get configured translation mode: 'both', 'google', or 'cms'.
+     *
+     * @return string
+     */
+    public function getTranslationMode(): string
+    {
+        return setting('translation_mode', 'both');
+    }
+
+    /**
+     * Check whether public language switcher is enabled.
+     *
+     * @return bool
+     */
+    public function isLanguageSwitcherEnabled(): bool
+    {
+        return (bool) setting('language_switcher_enabled', 1);
+    }
+
+    /**
+     * Check whether Google Translate is enabled in the current configuration.
+     *
+     * @return bool
+     */
+    public function isGoogleTranslateEnabled(): bool
+    {
+        $mode = $this->getTranslationMode();
+        return ($mode === 'both' || $mode === 'google') && $this->isLanguageSwitcherEnabled();
+    }
+
+    /**
+     * Check whether CMS-managed translations are enabled in the current configuration.
+     *
+     * @return bool
+     */
+    public function isCmsTranslationEnabled(): bool
+    {
+        $mode = $this->getTranslationMode();
+        return ($mode === 'both' || $mode === 'cms') && $this->isLanguageSwitcherEnabled();
+    }
+
+    /**
+     * Get manual translation fallback behavior: 'auto_google', 'show_default', 'hide_language'.
+     *
+     * @return string
+     */
+    public function getManualFallbackBehavior(): string
+    {
+        return setting('translation_manual_fallback', 'auto_google');
+    }
+
+    /**
+     * Check whether to display machine translation disclaimer.
+     *
+     * @return bool
+     */
+    public function showMachineTranslationLabel(): bool
+    {
+        return (bool) setting('translation_show_machine_label', 1);
+    }
+
+    /**
+     * Get machine translation disclaimer text.
+     *
+     * @return string
+     */
+    public function getMachineTranslationLabelText(): string
+    {
+        return setting('translation_machine_label_text', 'This page has been automatically translated using Google Translate.');
+    }
+
+    /**
+     * Check if a language is supported by Google Translate.
+     *
+     * @param mixed $language
+     * @return bool
+     */
+    public function isGoogleTranslateSupported($language): bool
+    {
+        return GoogleTranslateService::isSupported($language);
+    }
+
+    /**
+     * Get Google Translate code for a language.
+     *
+     * @param mixed $language
+     * @return string|null
+     */
+    public function getGoogleTranslateCode($language): ?string
+    {
+        return GoogleTranslateService::getGoogleCode($language);
+    }
+
+    /**
+     * Get list of Google Translate codes for all active configured languages.
+     *
+     * @return array<string>
+     */
+    public function getGoogleIncludedLanguages(): array
+    {
+        return GoogleTranslateService::getIncludedLanguages($this->getActiveLanguage());
+    }
+
+    /**
+     * Get comma-separated string of Google Translate codes for active languages.
+     *
+     * @return string
+     */
+    public function getGoogleIncludedLanguagesString(): string
+    {
+        return GoogleTranslateService::getIncludedLanguagesString($this->getActiveLanguage());
     }
 }

@@ -1,1 +1,687 @@
-(()=>{"use strict";function e(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}const t=function(){function t(e,n,i){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),this.loader=e,this.url=n,this.t=i}var n,i,o;return n=t,(i=[{key:"upload",value:function(){var e=this;return this.loader.file.then((function(t){return new Promise((function(n,i){e._initRequest(),e._initListeners(n,i,t),e._sendRequest(t)}))}))}},{key:"abort",value:function(){this.xhr&&this.xhr.abort()}},{key:"_initRequest",value:function(){var e=this.xhr=new XMLHttpRequest;e.open("POST",this.url,!0),e.responseType="json"}},{key:"_initListeners",value:function(e,t,n){var i=this.xhr,o=this.loader,a=(0,this.t)("Cannot upload file:")+" ".concat(n.name,".");i.addEventListener("error",(function(){return t(a)})),i.addEventListener("abort",(function(){return t()})),i.addEventListener("load",(function(){var n=i.response;if(!n||!n.uploaded)return t(n&&n.error&&n.error.message?n.error.message:a);e({default:n.url})})),i.upload&&i.upload.addEventListener("progress",(function(e){e.lengthComputable&&(o.uploadTotal=e.total,o.uploaded=e.loaded)}))}},{key:"_sendRequest",value:function(e){var t=new FormData;t.append("upload",e),t.append("_token",$('meta[name="csrf-token"]').attr("content")),this.xhr.send(t)}}])&&e(n.prototype,i),o&&e(n,o),t}();function n(e,t){var n=Object.keys(e);if(Object.getOwnPropertySymbols){var i=Object.getOwnPropertySymbols(e);t&&(i=i.filter((function(t){return Object.getOwnPropertyDescriptor(e,t).enumerable}))),n.push.apply(n,i)}return n}function i(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function o(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}var a=function(){function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.CKEDITOR={},this.shortcodes=[]}var a,r,l;return a=e,r=[{key:"initCkEditor",value:function(e,o){var a=this,r=document.querySelector("#"+e);ClassicEditor.create(r,function(e){for(var t=1;t<arguments.length;t++){var o=null!=arguments[t]?arguments[t]:{};t%2?n(Object(o),!0).forEach((function(t){i(e,t,o[t])})):Object.getOwnPropertyDescriptors?Object.defineProperties(e,Object.getOwnPropertyDescriptors(o)):n(Object(o)).forEach((function(t){Object.defineProperty(e,t,Object.getOwnPropertyDescriptor(o,t))}))}return e}({fontSize:{options:[9,11,13,"default",17,16,18,19,21,22,23,24]},alignment:{options:["left","right","center","justify"]},shortcode:{onEdit:function(e){var t=arguments.length>1&&void 0!==arguments[1]?arguments[1]:function(){},n=null;a.shortcodes.forEach((function(e){if(e.key===t)return n=e.description,!0})),a.shortcodeCallback({key:t,href:route("short-codes.ajax-get-admin-config",t),data:{code:e},description:n,update:!0})},shortcodes:this.getShortcodesAvailable(r),onCallback:function(e,t){a.shortcodeCallback({key:e,href:t.url})}},heading:{options:[{model:"paragraph",title:"Paragraph",class:"ck-heading_paragraph"},{model:"heading1",view:"h1",title:"Heading 1",class:"ck-heading_heading1"},{model:"heading2",view:"h2",title:"Heading 2",class:"ck-heading_heading2"},{model:"heading3",view:"h3",title:"Heading 3",class:"ck-heading_heading3"},{model:"heading4",view:"h4",title:"Heading 4",class:"ck-heading_heading4"}]},placeholder:" ",toolbar:{items:["heading","|","fontColor","fontSize","fontBackgroundColor","fontFamily","bold","italic","underline","link","strikethrough","bulletedList","numberedList","|","alignment","shortcode","outdent","indent","|","htmlEmbed","imageInsert","blockQuote","insertTable","mediaEmbed","undo","redo","findAndReplace","removeFormat","sourceEditing","codeBlock"]},language:"en",image:{toolbar:["imageTextAlternative","imageStyle:inline","imageStyle:block","imageStyle:side","toggleImageCaption","ImageResize"]},link:{defaultProtocol:"http://",decorators:{openInNewTab:{mode:"manual",label:"Open in a new tab",attributes:{target:"_blank",rel:"noopener noreferrer"}}}},table:{contentToolbar:["tableColumn","tableRow","mergeTableCells","tableCellProperties","tableProperties"]},htmlSupport:{allow:[{name:/.*/,attributes:!0,classes:!0,styles:!0}]},extraPlugins:[function(e){e.model.schema.register("iframe",{allowWhere:"$text",allowContentOf:"$block"}),e.model.schema.addAttributeCheck((function(e){if(e.endsWith("iframe"))return!0})),e.conversion.for("upcast").elementToElement({view:"iframe",model:function(e,t){return t.writer.createElement("iframe",e.getAttributes())}}),e.conversion.for("downcast").elementToElement({model:"iframe",view:"iframe"}),e.conversion.for("downcast").add((function(e){e.on("attribute",(function(e,t,n){if("iframe"===t.item.name){var i=n.writer,o=n.mapper.toViewElement(t.item);t.attributeNewValue?i.setAttribute(t.attributeKey,t.attributeNewValue,o):i.removeAttribute(t.attributeKey,o)}}))}))}],removePlugins:["CKBox","CKFinder","EasyImage","RealTimeCollaborativeComments","RealTimeCollaborativeTrackChanges","RealTimeCollaborativeRevisionHistory","PresenceList","Comments","TrackChanges","TrackChangesData","RevisionHistory","Pagination","WProofreader","MathType"]},o)).then((function(n){n.plugins.get("FileRepository").createUploadAdapter=function(e){return new t(e,RV_MEDIA_URL.media_upload_from_editor,n.t)},n.insertHtml=function(e){var t=n.data.processor.toView(e),i=n.data.toModel(t);n.model.insertContent(i)},window.editor=n,a.CKEDITOR[e]=n;var i,o=90*$("#"+e).prop("rows"),r="ckeditor-".concat(e,"-inline");$(n.ui.view.editable.element).addClass(r).after("\n                    <style>\n                        .ck-editor__editable_inline {\n                            min-height: ".concat(o-100,"px;\n                            max-height: ").concat(o+100,"px;\n                        }\n                    </style>\n                ")),n.model.document.on("change:data",(function(){clearTimeout(i),i=setTimeout((function(){n.updateSourceElement()}),150)})),n.commands._commands.get("mediaEmbed").execute=function(e){n.insertHtml('[media url="'.concat(e,'"][/media]'))}})).catch((function(e){console.error(e)}))}},{key:"getShortcodesAvailable",value:function(e){var t,n=null===(t=$(e).parents(".form-group").find(".add_shortcode_btn_trigger"))||void 0===t?void 0:t.next(".dropdown-menu"),i=[];return n&&n.find("> li").each((function(){var e=$(this).find("> a");i.push({key:e.data("key"),hasConfig:e.data("has-admin-config"),name:e.text(),url:e.attr("href"),description:e.data("description")})})),this.shortcodes=i,i}},{key:"uploadImageFromEditor",value:function(e,t){var n=new FormData;"function"==typeof e.blob?n.append("upload",e.blob(),e.filename()):n.append("upload",e),$.ajax({type:"POST",data:n,url:RV_MEDIA_URL.media_upload_from_editor,processData:!1,contentType:!1,cache:!1,success:function(e){e.uploaded&&t(e.url)}})}},{key:"initTinyMce",value:function(e){var t=this;tinymce.init({menubar:!0,selector:"#"+e,min_height:110*$("#"+e).prop("rows"),resize:"vertical",plugins:"code autolink advlist visualchars link image media table charmap hr pagebreak nonbreaking hanbiroclip anchor insertdatetime lists textcolor wordcount imagetools  contextmenu  visualblocks",extended_valid_elements:"input[id|name|value|type|class|style|required|placeholder|autocomplete|onclick]",valid_elements:"*[*]",toolbar:"formatselect | bold italic strikethrough forecolor backcolor | link image table | alignleft aligncenter alignright alignjustify  | numlist bullist indent  |  visualblocks code",convert_urls:!1,image_caption:!0,image_advtab:!0,image_title:!0,placeholder:"",contextmenu:"link image inserttable | cell row column deletetable",images_upload_url:RV_MEDIA_URL.media_upload_from_editor,automatic_uploads:!0,block_unsupported_drop:!1,file_picker_types:"file image media",images_upload_handler:this.uploadImageFromEditor.bind(this),file_picker_callback:function(e){$('<input type="file" accept="image/*" />').click().on("change",(function(n){t.uploadImageFromEditor(n.target.files[0],e)}))}})}},{key:"initEditor",value:function(e,t,n){if(!e.length)return!1;var i=this;switch(n){case"ckeditor":$.each(e,(function(e,n){i.initCkEditor($(n).prop("id"),t)}));break;case"tinymce":$.each(e,(function(e,t){i.initTinyMce($(t).prop("id"))}))}}},{key:"init",value:function(){var e=this,t=$(".editor-ckeditor"),n=$(".editor-tinymce"),i=this;return t.length>0&&i.initEditor(t,{},"ckeditor"),n.length>0&&i.initEditor(n,{},"tinymce"),$(document).on("click",".show-hide-editor-btn",(function(t){t.preventDefault();var n=$(t.currentTarget).data("result"),o=$("#"+n);o.hasClass("editor-ckeditor")?e.CKEDITOR[n]&&void 0!==e.CKEDITOR[n]?(e.CKEDITOR[n].destroy(),e.CKEDITOR[n]=null,$(".editor-action-item").not(".action-show-hide-editor").hide()):(i.initCkEditor(n,{},"ckeditor"),$(".editor-action-item").not(".action-show-hide-editor").show()):o.hasClass("editor-tinymce")&&tinymce.execCommand("mceToggleEditor",!1,n)})),this.manageShortCode(),this}},{key:"shortcodeCallback",value:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},t=e.href,n=e.key,i=e.description,o=void 0===i?null:i,a=e.data,r=void 0===a?{}:a,l=e.update,c=void 0!==l&&l;$(".short-code-admin-config").html("");var d=$(".short_code_modal .add_short_code_btn");c?d.text(d.data("update-text")):d.text(d.data("add-text")),""!==o&&null!=o&&$(".short_code_modal .modal-title strong").text(o),$(".short_code_modal").modal("show"),$(".half-circle-spinner").show(),$.ajax({type:"GET",data:r,url:t,success:function(e){if(e.error)return Cms.showError(e.message),!1;$(".short-code-data-form").trigger("reset"),$(".short_code_input_key").val(n),$(".half-circle-spinner").hide(),$(".short-code-admin-config").html(e.data),Cms.initResources(),Cms.initMediaIntegrate()},error:function(e){Cms.handleError(e)}})}},{key:"manageShortCode",value:function(){var e=this;$(".list-shortcode-items li a").on("click",(function(t){if(t.preventDefault(),"1"==$(this).data("has-admin-config"))e.shortcodeCallback({href:$(this).prop("href"),key:$(this).data("key"),description:$(this).data("description")});else{var n=$(".add_shortcode_btn_trigger").data("result"),i="["+$(this).data("key")+"][/"+$(this).data("key")+"]";$(".editor-ckeditor").length>0?e.CKEDITOR[n].commands.execute("shortcode",i):tinymce.get(n).execCommand("mceInsertContent",!1,i)}})),$.fn.serializeObject=function(){var e={},t=this.serializeArray();return $.each(t,(function(){e[this.name]?(e[this.name].push||(e[this.name]=[e[this.name]]),e[this.name].push(this.value||"")):e[this.name]=this.value||""})),e},$(".add_short_code_btn").on("click",(function(t){t.preventDefault();var n=$(".short_code_modal").find(".short-code-data-form"),i=n.serializeObject(),o="";$.each(i,(function(e,t){var i=n.find('*[name="'+e+'"]'),a=i.data("shortcode-attribute");a&&"content"===a||!t||(e=e.replace("[]",""),"content"!==i.data("shortcode-attribute")&&(e=e.replace("[]",""),o+=" "+e+'="'+t+'"'))}));var a="",r=n.find("*[data-shortcode-attribute=content]");null!=r&&null!=r.val()&&""!==r.val()&&(a=r.val());var l=$(this).closest(".short_code_modal").find(".short_code_input_key").val(),c=$(".add_shortcode_btn_trigger").data("result"),d="["+l+o+"]"+a+"[/"+l+"]";$(".editor-ckeditor").length>0?e.CKEDITOR[c].commands.execute("shortcode",d):tinymce.get(c).execCommand("mceInsertContent",!1,d),$(this).closest(".modal").modal("hide")}))}}],r&&o(a.prototype,r),l&&o(a,l),e}();$(document).ready((function(){window.EDITOR=(new a).init(),window.EditorManagement=window.EditorManagement||a}))})();
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./platform/core/base/resources/assets/js/ckeditor-upload-adapter.js"
+/*!***************************************************************************!*\
+  !*** ./platform/core/base/resources/assets/js/ckeditor-upload-adapter.js ***!
+  \***************************************************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, e) { if ("object" != _typeof(t) || !t) return t; var r; if ("undefined" != typeof Symbol && void 0 !== (r = t[Symbol.toPrimitive])) { var i = r.call(t, e || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === e ? String : Number)(t); }
+/**
+ * Upload file adapter for Cms ckeditor
+ */
+var CKEditorUploadAdapter = /*#__PURE__*/function () {
+  /**
+   * Creates a new adapter instance.
+   *
+   */
+  function CKEditorUploadAdapter(loader, url, t) {
+    _classCallCheck(this, CKEditorUploadAdapter);
+    /**
+     * FileLoader instance to use during the upload.
+     *
+     */
+    this.loader = loader;
+
+    /**
+     * Upload URL.
+     *
+     * @member {String} #url
+     */
+    this.url = url;
+
+    /**
+     * Locale translation method.
+     *
+     */
+    this.t = t;
+  }
+
+  /**
+   * Starts the upload process.
+   *
+   * @returns {Promise.<Object>}
+   */
+  return _createClass(CKEditorUploadAdapter, [{
+    key: "upload",
+    value: function upload() {
+      var _this = this;
+      return this.loader.file.then(function (file) {
+        return new Promise(function (resolve, reject) {
+          _this._initRequest();
+          _this._initListeners(resolve, reject, file);
+          _this._sendRequest(file);
+        });
+      });
+    }
+
+    /**
+     * Aborts the upload process.
+     *
+     */
+  }, {
+    key: "abort",
+    value: function abort() {
+      if (this.xhr) {
+        this.xhr.abort();
+      }
+    }
+
+    /**
+     * Initializes the XMLHttpRequest object.
+     *
+     * @private
+     */
+  }, {
+    key: "_initRequest",
+    value: function _initRequest() {
+      var xhr = this.xhr = new XMLHttpRequest();
+      xhr.open('POST', this.url, true);
+      xhr.responseType = 'json';
+    }
+
+    /**
+     * Initializes XMLHttpRequest listeners.
+     *
+     * @private
+     * @param {Function} resolve Callback function to be called when the request is successful.
+     * @param {Function} reject Callback function to be called when the request cannot be completed.
+     * @param {File} file File instance to be uploaded.
+     */
+  }, {
+    key: "_initListeners",
+    value: function _initListeners(resolve, reject, file) {
+      var xhr = this.xhr;
+      var loader = this.loader;
+      var t = this.t;
+      var genericError = t('Cannot upload file:') + " ".concat(file.name, ".");
+      xhr.addEventListener('error', function () {
+        return reject(genericError);
+      });
+      xhr.addEventListener('abort', function () {
+        return reject();
+      });
+      xhr.addEventListener('load', function () {
+        var response = xhr.response;
+        if (!response || !response.uploaded) {
+          return reject(response && response.error && response.error.message ? response.error.message : genericError);
+        }
+        resolve({
+          "default": response.url
+        });
+      });
+
+      // Upload progress when it's supported.
+      /* istanbul ignore else */
+      if (xhr.upload) {
+        xhr.upload.addEventListener('progress', function (evt) {
+          if (evt.lengthComputable) {
+            loader.uploadTotal = evt.total;
+            loader.uploaded = evt.loaded;
+          }
+        });
+      }
+    }
+
+    /**
+     * Prepares the data and sends the request.
+     *
+     * @private
+     * @param {File} file File instance to be uploaded.
+     */
+  }, {
+    key: "_sendRequest",
+    value: function _sendRequest(file) {
+      // Prepare form data.
+      var data = new FormData();
+      data.append('upload', file);
+      data.append('_token', $('meta[name="csrf-token"]').attr('content')); // laravel token
+
+      // Send request.
+      this.xhr.send(data);
+    }
+  }]);
+}();
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CKEditorUploadAdapter);
+
+/***/ }
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	const __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		const cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		const module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		if (!(moduleId in __webpack_modules__)) {
+/******/ 			delete __webpack_module_cache__[moduleId];
+/******/ 			const e = new Error("Cannot find module '" + moduleId + "'");
+/******/ 			e.code = 'MODULE_NOT_FOUND';
+/******/ 			throw e;
+/******/ 		}
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+/******/ 	/* webpack/runtime/define property getters */
+/******/ 	// define getter/value functions for harmony exports
+/******/ 	__webpack_require__.d = (exports, definition) => {
+/******/ 		for(var key in definition) {
+/******/ 			if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+/******/ 				Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
+/******/ 			}
+/******/ 		}
+/******/ 	};
+/******/ 	
+/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
+/******/ 	__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop));
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = (exports) => {
+/******/ 		Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/ 	
+/************************************************************************/
+let __webpack_exports__ = {};
+// This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
+(() => {
+/*!**********************************************************!*\
+  !*** ./platform/core/base/resources/assets/js/editor.js ***!
+  \**********************************************************/
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ckeditor_upload_adapter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ckeditor-upload-adapter */ "./platform/core/base/resources/assets/js/ckeditor-upload-adapter.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, e) { if ("object" != _typeof(t) || !t) return t; var r; if ("undefined" != typeof Symbol && void 0 !== (r = t[Symbol.toPrimitive])) { var i = r.call(t, e || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === e ? String : Number)(t); }
+;
+var EditorManagement = /*#__PURE__*/function () {
+  function EditorManagement() {
+    _classCallCheck(this, EditorManagement);
+    this.CKEDITOR = {};
+    this.shortcodes = [];
+  }
+  return _createClass(EditorManagement, [{
+    key: "initCkEditor",
+    value: function initCkEditor(element, extraConfig) {
+      var _this = this;
+      var editor = document.querySelector('#' + element);
+      ClassicEditor.create(editor, _objectSpread({
+        fontSize: {
+          options: [9, 11, 13, 'default', 17, 16, 18, 19, 21, 22, 23, 24]
+        },
+        alignment: {
+          options: ['left', 'right', 'center', 'justify']
+        },
+        shortcode: {
+          onEdit: function onEdit(shortcode) {
+            var name = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function () {};
+            var description = null;
+            _this.shortcodes.forEach(function (item) {
+              if (item.key === name) {
+                description = item.description;
+                return true;
+              }
+            });
+            _this.shortcodeCallback({
+              key: name,
+              href: route('short-codes.ajax-get-admin-config', name),
+              data: {
+                code: shortcode
+              },
+              description: description,
+              update: true
+            });
+          },
+          shortcodes: this.getShortcodesAvailable(editor),
+          onCallback: function onCallback(shortcode, options) {
+            _this.shortcodeCallback({
+              key: shortcode,
+              href: options.url
+            });
+          }
+        },
+        heading: {
+          options: [{
+            model: 'paragraph',
+            title: 'Paragraph',
+            "class": 'ck-heading_paragraph'
+          }, {
+            model: 'heading1',
+            view: 'h1',
+            title: 'Heading 1',
+            "class": 'ck-heading_heading1'
+          }, {
+            model: 'heading2',
+            view: 'h2',
+            title: 'Heading 2',
+            "class": 'ck-heading_heading2'
+          }, {
+            model: 'heading3',
+            view: 'h3',
+            title: 'Heading 3',
+            "class": 'ck-heading_heading3'
+          }, {
+            model: 'heading4',
+            view: 'h4',
+            title: 'Heading 4',
+            "class": 'ck-heading_heading4'
+          }]
+        },
+        placeholder: ' ',
+        toolbar: {
+          items: ['heading', '|', 'fontColor', 'fontSize', 'fontBackgroundColor', 'fontFamily', 'bold', 'italic', 'underline', 'link', 'strikethrough', 'bulletedList', 'numberedList', '|', 'alignment', 'shortcode', 'outdent', 'indent', '|', 'htmlEmbed', 'imageInsert', 'blockQuote', 'insertTable', 'mediaEmbed', 'undo', 'redo', 'findAndReplace', 'removeFormat', 'sourceEditing', 'codeBlock']
+        },
+        language: 'en',
+        image: {
+          toolbar: ['imageTextAlternative', 'imageStyle:inline', 'imageStyle:block', 'imageStyle:side', 'toggleImageCaption', 'ImageResize']
+        },
+        link: {
+          defaultProtocol: 'http://',
+          decorators: {
+            openInNewTab: {
+              mode: 'manual',
+              label: 'Open in a new tab',
+              attributes: {
+                target: '_blank',
+                rel: 'noopener noreferrer'
+              }
+            }
+          }
+        },
+        table: {
+          contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells', 'tableCellProperties', 'tableProperties']
+        },
+        htmlSupport: {
+          allow: [{
+            name: /.*/,
+            attributes: true,
+            classes: true,
+            styles: true
+          }]
+        },
+        extraPlugins: [function (editor) {
+          // Allow <iframe> elements in the model.
+          editor.model.schema.register('iframe', {
+            allowWhere: '$text',
+            allowContentOf: '$block'
+          });
+          // Allow <iframe> elements in the model to have all attributes.
+          editor.model.schema.addAttributeCheck(function (context) {
+            if (context.endsWith('iframe')) {
+              return true;
+            }
+          });
+          // View-to-model converter converting a view <iframe> with all its attributes to the model.
+          editor.conversion["for"]('upcast').elementToElement({
+            view: 'iframe',
+            model: function model(viewElement, modelWriter) {
+              return modelWriter.writer.createElement('iframe', viewElement.getAttributes());
+            }
+          });
+
+          // Model-to-view converter for the <iframe> element (attributes are converted separately).
+          editor.conversion["for"]('downcast').elementToElement({
+            model: 'iframe',
+            view: 'iframe'
+          });
+
+          // Model-to-view converter for <iframe> attributes.
+          // Note that a lower-level, event-based API is used here.
+          editor.conversion["for"]('downcast').add(function (dispatcher) {
+            dispatcher.on('attribute', function (evt, data, conversionApi) {
+              // Convert <iframe> attributes only.
+              if (data.item.name !== 'iframe') {
+                return;
+              }
+              var viewWriter = conversionApi.writer;
+              var viewIframe = conversionApi.mapper.toViewElement(data.item);
+
+              // In the model-to-view conversion we convert changes.
+              // An attribute can be added or removed or changed.
+              // The below code handles all 3 cases.
+              if (data.attributeNewValue) {
+                viewWriter.setAttribute(data.attributeKey, data.attributeNewValue, viewIframe);
+              } else {
+                viewWriter.removeAttribute(data.attributeKey, viewIframe);
+              }
+            });
+          });
+        }],
+        removePlugins: [
+        // These two are commercial, but you can try them out without registering to a trial.
+        // 'ExportPdf',
+        // 'ExportWord',
+        'CKBox', 'CKFinder', 'EasyImage',
+        // This sample uses the Base64UploadAdapter to handle image uploads as it requires no configuration.
+        // https://ckeditor.com/docs/ckeditor5/latest/features/images/image-upload/base64-upload-adapter.html
+        // Storing images as Base64 is usually a very bad idea.
+        // Replace it on production website with other solutions:
+        // https://ckeditor.com/docs/ckeditor5/latest/features/images/image-upload/image-upload.html
+        // 'Base64UploadAdapter',
+        'RealTimeCollaborativeComments', 'RealTimeCollaborativeTrackChanges', 'RealTimeCollaborativeRevisionHistory', 'PresenceList', 'Comments', 'TrackChanges', 'TrackChangesData', 'RevisionHistory', 'Pagination', 'WProofreader',
+        // Careful, with the Mathtype plugin CKEditor will not load when loading this sample
+        // from a local file system (file://) - load this site via HTTP server if you enable MathType
+        'MathType']
+      }, extraConfig)).then(function (editor) {
+        editor.plugins.get('FileRepository').createUploadAdapter = function (loader) {
+          return new _ckeditor_upload_adapter__WEBPACK_IMPORTED_MODULE_0__["default"](loader, RV_MEDIA_URL.media_upload_from_editor, editor.t);
+        };
+
+        // create function insert html
+        editor.insertHtml = function (html) {
+          var viewFragment = editor.data.processor.toView(html);
+          var modelFragment = editor.data.toModel(viewFragment);
+          editor.model.insertContent(modelFragment);
+        };
+        window.editor = editor;
+        _this.CKEDITOR[element] = editor;
+        var minHeight = $('#' + element).prop('rows') * 90;
+        var className = "ckeditor-".concat(element, "-inline");
+        $(editor.ui.view.editable.element).addClass(className).after("\n                    <style>\n                        .ck-editor__editable_inline {\n                            min-height: ".concat(minHeight - 100, "px;\n                            max-height: ").concat(minHeight + 100, "px;\n                        }\n                    </style>\n                "));
+
+        // debounce content for ajax ne
+        var timeout;
+        editor.model.document.on('change:data', function () {
+          clearTimeout(timeout);
+          timeout = setTimeout(function () {
+            editor.updateSourceElement();
+          }, 150);
+        });
+
+        // insert media embed
+        editor.commands._commands.get('mediaEmbed').execute = function (url) {
+          editor.insertHtml("[media url=\"".concat(url, "\"][/media]"));
+        };
+      })["catch"](function (error) {
+        console.error(error);
+      });
+    }
+  }, {
+    key: "getShortcodesAvailable",
+    value: function getShortcodesAvailable(editor) {
+      var _$$parents$find;
+      var $dropdown = (_$$parents$find = $(editor).parents('.form-group').find('.add_shortcode_btn_trigger')) === null || _$$parents$find === void 0 ? void 0 : _$$parents$find.next('.dropdown-menu');
+      var lists = [];
+      if ($dropdown) {
+        $dropdown.find('> li').each(function () {
+          var item = $(this).find('> a');
+          lists.push({
+            key: item.data('key'),
+            hasConfig: item.data('has-admin-config'),
+            name: item.text(),
+            url: item.attr('href'),
+            description: item.data('description')
+          });
+        });
+      }
+      this.shortcodes = lists;
+      return lists;
+    }
+  }, {
+    key: "uploadImageFromEditor",
+    value: function uploadImageFromEditor(blobInfo, callback) {
+      var formData = new FormData();
+      if (typeof blobInfo.blob === 'function') {
+        formData.append('upload', blobInfo.blob(), blobInfo.filename());
+      } else {
+        formData.append('upload', blobInfo);
+      }
+      $.ajax({
+        type: 'POST',
+        data: formData,
+        url: RV_MEDIA_URL.media_upload_from_editor,
+        processData: false,
+        contentType: false,
+        cache: false,
+        success: function success(res) {
+          if (res.uploaded) {
+            callback(res.url);
+          }
+        }
+      });
+    }
+  }, {
+    key: "initTinyMce",
+    value: function initTinyMce(element) {
+      var _this2 = this;
+      tinymce.init({
+        menubar: true,
+        selector: '#' + element,
+        min_height: $('#' + element).prop('rows') * 110,
+        resize: 'vertical',
+        plugins: 'code autolink advlist visualchars link image media table charmap hr pagebreak nonbreaking hanbiroclip anchor insertdatetime lists textcolor wordcount imagetools  contextmenu  visualblocks',
+        extended_valid_elements: 'input[id|name|value|type|class|style|required|placeholder|autocomplete|onclick]',
+        valid_elements: '*[*]',
+        toolbar: 'formatselect | bold italic strikethrough forecolor backcolor | link image table | alignleft aligncenter alignright alignjustify  | numlist bullist indent  |  visualblocks code',
+        convert_urls: false,
+        image_caption: true,
+        image_advtab: true,
+        image_title: true,
+        placeholder: '',
+        contextmenu: 'link image inserttable | cell row column deletetable',
+        images_upload_url: RV_MEDIA_URL.media_upload_from_editor,
+        automatic_uploads: true,
+        block_unsupported_drop: false,
+        file_picker_types: 'file image media',
+        images_upload_handler: this.uploadImageFromEditor.bind(this),
+        file_picker_callback: function file_picker_callback(callback) {
+          var $input = $('<input type="file" accept="image/*" />').click();
+          $input.on('change', function (e) {
+            _this2.uploadImageFromEditor(e.target.files[0], callback);
+          });
+        }
+      });
+    }
+  }, {
+    key: "initEditor",
+    value: function initEditor(element, extraConfig, type) {
+      if (!element.length) {
+        return false;
+      }
+      var current = this;
+      switch (type) {
+        case 'ckeditor':
+          $.each(element, function (index, item) {
+            current.initCkEditor($(item).prop('id'), extraConfig);
+          });
+          break;
+        case 'tinymce':
+          $.each(element, function (index, item) {
+            current.initTinyMce($(item).prop('id'));
+          });
+          break;
+      }
+    }
+  }, {
+    key: "init",
+    value: function init() {
+      var _this3 = this;
+      var $ckEditor = $('.editor-ckeditor');
+      var $tinyMce = $('.editor-tinymce');
+      var current = this;
+      if ($ckEditor.length > 0) {
+        current.initEditor($ckEditor, {}, 'ckeditor');
+      }
+      if ($tinyMce.length > 0) {
+        current.initEditor($tinyMce, {}, 'tinymce');
+      }
+      $(document).on('click', '.show-hide-editor-btn', function (event) {
+        event.preventDefault();
+        var _self = $(event.currentTarget);
+        var editorInstance = _self.data('result');
+        var $result = $('#' + editorInstance);
+        if ($result.hasClass('editor-ckeditor')) {
+          if (_this3.CKEDITOR[editorInstance] && typeof _this3.CKEDITOR[editorInstance] !== 'undefined') {
+            _this3.CKEDITOR[editorInstance].destroy();
+            _this3.CKEDITOR[editorInstance] = null;
+            $('.editor-action-item').not('.action-show-hide-editor').hide();
+          } else {
+            current.initCkEditor(editorInstance, {}, 'ckeditor');
+            $('.editor-action-item').not('.action-show-hide-editor').show();
+          }
+        } else if ($result.hasClass('editor-tinymce')) {
+          tinymce.execCommand('mceToggleEditor', false, editorInstance);
+        }
+      });
+      this.manageShortCode();
+      return this;
+    }
+  }, {
+    key: "shortcodeCallback",
+    value: function shortcodeCallback() {
+      var params = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var href = params.href,
+        key = params.key,
+        _params$description = params.description,
+        description = _params$description === void 0 ? null : _params$description,
+        _params$data = params.data,
+        data = _params$data === void 0 ? {} : _params$data,
+        _params$update = params.update,
+        update = _params$update === void 0 ? false : _params$update;
+      $('.short-code-admin-config').html('');
+      var $addShortcodeButton = $('.short_code_modal .add_short_code_btn');
+      if (update) {
+        $addShortcodeButton.text($addShortcodeButton.data('update-text'));
+      } else {
+        $addShortcodeButton.text($addShortcodeButton.data('add-text'));
+      }
+      if (description !== '' && description != null) {
+        $('.short_code_modal .modal-title strong').text(description);
+      }
+      $('.short_code_modal').modal('show');
+      $('.half-circle-spinner').show();
+      $.ajax({
+        type: 'GET',
+        data: data,
+        url: href,
+        success: function success(res) {
+          if (res.error) {
+            Cms.showError(res.message);
+            return false;
+          }
+          $('.short-code-data-form').trigger('reset');
+          $('.short_code_input_key').val(key);
+          $('.half-circle-spinner').hide();
+          $('.short-code-admin-config').html(res.data);
+          Cms.initResources();
+          Cms.initMediaIntegrate();
+        },
+        error: function error(data) {
+          Cms.handleError(data);
+        }
+      });
+    }
+  }, {
+    key: "manageShortCode",
+    value: function manageShortCode() {
+      var self = this;
+      $('.list-shortcode-items li a').on('click', function (event) {
+        event.preventDefault();
+        if ($(this).data('has-admin-config') == '1') {
+          self.shortcodeCallback({
+            href: $(this).prop('href'),
+            key: $(this).data('key'),
+            description: $(this).data('description')
+          });
+        } else {
+          var editorInstance = $('.add_shortcode_btn_trigger').data('result');
+          var shortcode = '[' + $(this).data('key') + '][/' + $(this).data('key') + ']';
+          if ($('.editor-ckeditor').length > 0) {
+            self.CKEDITOR[editorInstance].commands.execute('shortcode', shortcode);
+          } else {
+            tinymce.get(editorInstance).execCommand('mceInsertContent', false, shortcode);
+          }
+        }
+      });
+      $.fn.serializeObject = function () {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function () {
+          if (o[this.name]) {
+            if (!o[this.name].push) {
+              o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+          } else {
+            o[this.name] = this.value || '';
+          }
+        });
+        return o;
+      };
+      $('.add_short_code_btn').on('click', function (event) {
+        event.preventDefault();
+        var formElement = $('.short_code_modal').find('.short-code-data-form');
+        var formData = formElement.serializeObject();
+        var attributes = '';
+        $.each(formData, function (name, value) {
+          var element = formElement.find('*[name="' + name + '"]');
+          var shortcodeAttribute = element.data('shortcode-attribute');
+          if ((!shortcodeAttribute || shortcodeAttribute !== 'content') && value) {
+            name = name.replace('[]', '');
+            if (element.data('shortcode-attribute') !== 'content') {
+              name = name.replace('[]', '');
+              attributes += ' ' + name + '="' + value + '"';
+            }
+          }
+        });
+        var content = '';
+        var contentElement = formElement.find('*[data-shortcode-attribute=content]');
+        if (contentElement != null && contentElement.val() != null && contentElement.val() !== '') {
+          content = contentElement.val();
+        }
+        var $shortCodeKey = $(this).closest('.short_code_modal').find('.short_code_input_key').val();
+        var editorInstance = $('.add_shortcode_btn_trigger').data('result');
+        var shortcode = '[' + $shortCodeKey + attributes + ']' + content + '[/' + $shortCodeKey + ']';
+        if ($('.editor-ckeditor').length > 0) {
+          self.CKEDITOR[editorInstance].commands.execute('shortcode', shortcode);
+        } else {
+          tinymce.get(editorInstance).execCommand('mceInsertContent', false, shortcode);
+        }
+        $(this).closest('.modal').modal('hide');
+      });
+    }
+  }]);
+}();
+$(document).ready(function () {
+  window.EDITOR = new EditorManagement().init();
+  window.EditorManagement = window.EditorManagement || EditorManagement;
+});
+})();
+
+/******/ })()
+;

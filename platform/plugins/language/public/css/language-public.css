@@ -1,1 +1,313 @@
-.language_bar_chooser{display:block;float:right;line-height:58px;text-align:center;width:160px}.language_bar_chooser li{display:inline-block;float:left;margin-left:5px}.language_bar_chooser.dropdown-menu{border-radius:0!important;display:none}.language_bar_chooser.dropdown-menu li{display:block;margin:0;width:100%}.language_bar_chooser.dropdown-menu li:hover{background:#ddd}.language_bar_chooser.dropdown-menu li a{display:block!important;margin-right:0!important;text-align:left;width:100%}.dropdown.open .language_bar_chooser.dropdown-menu{display:block}.language-wrapper .btn{background:none;border:none;border-radius:0!important;box-shadow:none;color:#333;height:25px;line-height:1.3em;margin-bottom:0;outline:none!important;padding:7px 15px;transition:all .4 ease}.language-wrapper .btn img{float:left;margin-right:10px;margin-top:4px}.language_bar_list li{display:block;float:left;margin-left:5px;min-width:95px}.language_bar_list li a{display:block;text-align:left;width:100%}.language_bar_list li a img{float:left;margin-right:10px;margin-top:10px;width:20px}.language_bar_list li a span{color:#222}.language-wrapper button .caret{border-left:4px solid transparent;border-right:4px solid transparent;border-top:4px dashed;display:inline-block;height:0;margin-left:2px;vertical-align:middle;width:0}.language-wrapper .dropdown-menu{-webkit-background-clip:padding-box;background-clip:padding-box;background-color:#fff;border:1px solid rgba(0,0,0,.15);border-radius:4px;box-shadow:0 6px 12px rgba(0,0,0,.175);display:none;float:left;font-size:14px;line-height:58px;list-style:none;margin:0;min-width:160px;padding:0;position:absolute;right:0;text-align:left;top:100%;width:160px;z-index:1000}.language-wrapper .dropdown-menu li img{float:left;margin:16px 5px 10px}.language-wrapper .dropdown-menu li span{color:#222}.language-wrapper .dropdown-menu li.active a span{color:#fff}
+.language_bar_chooser {
+  display: block;
+  float: right;
+  width: 160px;
+  line-height: 58px;
+  text-align: center;
+}
+.language_bar_chooser li {
+  display: inline-block;
+  float: left;
+  margin-left: 5px;
+}
+.language_bar_chooser.dropdown-menu {
+  display: none;
+  border-radius: 0 !important;
+}
+.language_bar_chooser.dropdown-menu li {
+  width: 100%;
+  margin: 0;
+  display: block;
+}
+.language_bar_chooser.dropdown-menu li:hover {
+  background: #dddddd;
+}
+.language_bar_chooser.dropdown-menu li a {
+  display: block !important;
+  margin-right: 0 !important;
+  width: 100%;
+  text-align: left;
+}
+
+.dropdown.open .language_bar_chooser.dropdown-menu, .dropdown.show .language_bar_chooser.dropdown-menu {
+  display: block;
+}
+
+.language-wrapper .btn {
+  border: none;
+  background: none;
+  margin-bottom: 0;
+  height: 25px;
+  border-radius: 0 !important;
+  padding: 7px 15px;
+  line-height: 1.3em;
+  outline: none !important;
+  box-shadow: none;
+  transition: all 0.4 ease;
+  color: #333333;
+}
+.language-wrapper .btn img {
+  float: left;
+  margin-right: 10px;
+  margin-top: 4px;
+}
+
+.language_bar_list li {
+  display: block;
+  margin-left: 5px;
+  float: left;
+  min-width: 95px;
+}
+.language_bar_list li a {
+  text-align: left;
+  display: block;
+  width: 100%;
+}
+.language_bar_list li a img {
+  float: left;
+  margin-right: 10px;
+  margin-top: 10px;
+  width: 20px;
+}
+.language_bar_list li a span {
+  color: #222222;
+}
+
+.language-wrapper button .caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px dashed;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+.language-wrapper .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  background-color: #ffffff;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  width: 160px;
+  line-height: 58px;
+  margin: 0;
+  padding: 0;
+}
+.language-wrapper .dropdown-menu li img {
+  float: left;
+  margin: 16px 5px 10px;
+}
+.language-wrapper .dropdown-menu li span {
+  color: #222222;
+}
+.language-wrapper .dropdown-menu li.active a span {
+  color: #fff;
+}
+
+/* Dual Translation Enhancements */
+.language_bar_chooser.dropdown-menu {
+  min-width: 210px !important;
+  width: auto !important;
+  padding: 6px 0 !important;
+  line-height: normal !important;
+}
+.language_bar_chooser.dropdown-menu li {
+  line-height: normal !important;
+  padding: 4px 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+.language_bar_chooser.dropdown-menu li:hover {
+  background-color: #f1f3f4 !important;
+}
+.language_bar_chooser.dropdown-menu li.active {
+  background-color: #e8f0fe !important;
+}
+.language_bar_chooser.dropdown-menu li a {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 4px 6px !important;
+  text-decoration: none !important;
+  color: #202124 !important;
+  font-size: 13px !important;
+}
+.language_bar_chooser.dropdown-menu li a img {
+  margin: 0 8px 0 0 !important;
+  float: none !important;
+  width: 18px !important;
+  height: auto !important;
+}
+.language_bar_chooser.dropdown-menu li a span {
+  color: #202124 !important;
+  font-weight: 500 !important;
+}
+
+.language-item-dual {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.gt-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 5px;
+  border-radius: 3px;
+  line-height: 1;
+  margin-left: 6px;
+  vertical-align: middle;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.gt-badge-published {
+  background-color: #28a745;
+  color: #ffffff !important;
+}
+
+.gt-badge-auto {
+  background-color: #007bff;
+  color: #ffffff !important;
+}
+
+.gt-badge-original {
+  background-color: #6c757d;
+  color: #ffffff !important;
+}
+
+.gt-badge-fallback {
+  background-color: #ffc107;
+  color: #212529 !important;
+}
+
+.gt-auto-btn {
+  display: inline-block !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  padding: 2px 6px !important;
+  background: #e9ecef !important;
+  color: #495057 !important;
+  border-radius: 3px !important;
+  text-decoration: none !important;
+  margin-left: 6px !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+}
+.gt-auto-btn:hover {
+  background-color: #007bff !important;
+  color: #ffffff !important;
+}
+
+/* Machine Translation Disclaimer Bar */
+.gt-disclaimer-bar {
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 99999 !important;
+  background: #0d47a1;
+  color: #ffffff;
+  padding: 8px 16px;
+  font-size: 13px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  display: none;
+}
+.gt-disclaimer-bar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.gt-disclaimer-bar .gt-disclaimer-text {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+.gt-disclaimer-bar .gt-disclaimer-text .gt-disclaimer-icon {
+  font-size: 16px;
+  margin-right: 8px;
+}
+.gt-disclaimer-bar .gt-disclaimer-actions {
+  display: flex;
+  align-items: center;
+}
+.gt-disclaimer-bar .gt-disclaimer-actions .gt-btn-original {
+  background: rgba(255, 255, 255, 0.25) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  color: #ffffff !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  padding: 4px 14px !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+  margin-right: 14px !important;
+  display: inline-block !important;
+}
+.gt-disclaimer-bar .gt-disclaimer-actions .gt-btn-original:hover {
+  background: #ffffff !important;
+  color: #0d47a1 !important;
+}
+.gt-disclaimer-bar .gt-disclaimer-actions .gt-btn-close {
+  background: rgba(255, 255, 255, 0.25) !important;
+  border: none !important;
+  color: #ffffff !important;
+  font-size: 24px !important;
+  font-weight: bold !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  padding: 2px 10px !important;
+  border-radius: 4px !important;
+  opacity: 0.95 !important;
+  transition: all 0.2s !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.gt-disclaimer-bar .gt-disclaimer-actions .gt-btn-close:hover {
+  opacity: 1 !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Google Translate Frame & Tooltip Overrides */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame,
+iframe.goog-te-banner-frame {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+}
+
+body {
+  top: 0px !important;
+  position: static !important;
+}
+
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+}
+
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+.skiptranslate > iframe {
+  display: none !important;
+}

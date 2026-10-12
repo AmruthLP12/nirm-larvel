@@ -1877,16 +1877,12 @@ ul.social-ul li.social-li a.social {
 }
 
 .translated-ltr {
-    margin-top: -40px;
-}
-
-.translated-ltr {
-    margin-top: -40px;
+    margin-top: 0px !important;
 }
 
 .goog-te-banner-frame {
     display: none;
-    margin-top: -20px;
+    margin-top: 0px;
 }
 
 .goog-logo-link {

@@ -123,13 +123,13 @@ class LanguageServiceProvider extends ServiceProvider
                         Theme::asset()
                             ->usePath(false)
                             ->add('language-css', asset('vendor/core/plugins/language/css/language-public.css'), [],
-                                [], '1.0.0');
+                                [], '1.0.3');
 
                         Theme::asset()
                             ->container('footer')
                             ->usePath(false)
                             ->add('language-public-js', asset('vendor/core/plugins/language/js/language-public.js'),
-                                ['jquery'], [], '1.0.0');
+                                ['jquery'], [], '1.0.3');
                     });
                 }
             }

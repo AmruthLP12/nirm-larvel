@@ -89,6 +89,13 @@ class LanguageController extends BaseController
                 $request->merge(['lang_is_default' => 1]);
             }
 
+            if (!File::isDirectory(resource_path('lang'))) {
+                File::makeDirectory(resource_path('lang'), 0775, true, true);
+            }
+            if (!File::isDirectory(resource_path('lang/vendor'))) {
+                File::makeDirectory(resource_path('lang/vendor'), 0775, true, true);
+            }
+
             if (!File::isWritable(resource_path('lang')) || !File::isWritable(resource_path('lang/vendor'))) {
                 return $response
                     ->setError(true)
@@ -323,6 +330,14 @@ class LanguageController extends BaseController
             ->set('language_hide_languages', json_encode($request->input('language_hide_languages', [])))
             ->set('language_show_default_item_if_current_version_not_existed',
                 $request->input('language_show_default_item_if_current_version_not_existed'))
+            ->set('translation_mode', $request->input('translation_mode', 'both'))
+            ->set('language_switcher_enabled', $request->input('language_switcher_enabled', 1))
+            ->set('translation_manual_fallback', $request->input('translation_manual_fallback', 'auto_google'))
+            ->set('translation_show_machine_label', $request->input('translation_show_machine_label', 1))
+            ->set('translation_machine_label_text', $request->input('translation_machine_label_text', 'This page has been automatically translated using Google Translate.'))
+            ->set('google_translate_disabled_languages', json_encode($request->input('google_translate_disabled_languages', [])))
+            ->set('google_translate_method', $request->input('google_translate_method', 'website_translator'))
+            ->set('google_translate_api_key', $request->input('google_translate_api_key', ''))
             ->save();
 
         return $response->setMessage(trans('core/base::notices.update_success_message'));

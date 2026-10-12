@@ -1,1 +1,456 @@
-(()=>{function e(e,a){for(var t=0;t<a.length;t++){var n=a[t];n.enumerable=n.enumerable||!1,n.configurable=!0,"value"in n&&(n.writable=!0),Object.defineProperty(e,n.key,n)}}!function(a,t){"use strict";var n=function(e,t){var n=e.ajax.params();return n.action=t,n._token=a('meta[name="csrf-token"]').attr("content"),n},o=function(e,t){var n=e+"/export",o=new XMLHttpRequest;o.open("POST",n,!0),o.responseType="arraybuffer",o.onload=function(){if(200===this.status){var e="",a=o.getResponseHeader("Content-Disposition");if(a&&-1!==a.indexOf("attachment")){var t=/filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/.exec(a);null!=t&&t[1]&&(e=t[1].replace(/['"]/g,""))}var n=o.getResponseHeader("Content-Type"),s=new Blob([this.response],{type:n});if(void 0!==window.navigator.msSaveBlob)window.navigator.msSaveBlob(s,e);else{var r=window.URL||window.webkitURL,c=r.createObjectURL(s);if(e){var l=document.createElement("a");void 0===l.download?window.location=c:(l.href=c,l.download=e,document.body.appendChild(l),l.trigger("click"))}else window.location=c;setTimeout((function(){r.revokeObjectURL(c)}),100)}}},o.setRequestHeader("Content-type","application/x-www-form-urlencoded"),o.send(a.param(t))},s=function(e,t){var n=e.ajax.url()||"",o=e.ajax.params();return o.action=t,n.indexOf("?")>-1?n+"&"+a.param(o):n+"?"+a.param(o)};t.ext.buttons.excel={className:"buttons-excel",text:function(e){return'<i class="far fa-file-excel"></i> '+e.i18n("buttons.excel",CMSVariables.languages.tables.excel?CMSVariables.languages.tables.excel:"Excel")},action:function(e,a){window.location=s(a,"excel")}},t.ext.buttons.postExcel={className:"buttons-excel",text:function(e){return'<i class="far fa-file-excel"></i> '+e.i18n("buttons.excel",CMSVariables.languages.tables.excel?CMSVariables.languages.tables.excel:"Excel")},action:function(e,a){var t=a.ajax.url()||window.location.href,s=n(a,"excel");o(t,s)}},t.ext.buttons.export={extend:"collection",className:"buttons-export",text:function(e){return'<i class="fa fa-download"></i> '+e.i18n("buttons.export",CMSVariables.languages.tables.export?CMSVariables.languages.tables.export:"Export")+'&nbsp;<span class="caret"/>'},buttons:["csv","excel"]},t.ext.buttons.csv={className:"buttons-csv",text:function(e){return'<i class="fas fa-file-csv"></i> '+e.i18n("buttons.csv",CMSVariables.languages.tables.csv?CMSVariables.languages.tables.csv:"CSV")},action:function(e,a){window.location=s(a,"csv")}},t.ext.buttons.postCsv={className:"buttons-csv",text:function(e){return'<i class="fas fa-file-csv"></i> '+e.i18n("buttons.csv",CMSVariables.languages.tables.csv?CMSVariables.languages.tables.csv:"CSV")},action:function(e,a){var t=a.ajax.url()||window.location.href,s=n(a,"csv");o(t,s)}},t.ext.buttons.pdf={className:"buttons-pdf",text:function(e){return'<i class="far fa-file-pdf"></i> '+e.i18n("buttons.pdf","PDF")},action:function(e,a){window.location=s(a,"pdf")}},t.ext.buttons.postPdf={className:"buttons-pdf",text:function(e){return'<i class="far fa-file-pdf"></i> '+e.i18n("buttons.pdf","PDF")},action:function(e,a){var t=a.ajax.url()||window.location.href,s=n(a,"pdf");o(t,s)}},t.ext.buttons.print={className:"buttons-print",text:function(e){return'<i class="fa fa-print"></i> '+e.i18n("buttons.print",CMSVariables.languages.tables.print?CMSVariables.languages.tables.print:"Print")},action:function(e,a){window.location=s(a,"print")}},t.ext.buttons.reset={className:"buttons-reset",text:function(e){return'<i class="fa fa-undo"></i> '+e.i18n("buttons.reset",CMSVariables.languages.tables.reset?CMSVariables.languages.tables.reset:"Reset")},action:function(){a(".table thead input").val("").keyup(),a(".table thead select").val("").change()}},t.ext.buttons.reload={className:"buttons-reload",text:function(e){return'<i class="fas fa-sync"></i> '+e.i18n("buttons.reload",CMSVariables.languages.tables.reload?CMSVariables.languages.tables.reload:"Reload")},action:function(e,a){a.draw(!1)}},t.ext.buttons.create={className:"buttons-create",text:function(e){return'<i class="fa fa-plus"></i> '+e.i18n("buttons.create","Create")},action:function(){window.location=window.location.href.replace(/\/+$/,"")+"/create"}},void 0!==t.ext.buttons.copyHtml5&&a.extend(t.ext.buttons.copyHtml5,{text:function(e){return'<i class="fa fa-copy"></i> '+e.i18n("buttons.copy","Copy")}}),void 0!==t.ext.buttons.colvis&&a.extend(t.ext.buttons.colvis,{text:function(e){return'<i class="fa fa-eye"></i> '+e.i18n("buttons.colvis","Column visibility")}});var r=function(){function t(){!function(e,a){if(!(e instanceof a))throw new TypeError("Cannot call a class as a function")}(this,t),this.init(),this.handleActionsRow(),this.handleActionsExport()}var n,o,s;return n=t,(o=[{key:"init",value:function(){a(document).on("change",".table-check-all",(function(e){var t=a(e.currentTarget),n=t.attr("data-set"),o=t.prop("checked");a(n).each((function(e,t){o?a(t).prop("checked",!0):a(t).prop("checked",!1)}))})),a(document).on("change",".checkboxes",(function(e){var t=a(e.currentTarget),n=t.closest(".table-wrapper").find(".table").prop("id"),o=[],s=a("#"+n);s.find(".checkboxes:checked").each((function(e,t){o[e]=a(t).val()})),o.length!==s.find(".checkboxes").length?t.closest(".table-wrapper").find(".table-check-all").prop("checked",!1):t.closest(".table-wrapper").find(".table-check-all").prop("checked",!0)})),a(document).on("click",".btn-show-table-options",(function(e){e.preventDefault(),a(e.currentTarget).closest(".table-wrapper").find(".table-configuration-wrap").slideToggle(500)})),a(document).on("click",".action-item",(function(e){e.preventDefault();var t=a(e.currentTarget).find("span[data-href]"),n=t.data("action"),o=t.data("href");n&&"#"!==o&&(window.location.href=o)}))}},{key:"handleActionsRow",value:function(){var e=this;a(document).on("click",".deleteDialog",(function(e){e.preventDefault();var t=a(e.currentTarget);a(".delete-crud-entry").data("section",t.data("section")).data("parent-table",t.closest(".table").prop("id")),a(".modal-confirm-delete").modal("show")})),a(".delete-crud-entry").on("click",(function(e){e.preventDefault();var t=a(e.currentTarget);t.addClass("button-loading");var n=t.data("section");a.ajax({url:n,type:"DELETE",success:function(e){e.error?Cms.showError(e.message):(window.LaravelDataTables[t.data("parent-table")].row(a('a[data-section="'+n+'"]').closest("tr")).remove().draw(),Cms.showSuccess(e.message)),t.closest(".modal").modal("hide"),t.removeClass("button-loading")},error:function(e){Cms.handleError(e),t.removeClass("button-loading")}})})),a(document).on("click",".delete-many-entry-trigger",(function(e){e.preventDefault();var t=a(e.currentTarget),n=t.closest(".table-wrapper").find(".table").prop("id"),o=[];if(a("#"+n).find(".checkboxes:checked").each((function(e,t){o[e]=a(t).val()})),0===o.length)return Cms.showError(CMSVariables.languages.tables.please_select_record?CMSVariables.languages.tables.please_select_record:"Please select at least one record to perform this action!"),!1;a(".delete-many-entry-button").data("href",t.prop("href")).data("parent-table",n).data("class-item",t.data("class-item")),a(".delete-many-modal").modal("show")})),a(".delete-many-entry-button").on("click",(function(e){e.preventDefault();var t=a(e.currentTarget);t.addClass("button-loading");var n=a("#"+t.data("parent-table")),o=[];n.find(".checkboxes:checked").each((function(e,t){o[e]=a(t).val()})),a.ajax({url:t.data("href"),type:"DELETE",data:{ids:o,class:t.data("class-item")},success:function(e){e.error?Cms.showError(e.message):Cms.showSuccess(e.message),n.find(".table-check-all").prop("checked",!1),window.LaravelDataTables[t.data("parent-table")].draw(),t.closest(".modal").modal("hide"),t.removeClass("button-loading")},error:function(e){Cms.handleError(e),t.removeClass("button-loading")}})})),a(document).on("click",".bulk-change-item",(function(t){t.preventDefault();var n=a(t.currentTarget),o=n.closest(".table-wrapper").find(".table").prop("id"),s=[];if(a("#"+o).find(".checkboxes:checked").each((function(e,t){s[e]=a(t).val()})),0===s.length)return Cms.showError(CMSVariables.languages.tables.please_select_record?CMSVariables.languages.tables.please_select_record:"Please select at least one record to perform this action!"),!1;e.loadBulkChangeData(n),a(".confirm-bulk-change-button").data("parent-table",o).data("class-item",n.data("class-item")).data("key",n.data("key")).data("url",n.data("save-url")),a(".modal-bulk-change-items").modal("show")})),a(document).on("click",".confirm-bulk-change-button",(function(e){e.preventDefault();var t=a(e.currentTarget),n=t.closest(".modal").find(".input-value").val(),o=t.data("key"),s=a("#"+t.data("parent-table")),r=[];s.find(".checkboxes:checked").each((function(e,t){r[e]=a(t).val()})),t.addClass("button-loading"),a.ajax({url:t.data("url"),type:"POST",data:{ids:r,key:o,value:n,class:t.data("class-item")},success:function(e){e.error?Cms.showError(e.message):Cms.showSuccess(e.message),s.find(".table-check-all").prop("checked",!1),a.each(r,(function(e,a){window.LaravelDataTables[t.data("parent-table")].row(s.find('.checkboxes[value="'+a+'"]').closest("tr")).remove().draw()})),t.closest(".modal").modal("hide"),t.removeClass("button-loading")},error:function(e){Cms.handleError(e),t.removeClass("button-loading")}})}))}},{key:"loadBulkChangeData",value:function(e){var t=a(".modal-bulk-change-items");a.ajax({type:"GET",url:t.find(".confirm-bulk-change-button").data("load-url"),data:{class:e.data("class-item"),key:e.data("key")},success:function(e){var n=a.map(e.data,(function(e,a){return{id:a,name:e}}));a(".modal-bulk-change-content").html(e.html);var o=t.find("input[type=text].input-value");o.length&&(o.typeahead({source:n}),o.data("typeahead").source=n),Cms.initResources()},error:function(e){Cms.handleError(e)}})}},{key:"handleActionsExport",value:function(){a(document).on("click",".export-data",(function(e){var t=a(e.currentTarget),n=t.closest(".table-wrapper").find(".table").prop("id"),o=[];a("#"+n).find(".checkboxes:checked").each((function(e,t){o[e]=a(t).val()})),e.preventDefault(),a.ajax({type:"POST",url:t.prop("href"),data:{"ids-checked":o},success:function(e){var a=document.createElement("a");a.href=e.file,a.download=e.name,document.body.appendChild(a),a.trigger("click"),a.remove()},error:function(e){Cms.handleError(e)}})}))}}])&&e(n.prototype,o),s&&e(n,s),t}();a(document).ready((function(){new r}))}(jQuery,jQuery.fn.dataTable)})();
+/******/ (() => { // webpackBootstrap
+/*!**********************************************************!*\
+  !*** ./platform/core/table/resources/assets/js/table.js ***!
+  \**********************************************************/
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, e) { if ("object" != _typeof(t) || !t) return t; var r; if ("undefined" != typeof Symbol && void 0 !== (r = t[Symbol.toPrimitive])) { var i = r.call(t, e || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === e ? String : Number)(t); }
+(function ($, DataTable) {
+  'use strict';
+
+  var _buildParams = function _buildParams(dt, action) {
+    var params = dt.ajax.params();
+    params.action = action;
+    params._token = $('meta[name="csrf-token"]').attr('content');
+    return params;
+  };
+  var _downloadFromUrl = function _downloadFromUrl(url, params) {
+    var postUrl = url + '/export';
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', postUrl, true);
+    xhr.responseType = 'arraybuffer';
+    xhr.onload = function () {
+      if (this.status === 200) {
+        var filename = '';
+        var disposition = xhr.getResponseHeader('Content-Disposition');
+        if (disposition && disposition.indexOf('attachment') !== -1) {
+          var filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+          var matches = filenameRegex.exec(disposition);
+          if (matches != null && matches[1]) filename = matches[1].replace(/['"]/g, '');
+        }
+        var type = xhr.getResponseHeader('Content-Type');
+        var blob = new Blob([this.response], {
+          type: type
+        });
+        if (typeof window.navigator.msSaveBlob !== 'undefined') {
+          // IE workaround for "HTML7007: One or more blob URLs were revoked by closing the blob for which they were created. These URLs will no longer resolve as the data backing the URL has been freed."
+          window.navigator.msSaveBlob(blob, filename);
+        } else {
+          var URL = window.URL || window.webkitURL;
+          var downloadUrl = URL.createObjectURL(blob);
+          if (filename) {
+            // use HTML5 a[download] attribute to specify filename
+            var a = document.createElement('a');
+            // safari doesn't support this yet
+            if (typeof a.download === 'undefined') {
+              window.location = downloadUrl;
+            } else {
+              a.href = downloadUrl;
+              a.download = filename;
+              document.body.appendChild(a);
+              a.trigger('click');
+            }
+          } else {
+            window.location = downloadUrl;
+          }
+          setTimeout(function () {
+            URL.revokeObjectURL(downloadUrl);
+          }, 100); // cleanup
+        }
+      }
+    };
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.send($.param(params));
+  };
+  var _buildUrl = function _buildUrl(dt, action) {
+    var url = dt.ajax.url() || '';
+    var params = dt.ajax.params();
+    params.action = action;
+    if (url.indexOf('?') > -1) {
+      return url + '&' + $.param(params);
+    }
+    return url + '?' + $.param(params);
+  };
+  DataTable.ext.buttons.excel = {
+    className: 'buttons-excel',
+    text: function text(dt) {
+      return '<i class="far fa-file-excel"></i> ' + dt.i18n('buttons.excel', CMSVariables.languages.tables.excel ? CMSVariables.languages.tables.excel : 'Excel');
+    },
+    action: function action(e, dt) {
+      window.location = _buildUrl(dt, 'excel');
+    }
+  };
+  DataTable.ext.buttons.postExcel = {
+    className: 'buttons-excel',
+    text: function text(dt) {
+      return '<i class="far fa-file-excel"></i> ' + dt.i18n('buttons.excel', CMSVariables.languages.tables.excel ? CMSVariables.languages.tables.excel : 'Excel');
+    },
+    action: function action(e, dt) {
+      var url = dt.ajax.url() || window.location.href;
+      var params = _buildParams(dt, 'excel');
+      _downloadFromUrl(url, params);
+    }
+  };
+  DataTable.ext.buttons["export"] = {
+    extend: 'collection',
+    className: 'buttons-export',
+    text: function text(dt) {
+      return '<i class="fa fa-download"></i> ' + dt.i18n('buttons.export', CMSVariables.languages.tables["export"] ? CMSVariables.languages.tables["export"] : 'Export') + '&nbsp;<span class="caret"/>';
+    },
+    buttons: ['csv', 'excel']
+  };
+  DataTable.ext.buttons.csv = {
+    className: 'buttons-csv',
+    text: function text(dt) {
+      return '<i class="fas fa-file-csv"></i> ' + dt.i18n('buttons.csv', CMSVariables.languages.tables.csv ? CMSVariables.languages.tables.csv : 'CSV');
+    },
+    action: function action(e, dt) {
+      window.location = _buildUrl(dt, 'csv');
+    }
+  };
+  DataTable.ext.buttons.postCsv = {
+    className: 'buttons-csv',
+    text: function text(dt) {
+      return '<i class="fas fa-file-csv"></i> ' + dt.i18n('buttons.csv', CMSVariables.languages.tables.csv ? CMSVariables.languages.tables.csv : 'CSV');
+    },
+    action: function action(e, dt) {
+      var url = dt.ajax.url() || window.location.href;
+      var params = _buildParams(dt, 'csv');
+      _downloadFromUrl(url, params);
+    }
+  };
+  DataTable.ext.buttons.pdf = {
+    className: 'buttons-pdf',
+    text: function text(dt) {
+      return '<i class="far fa-file-pdf"></i> ' + dt.i18n('buttons.pdf', 'PDF');
+    },
+    action: function action(e, dt) {
+      window.location = _buildUrl(dt, 'pdf');
+    }
+  };
+  DataTable.ext.buttons.postPdf = {
+    className: 'buttons-pdf',
+    text: function text(dt) {
+      return '<i class="far fa-file-pdf"></i> ' + dt.i18n('buttons.pdf', 'PDF');
+    },
+    action: function action(e, dt) {
+      var url = dt.ajax.url() || window.location.href;
+      var params = _buildParams(dt, 'pdf');
+      _downloadFromUrl(url, params);
+    }
+  };
+  DataTable.ext.buttons.print = {
+    className: 'buttons-print',
+    text: function text(dt) {
+      return '<i class="fa fa-print"></i> ' + dt.i18n('buttons.print', CMSVariables.languages.tables.print ? CMSVariables.languages.tables.print : 'Print');
+    },
+    action: function action(e, dt) {
+      window.location = _buildUrl(dt, 'print');
+    }
+  };
+  DataTable.ext.buttons.reset = {
+    className: 'buttons-reset',
+    text: function text(dt) {
+      return '<i class="fa fa-undo"></i> ' + dt.i18n('buttons.reset', CMSVariables.languages.tables.reset ? CMSVariables.languages.tables.reset : 'Reset');
+    },
+    action: function action() {
+      $('.table thead input').val('').keyup();
+      $('.table thead select').val('').change();
+    }
+  };
+  DataTable.ext.buttons.reload = {
+    className: 'buttons-reload',
+    text: function text(dt) {
+      return '<i class="fas fa-sync"></i> ' + dt.i18n('buttons.reload', CMSVariables.languages.tables.reload ? CMSVariables.languages.tables.reload : 'Reload');
+    },
+    action: function action(e, dt) {
+      dt.draw(false);
+    }
+  };
+  DataTable.ext.buttons.create = {
+    className: 'buttons-create',
+    text: function text(dt) {
+      return '<i class="fa fa-plus"></i> ' + dt.i18n('buttons.create', 'Create');
+    },
+    action: function action() {
+      window.location = window.location.href.replace(/\/+$/, '') + '/create';
+    }
+  };
+  if (typeof DataTable.ext.buttons.copyHtml5 !== 'undefined') {
+    $.extend(DataTable.ext.buttons.copyHtml5, {
+      text: function text(dt) {
+        return '<i class="fa fa-copy"></i> ' + dt.i18n('buttons.copy', 'Copy');
+      }
+    });
+  }
+  if (typeof DataTable.ext.buttons.colvis !== 'undefined') {
+    $.extend(DataTable.ext.buttons.colvis, {
+      text: function text(dt) {
+        return '<i class="fa fa-eye"></i> ' + dt.i18n('buttons.colvis', 'Column visibility');
+      }
+    });
+  }
+  var TableManagement = /*#__PURE__*/function () {
+    function TableManagement() {
+      _classCallCheck(this, TableManagement);
+      this.init();
+      this.handleActionsRow();
+      this.handleActionsExport();
+    }
+    return _createClass(TableManagement, [{
+      key: "init",
+      value: function init() {
+        $(document).on('change', '.table-check-all', function (event) {
+          var _self = $(event.currentTarget);
+          var set = _self.attr('data-set');
+          var checked = _self.prop('checked');
+          $(set).each(function (index, el) {
+            if (checked) {
+              $(el).prop('checked', true);
+            } else {
+              $(el).prop('checked', false);
+            }
+          });
+        });
+        $(document).on('change', '.checkboxes', function (event) {
+          var _self = $(event.currentTarget);
+          var table = _self.closest('.table-wrapper').find('.table').prop('id');
+          var ids = [];
+          var $table = $('#' + table);
+          $table.find('.checkboxes:checked').each(function (i, el) {
+            ids[i] = $(el).val();
+          });
+          if (ids.length !== $table.find('.checkboxes').length) {
+            _self.closest('.table-wrapper').find('.table-check-all').prop('checked', false);
+          } else {
+            _self.closest('.table-wrapper').find('.table-check-all').prop('checked', true);
+          }
+        });
+        $(document).on('click', '.btn-show-table-options', function (event) {
+          event.preventDefault();
+          $(event.currentTarget).closest('.table-wrapper').find('.table-configuration-wrap').slideToggle(500);
+        });
+        $(document).on('click', '.action-item', function (event) {
+          event.preventDefault();
+          var span = $(event.currentTarget).find('span[data-href]');
+          var action = span.data('action');
+          var url = span.data('href');
+          if (action && url !== '#') {
+            window.location.href = url;
+          }
+        });
+      }
+    }, {
+      key: "handleActionsRow",
+      value: function handleActionsRow() {
+        var that = this;
+        $(document).on('click', '.deleteDialog', function (event) {
+          event.preventDefault();
+          var _self = $(event.currentTarget);
+          $('.delete-crud-entry').data('section', _self.data('section')).data('parent-table', _self.closest('.table').prop('id'));
+          $('.modal-confirm-delete').modal('show');
+        });
+        $('.delete-crud-entry').on('click', function (event) {
+          event.preventDefault();
+          var _self = $(event.currentTarget);
+          _self.addClass('button-loading');
+          var deleteURL = _self.data('section');
+          $.ajax({
+            url: deleteURL,
+            type: 'DELETE',
+            success: function success(data) {
+              if (data.error) {
+                Cms.showError(data.message);
+              } else {
+                window.LaravelDataTables[_self.data('parent-table')].row($('a[data-section="' + deleteURL + '"]').closest('tr')).remove().draw();
+                Cms.showSuccess(data.message);
+              }
+              _self.closest('.modal').modal('hide');
+              _self.removeClass('button-loading');
+            },
+            error: function error(data) {
+              Cms.handleError(data);
+              _self.removeClass('button-loading');
+            }
+          });
+        });
+        $(document).on('click', '.delete-many-entry-trigger', function (event) {
+          event.preventDefault();
+          var _self = $(event.currentTarget);
+          var table = _self.closest('.table-wrapper').find('.table').prop('id');
+          var ids = [];
+          $('#' + table).find('.checkboxes:checked').each(function (i, el) {
+            ids[i] = $(el).val();
+          });
+          if (ids.length === 0) {
+            Cms.showError(CMSVariables.languages.tables.please_select_record ? CMSVariables.languages.tables.please_select_record : 'Please select at least one record to perform this action!');
+            return false;
+          }
+          $('.delete-many-entry-button').data('href', _self.prop('href')).data('parent-table', table).data('class-item', _self.data('class-item'));
+          $('.delete-many-modal').modal('show');
+        });
+        $('.delete-many-entry-button').on('click', function (event) {
+          event.preventDefault();
+          var _self = $(event.currentTarget);
+          _self.addClass('button-loading');
+          var $table = $('#' + _self.data('parent-table'));
+          var ids = [];
+          $table.find('.checkboxes:checked').each(function (i, el) {
+            ids[i] = $(el).val();
+          });
+          $.ajax({
+            url: _self.data('href'),
+            type: 'DELETE',
+            data: {
+              ids: ids,
+              "class": _self.data('class-item')
+            },
+            success: function success(data) {
+              if (data.error) {
+                Cms.showError(data.message);
+              } else {
+                Cms.showSuccess(data.message);
+              }
+              $table.find('.table-check-all').prop('checked', false);
+              window.LaravelDataTables[_self.data('parent-table')].draw();
+              _self.closest('.modal').modal('hide');
+              _self.removeClass('button-loading');
+            },
+            error: function error(data) {
+              Cms.handleError(data);
+              _self.removeClass('button-loading');
+            }
+          });
+        });
+        $(document).on('click', '.bulk-change-item', function (event) {
+          event.preventDefault();
+          var _self = $(event.currentTarget);
+          var table = _self.closest('.table-wrapper').find('.table').prop('id');
+          var ids = [];
+          $('#' + table).find('.checkboxes:checked').each(function (i, el) {
+            ids[i] = $(el).val();
+          });
+          if (ids.length === 0) {
+            Cms.showError(CMSVariables.languages.tables.please_select_record ? CMSVariables.languages.tables.please_select_record : 'Please select at least one record to perform this action!');
+            return false;
+          }
+          that.loadBulkChangeData(_self);
+          $('.confirm-bulk-change-button').data('parent-table', table).data('class-item', _self.data('class-item')).data('key', _self.data('key')).data('url', _self.data('save-url'));
+          $('.modal-bulk-change-items').modal('show');
+        });
+        $(document).on('click', '.confirm-bulk-change-button', function (event) {
+          event.preventDefault();
+          var _self = $(event.currentTarget);
+          var value = _self.closest('.modal').find('.input-value').val();
+          var inputKey = _self.data('key');
+          var $table = $('#' + _self.data('parent-table'));
+          var ids = [];
+          $table.find('.checkboxes:checked').each(function (i, el) {
+            ids[i] = $(el).val();
+          });
+          _self.addClass('button-loading');
+          $.ajax({
+            url: _self.data('url'),
+            type: 'POST',
+            data: {
+              ids: ids,
+              key: inputKey,
+              value: value,
+              "class": _self.data('class-item')
+            },
+            success: function success(data) {
+              if (data.error) {
+                Cms.showError(data.message);
+              } else {
+                Cms.showSuccess(data.message);
+              }
+              $table.find('.table-check-all').prop('checked', false);
+              $.each(ids, function (index, item) {
+                window.LaravelDataTables[_self.data('parent-table')].row($table.find('.checkboxes[value="' + item + '"]').closest('tr')).remove().draw();
+              });
+              _self.closest('.modal').modal('hide');
+              _self.removeClass('button-loading');
+            },
+            error: function error(data) {
+              Cms.handleError(data);
+              _self.removeClass('button-loading');
+            }
+          });
+        });
+      }
+    }, {
+      key: "loadBulkChangeData",
+      value: function loadBulkChangeData($element) {
+        var $modal = $('.modal-bulk-change-items');
+        $.ajax({
+          type: 'GET',
+          url: $modal.find('.confirm-bulk-change-button').data('load-url'),
+          data: {
+            'class': $element.data('class-item'),
+            'key': $element.data('key')
+          },
+          success: function success(res) {
+            var data = $.map(res.data, function (value, key) {
+              return {
+                id: key,
+                name: value
+              };
+            });
+            var $parent = $('.modal-bulk-change-content');
+            $parent.html(res.html);
+            var $input = $modal.find('input[type=text].input-value');
+            if ($input.length) {
+              $input.typeahead({
+                source: data
+              });
+              $input.data('typeahead').source = data;
+            }
+            Cms.initResources();
+          },
+          error: function error(_error) {
+            Cms.handleError(_error);
+          }
+        });
+      }
+    }, {
+      key: "handleActionsExport",
+      value: function handleActionsExport() {
+        $(document).on('click', '.export-data', function (event) {
+          var _self = $(event.currentTarget);
+          var table = _self.closest('.table-wrapper').find('.table').prop('id');
+          var ids = [];
+          $('#' + table).find('.checkboxes:checked').each(function (i, el) {
+            ids[i] = $(el).val();
+          });
+          event.preventDefault();
+          $.ajax({
+            type: 'POST',
+            url: _self.prop('href'),
+            data: {
+              'ids-checked': ids
+            },
+            success: function success(response) {
+              var a = document.createElement('a');
+              a.href = response.file;
+              a.download = response.name;
+              document.body.appendChild(a);
+              a.trigger('click');
+              a.remove();
+            },
+            error: function error(_error2) {
+              Cms.handleError(_error2);
+            }
+          });
+        });
+      }
+    }]);
+  }();
+  $(document).ready(function () {
+    new TableManagement();
+  });
+})(jQuery, jQuery.fn.dataTable);
+/******/ })()
+;

@@ -1,1 +1,128 @@
-(()=>{function e(e,a){for(var r=0;r<a.length;r++){var o=a[r];o.enumerable=o.enumerable||!1,o.configurable=!0,"value"in o&&(o.writable=!0),Object.defineProperty(e,o.key,o)}}var a=function(){function a(){!function(e,a){if(!(e instanceof a))throw new TypeError("Cannot call a class as a function")}(this,a)}var r,o,t;return r=a,(o=[{key:"init",value:function(){var e=$("#table-backups");e.on("click",".deleteDialog",(function(e){e.preventDefault(),$(".delete-crud-entry").data("section",$(e.currentTarget).data("section")),$(".modal-confirm-delete").modal("show")})),e.on("click",".restoreBackup",(function(e){e.preventDefault(),$("#restore-backup-button").data("section",$(e.currentTarget).data("section")),$("#restore-backup-modal").modal("show")})),$(".delete-crud-entry").on("click",(function(a){a.preventDefault(),$(".modal-confirm-delete").modal("hide");var r=$(a.currentTarget).data("section");$.ajax({url:r,type:"DELETE",success:function(a){a.error?Cms.showError(a.message):(e.find('a[data-section="'+r+'"]').closest("tr").remove(),Cms.showSuccess(a.message))},error:function(e){Cms.handleError(e)}})})),$("#restore-backup-button").on("click",(function(e){e.preventDefault();var a=$(e.currentTarget);a.addClass("button-loading"),$.ajax({url:a.data("section"),type:"GET",success:function(e){a.removeClass("button-loading"),a.closest(".modal").modal("hide"),e.error?Cms.showError(e.message):(Cms.showSuccess(e.message),window.location.reload())},error:function(e){a.removeClass("button-loading"),Cms.handleError(e)}})})),$(document).on("click","#generate_backup",(function(e){e.preventDefault(),$("#name").val(""),$("#description").val(""),$("#create-backup-modal").modal("show")})),$("#create-backup-modal").on("click","#create-backup-button",(function(a){a.preventDefault();var r=$(a.currentTarget);r.addClass("button-loading");var o=$("#name").val(),t=$("#description").val(),n=!1;""!==o&&null!==o||(n=!0,Cms.showError("Backup name is required!")),""!==t&&null!==t||(n=!0,Cms.showError("Backup description is required!")),n?r.removeClass("button-loading"):$.ajax({url:$("div[data-route-create]").data("route-create"),type:"POST",data:{name:o,description:t},success:function(a){r.removeClass("button-loading"),r.closest(".modal").modal("hide"),a.error?Cms.showError(a.message):(e.find(".no-backup-row").remove(),e.find("tbody").append(a.data),Cms.showSuccess(a.message))},error:function(e){r.removeClass("button-loading"),Cms.handleError(e)}})}))}}])&&e(r.prototype,o),t&&e(r,t),a}();$(document).ready((function(){(new a).init()}))})();
+/******/ (() => { // webpackBootstrap
+/*!***************************************************************!*\
+  !*** ./platform/plugins/backup/resources/assets/js/backup.js ***!
+  \***************************************************************/
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, e) { if ("object" != _typeof(t) || !t) return t; var r; if ("undefined" != typeof Symbol && void 0 !== (r = t[Symbol.toPrimitive])) { var i = r.call(t, e || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === e ? String : Number)(t); }
+var BackupManagement = /*#__PURE__*/function () {
+  function BackupManagement() {
+    _classCallCheck(this, BackupManagement);
+  }
+  return _createClass(BackupManagement, [{
+    key: "init",
+    value: function init() {
+      var table_backup = $('#table-backups');
+      table_backup.on('click', '.deleteDialog', function (event) {
+        event.preventDefault();
+        $('.delete-crud-entry').data('section', $(event.currentTarget).data('section'));
+        $('.modal-confirm-delete').modal('show');
+      });
+      table_backup.on('click', '.restoreBackup', function (event) {
+        event.preventDefault();
+        $('#restore-backup-button').data('section', $(event.currentTarget).data('section'));
+        $('#restore-backup-modal').modal('show');
+      });
+      $('.delete-crud-entry').on('click', function (event) {
+        event.preventDefault();
+        $('.modal-confirm-delete').modal('hide');
+        var deleteURL = $(event.currentTarget).data('section');
+        $.ajax({
+          url: deleteURL,
+          type: 'DELETE',
+          success: function success(data) {
+            if (data.error) {
+              Cms.showError(data.message);
+            } else {
+              table_backup.find('a[data-section="' + deleteURL + '"]').closest('tr').remove();
+              Cms.showSuccess(data.message);
+            }
+          },
+          error: function error(data) {
+            Cms.handleError(data);
+          }
+        });
+      });
+      $('#restore-backup-button').on('click', function (event) {
+        event.preventDefault();
+        var _self = $(event.currentTarget);
+        _self.addClass('button-loading');
+        $.ajax({
+          url: _self.data('section'),
+          type: 'GET',
+          success: function success(data) {
+            _self.removeClass('button-loading');
+            _self.closest('.modal').modal('hide');
+            if (data.error) {
+              Cms.showError(data.message);
+            } else {
+              Cms.showSuccess(data.message);
+              window.location.reload();
+            }
+          },
+          error: function error(data) {
+            _self.removeClass('button-loading');
+            Cms.handleError(data);
+          }
+        });
+      });
+      $(document).on('click', '#generate_backup', function (event) {
+        event.preventDefault();
+        $('#name').val('');
+        $('#description').val('');
+        $('#create-backup-modal').modal('show');
+      });
+      $('#create-backup-modal').on('click', '#create-backup-button', function (event) {
+        event.preventDefault();
+        var _self = $(event.currentTarget);
+        _self.addClass('button-loading');
+        var name = $('#name').val();
+        var description = $('#description').val();
+        var error = false;
+        if (name === '' || name === null) {
+          error = true;
+          Cms.showError('Backup name is required!');
+        }
+        if (description === '' || description === null) {
+          error = true;
+          Cms.showError('Backup description is required!');
+        }
+        if (!error) {
+          $.ajax({
+            url: $('div[data-route-create]').data('route-create'),
+            type: 'POST',
+            data: {
+              name: name,
+              description: description
+            },
+            success: function success(data) {
+              _self.removeClass('button-loading');
+              _self.closest('.modal').modal('hide');
+              if (data.error) {
+                Cms.showError(data.message);
+              } else {
+                table_backup.find('.no-backup-row').remove();
+                table_backup.find('tbody').append(data.data);
+                Cms.showSuccess(data.message);
+              }
+            },
+            error: function error(data) {
+              _self.removeClass('button-loading');
+              Cms.handleError(data);
+            }
+          });
+        } else {
+          _self.removeClass('button-loading');
+        }
+      });
+    }
+  }]);
+}();
+$(document).ready(function () {
+  new BackupManagement().init();
+});
+/******/ })()
+;
