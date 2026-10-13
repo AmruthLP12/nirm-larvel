@@ -166,8 +166,8 @@ class LanguagePublicManagement {
     }
 
     updateCurrentLanguageDisplay(gtLangCode) {
-        const $name = $('.language-wrapper .current-lang-name');
-        const $flag = $('.language-wrapper .current-lang-flag');
+        const $name = $('.current-lang-name');
+        const $flag = $('.current-lang-flag');
 
         if (!gtLangCode || gtLangCode === this.defaultLang) {
             // Restore default view
@@ -177,19 +177,23 @@ class LanguagePublicManagement {
             if ($flag.length && $flag.attr('data-default-flag')) {
                 $flag.html($flag.attr('data-default-flag'));
             }
-            $('.language-wrapper .language_bar_chooser li').removeClass('active');
-            $('.language-wrapper .language_bar_chooser li[data-locale="' + this.defaultLang + '"]').addClass('active');
+            $('.language_bar_chooser li').removeClass('active');
+            $('.language_bar_chooser li[data-locale="' + this.defaultLang + '"]').addClass('active');
             return;
         }
 
-        // Find the language in the dropdown list with this language code
-        let $link = $('.language-wrapper .language_bar_chooser a[data-lang-code="' + gtLangCode + '"]');
+        // Find the language in the dropdown list with this language code or locale
+        let $li = $('.language_bar_chooser li[data-gt-code="' + gtLangCode + '"]');
+        if (!$li.length) {
+            $li = $('.language_bar_chooser li[data-locale="' + gtLangCode + '"]');
+        }
+        let $link = $li.length ? $li.find('a').first() : $('.language_bar_chooser a[data-lang-code="' + gtLangCode + '"]');
         if (!$link.length) {
-            $link = $('.language-wrapper .language_bar_chooser li[data-gt-code="' + gtLangCode + '"] a');
+            $link = $('.language_bar_chooser a[data-google-code="' + gtLangCode + '"]');
         }
 
         if ($link.length) {
-            const langName = $link.attr('data-lang-name') || $link.find('.lang-text').text();
+            const langName = $link.attr('data-lang-name') || $link.find('.lang-text').text() || $link.text();
             const $flagImg = $link.find('img').first();
 
             if (langName && $name.length) {
@@ -200,7 +204,7 @@ class LanguagePublicManagement {
             }
 
             // Mark this item as active in dropdown
-            $('.language-wrapper .language_bar_chooser li').removeClass('active');
+            $('.language_bar_chooser li').removeClass('active');
             $link.closest('li').addClass('active');
         }
     }
@@ -250,6 +254,14 @@ class LanguagePublicManagement {
             }
 
             self.setCookie('googtrans', '/auto/' + targetCode);
+
+            // Immediately update the dropdown button label, flag, and active state
+            self.updateCurrentLanguageDisplay(targetCode);
+
+            // Close the dropdown menu
+            $('.language-switcher-wrap').removeClass('show open');
+            $('.language-switcher-wrap .language_bar_chooser').hide();
+            $('.language-wrapper .language-toggle-btn').removeClass('active').attr('aria-expanded', 'false');
 
             const select = document.querySelector('#google_translate_element select.goog-te-combo');
             if (select) {
