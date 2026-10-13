@@ -13,22 +13,36 @@
                     $image = has_sub_field($item, 'image');
                     $title = has_sub_field($item, 'title');
                     $url = has_sub_field($item, 'url');
+                    
+                    // Determine icon based on title
+                    $icon = 'fa-file-text';
+                    if (stripos($title, 'publication') !== false) {
+                        $icon = 'fa-book';
+                    } elseif (stripos($title, 'library') !== false) {
+                        $icon = 'fa-university';
+                    } elseif (stripos($title, 'rti') !== false || stripos($title, 'information') !== false) {
+                        $icon = 'fa-info-circle';
+                    } elseif (stripos($title, 'women') !== false || stripos($title, 'committee') !== false || stripos($title, 'icc') !== false) {
+                        $icon = 'fa-users';
+                    } elseif (stripos($title, 'tender') !== false) {
+                        $icon = 'fa-gavel';
+                    } elseif (stripos($title, 'training') !== false || stripos($title, 'programme') !== false) {
+                        $icon = 'fa-graduation-cap';
+                    } elseif (stripos($title, 'job') !== false || stripos($title, 'notification') !== false) {
+                        $icon = 'fa-briefcase';
+                    }
                 @endphp
                 <div class="col-12 col-sm-6 col-md-4 col-xl-2 p-2">
                     <div class="quick-box">
-                        <div class="quick-img div_overflauo_hinddn">
-                            <a href="{{$url ?? '#'}}" class="stretched-link d-block">
-                                <img src="{{ get_image_url($image) }}"
-                                    class="img-fluid animation_scale animation_scale" alt="{{$title}}">
-                            </a>
-                        </div>
-                        <div class="quick-content">
-                            <h4 class="title">
-                                <a href="{{$url ?? '#'}}" class="stretched-link">{{$title}}</a>
-                            </h4>
-                        </div>
+                        <a href="{{$url ?? '#'}}" class="quick-link-wrapper">
+                            <div class="quick-icon">
+                                <i class="fa {{$icon}}"></i>
+                            </div>
+                            <div class="quick-title">
+                                <span>{{$title}}</span>
+                            </div>
+                        </a>
                     </div>
-
                 </div>
                 @endforeach
             </div>
