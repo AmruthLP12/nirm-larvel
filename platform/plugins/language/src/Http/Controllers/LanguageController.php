@@ -335,7 +335,7 @@ class LanguageController extends BaseController
             ->set('translation_manual_fallback', $request->input('translation_manual_fallback', 'auto_google'))
             ->set('translation_show_machine_label', $request->input('translation_show_machine_label', 1))
             ->set('translation_machine_label_text', $request->input('translation_machine_label_text', 'This page has been automatically translated using Google Translate.'))
-            // ->set('google_translate_disabled_languages', json_encode($request->input('google_translate_disabled_languages', [])))
+            ->set('google_translate_disabled_languages', json_encode($request->input('google_translate_disabled_languages', [])))
             ->set('google_translate_method', $request->input('google_translate_method', 'website_translator'))
             ->set('google_translate_api_key', $request->input('google_translate_api_key', ''))
             ->save();
