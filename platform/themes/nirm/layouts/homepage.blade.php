@@ -146,11 +146,12 @@
     <div class="container">
         <div class="connect-wrap border_radias_5px">
             <div class="connect-text">
-                <h4>Stay Connected</h4>
-                <a class="read-btn border_radias_5px" href="/news" title="Latest News and Updates">
-                    Latest News &amp; Updates &gt;
-                </a>
-            </div>
+    <h4>Stay Connected</h4>
+    @foreach (get_posts_by_category_name() as $item)
+    <a class="read-btn border_radias_5px" href="{{ $item['category']->url }}"
+       title="{{ $item['category']->name }}">{{ $item['category']->name }} &gt;</a>
+@endforeach
+</div>
 
             <ul class="social-links" aria-label="Social media links">
                 <li>
@@ -203,9 +204,10 @@
     justify-content: space-between;
     gap: 16px;
     padding: 24px 28px;
-    background: var(--body-background-color, #f5f5f5);
+    background: #fff;
     border: 1px solid #e1e1e1;
 }
+.connect-text h4 { margin: 0; color: #222; }
 .connect-text { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
 .connect-text h4 { margin: 0; }
 .social-links { display: flex; gap: 12px; list-style: none; margin: 0; padding: 0; }
