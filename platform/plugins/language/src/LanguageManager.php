@@ -1505,15 +1505,15 @@ class LanguageManager
         return (bool) setting('translation_show_machine_label', 1);
     }
 
-    /**
-     * Get machine translation disclaimer text.
-     *
-     * @return string
-     */
-    public function getMachineTranslationLabelText(): string
-    {
-        return setting('translation_machine_label_text', 'This page has been automatically translated using Google Translate.');
-    }
+    // /**
+    //  * Get machine translation disclaimer text.
+    //  *
+    //  * @return string
+    //  */
+    // public function getMachineTranslationLabelText(): string
+    // {
+    //     return setting('translation_machine_label_text', 'This page has been automatically translated using Google Translate.');
+    // }
 
     /**
      * Check if a language is supported by Google Translate.
