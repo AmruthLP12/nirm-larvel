@@ -20,14 +20,11 @@
             </div>
             <div class="col-md-6 col-12 d-flex align-items-center justify-content-md-end top2">
                 <div class="button d-flex align-items-center">
-                    <div class="font-change-change grid grid-align-center top-button">
-                        <a onclick="set_font_size('increase')" href="javascript:void(0);" title="Increase font size"
-                            class="top-btn"> +A </a>
-                        <a onclick="set_font_size()" href="javascript:void(0);" title="Reset font size"
-                            class="top-btn"> A </a>
-                        <a onclick="set_font_size('decrease')" href="javascript:void(0);" title="Decrease font size"
-                            class="top-btn"> -A </a>
-                    </div>
+                   <div class="font-change-change grid grid-align-center top-button" role="group" aria-label="Font size controls">
+    <button type="button" onclick="set_font_size('increase')" title="Increase font size" aria-label="Increase font size" class="top-btn">+A</button>
+    <button type="button" onclick="set_font_size()" title="Reset font size" aria-label="Reset font size" class="top-btn">A</button>
+    <button type="button" onclick="set_font_size('decrease')" title="Decrease font size" aria-label="Decrease font size" class="top-btn">-A</button>
+</div>
                 </div>
                 <div class="theme-btn text-lg-end">
                     <label class="cust-switch-label d-block theme-switch position-relative mouse-btn">

@@ -358,6 +358,18 @@ button.navbar-toggler:focus {
 /*====================================
     top-bar css
 ====================================*/
+
+/* Hide Google Translate's banner and keep the layout from shifting */
+body { top: 0 !important; position: static !important; }
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+iframe.skiptranslate,
+.VIpgJd-ZVi9od-ORHb-OEVmcd,
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf { display: none !important; visibility: hidden !important; }
+
+/* Hide hover tooltips and the yellow highlight on translated text */
+#goog-gt-tt, .goog-tooltip, .goog-tooltip:hover { display: none !important; }
+.goog-text-highlight { background: none !important; box-shadow: none !important; }
 .top-bar {
     background-color: var(--body-extra-bgcolor);
     padding: 8px 0px;
@@ -402,6 +414,15 @@ button.navbar-toggler:focus {
     color: var(--body-background-color);
     -webkit-transition: color 0.5s ease-in-out;
     transition: color 0.5s ease-in-out;
+}
+
+.language-switcher-wrap { position: relative; }
+.language-switcher-wrap .language_bar_chooser {
+    left: auto !important;
+    right: 0 !important;
+    min-width: 160px;
+    max-width: calc(100vw - 16px);
+    z-index: 1050;
 }
 
 .button {

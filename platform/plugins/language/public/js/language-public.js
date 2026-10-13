@@ -137,16 +137,17 @@ class LanguagePublicManagement {
         if (window.__gtBodyObserverSet) return;
         window.__gtBodyObserverSet = true;
 
-        // Ensure body top is always 0px
-        const resetTop = () => {
-            if (document.body && document.body.style.top && document.body.style.top !== '0px') {
-                document.body.style.top = '0px';
-            }
+        const reset = () => {
+            [document.body, document.documentElement].forEach(el => {
+                if (el && el.style.top && el.style.top !== '0px') el.style.top = '0px';
+            });
         };
+        reset();
 
         if (window.MutationObserver) {
-            const observer = new MutationObserver(resetTop);
-            observer.observe(document.body, { attributes: true, attributeFilter: ['style', 'class'] });
+            const observer = new MutationObserver(reset);
+            observer.observe(document.body, { attributes: true, attributeFilter: ['style'] });
+            observer.observe(document.documentElement, { attributes: true, attributeFilter: ['style'] });
         }
     }
 

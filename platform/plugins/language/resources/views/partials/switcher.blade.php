@@ -214,9 +214,9 @@
 
     {{-- Google Translate & Dual Mode Support Elements --}}
     @if ($translationMode === 'google' || $translationMode === 'both')
-        <div id="google_translate_hidden_container" style="display:none !important; position:absolute; left:-9999px;">
-            <div id="google_translate_element"></div>
-        </div>
+        <div id="google_translate_hidden_container" style="position:absolute; left:-9999px; top:0; width:1px; height:1px; overflow:hidden;">
+    <div id="google_translate_element"></div>
+</div>
 
         <div id="gt-config" 
              data-mode="{{ $translationMode }}" 
