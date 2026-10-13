@@ -138,7 +138,7 @@
                                 $last_updated = get_last_updated();
                             }
                         @endphp
-                        <p><img src="/themes/nirm/assets/image/calendar.svg"> Last Updated: {{$last_updated}}</p>
+                        <p><img alt="calander-icon" src="/themes/nirm/assets/image/calendar.svg"> Last Updated: {{$last_updated}}</p>
                        
                         @php
                             $count_visitors = 632;
