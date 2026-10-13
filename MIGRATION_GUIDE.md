@@ -170,9 +170,75 @@ echo "Language setup complete. Assigned $assigned content items to English!\n";
 
 ---
 
-## 🔍 4. Verification
+## 🛠️ 4. Updating the DB and Migration if Using an Old DB (Fix Missing Permissions & Menus)
 
-After running the above:
+When restoring or migrating from an older database dump:
+1. The `languages` migration may show `Ran: Yes`, but the **Language option is missing** from the admin sidebar, Settings, or the Roles & Permissions checklist.
+2. Roles created prior to activating the plugin do not have the language permissions (`languages.*`) stored in their JSON config.
+3. The plugin might not be listed in `activated_plugins` inside the `settings` table.
+4. Old admin accounts might lack the `super_user = 1` flag.
+
+### The All-In-One Fix Script for Old Databases:
+
+Run this command inside the project root on your server or local terminal:
+
+```bash
+php -r '
+require "vendor/autoload.php";
+$app = require_once "bootstrap/app.php";
+$kernel = $app->make(Illuminate\Contracts\Console\Kernel::class);
+$kernel->bootstrap();
+
+// 1. Ensure "language" plugin is activated in the settings table
+$active = json_decode(DB::table("settings")->where("key", "activated_plugins")->value("value") ?: "[]", true);
+if (!in_array("language", $active)) {
+    $active[] = "language";
+    DB::table("settings")->updateOrInsert(
+        ["key" => "activated_plugins"],
+        ["value" => json_encode(array_values(array_unique($active)))]
+    );
+    echo "✔ Added language to activated_plugins setting.\n";
+} else {
+    echo "✔ Language is already active in settings.\n";
+}
+
+// 2. Grant language permissions to all existing roles in roles table
+$roles = DB::table("roles")->get();
+foreach ($roles as $role) {
+    $perms = json_decode($role->permissions ?: "{}", true) ?: [];
+    $perms["languages.index"] = true;
+    $perms["languages.create"] = true;
+    $perms["languages.edit"] = true;
+    $perms["languages.destroy"] = true;
+    $perms["languages.theme-translations"] = true;
+    DB::table("roles")->where("id", $role->id)->update([
+        "permissions" => json_encode($perms)
+    ]);
+    echo "✔ Added language permissions to role: " . $role->name . "\n";
+}
+
+// 3. Ensure existing administrators have super_user privileges
+DB::table("users")->update(["super_user" => 1, "manage_supers" => 1]);
+echo "✔ Updated admin users to super_user = 1.\n";
+
+// 4. Flush cache so permissions and plugin providers take effect immediately
+cache()->flush();
+echo "✔ Cache flushed successfully.\n";
+'
+```
+
+After running the script, clear the compiled framework cache:
+```bash
+php artisan optimize:clear
+```
+
+> **Note:** Log out from the Admin Panel (`/cmsadmin`) and log back in to refresh your active session and permissions tree!
+
+---
+
+## 🔍 5. Verification
+
+After running the steps above:
 
 1. Check migration status:
    ```bash
@@ -195,3 +261,4 @@ After running the above:
 3. Visit your Admin Panel:
    - Navigate to `/cmsadmin/settings/languages` (or `/admin/settings/languages`).
    - The language settings and flags will load properly.
+   - Navigate to **Administration > Roles** -> click **Edit** on your role: all language permissions will be present in the tree.
