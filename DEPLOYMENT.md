@@ -98,6 +98,7 @@ composer install --no-dev --optimize-autoloader
 
 # 4. Run database migrations (only applies new tables/columns, never deletes data)
 php artisan migrate --force
+# (If any plugin migration is needed, see MIGRATION_GUIDE.md for instructions)
 
 # 5. Publish theme & plugin assets (CSS, JS, Language files)
 php artisan cms:publish:assets
