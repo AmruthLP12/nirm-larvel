@@ -89,9 +89,6 @@
                                 @if (Arr::get($options, 'lang_name', true) && ($languageDisplay == 'all' || $languageDisplay == 'name'))
                                     <span class="lang-text">{{ $properties['lang_name'] }}</span>
                                 @endif
-                                @if ($isGtSupported && $gtCode !== $defaultGoogleCode)
-                                    <span class="gt-badge gt-badge-auto" title="{{ trans('plugins/language::language.automatic_translation') }}">Auto</span>
-                                @endif
                             </a>
                         </li>
 
@@ -107,7 +104,6 @@
                                     @if (Arr::get($options, 'lang_name', true) && ($languageDisplay == 'all' || $languageDisplay == 'name'))
                                         <span class="lang-text">{{ $properties['lang_name'] }}</span>
                                     @endif
-                                    <span class="gt-badge gt-badge-original" title="{{ trans('plugins/language::language.original_language') }}">Original</span>
                                 </a>
                             @elseif ($hasPublished)
                                 {{-- Has official CMS-managed translation --}}
@@ -118,18 +114,7 @@
                                     @if (Arr::get($options, 'lang_name', true) && ($languageDisplay == 'all' || $languageDisplay == 'name'))
                                         <span class="lang-text">{{ $properties['lang_name'] }}</span>
                                     @endif
-                                    <span class="gt-badge gt-badge-published" title="{{ trans('plugins/language::language.published_translation') }}">Official</span>
                                 </a>
-                                @if ($isGtSupported)
-                                    <a href="javascript:void(0);" 
-                                       class="gt-auto-btn" 
-                                       title="Translate with Google Translate instead" 
-                                       data-lang-code="{{ $gtCode }}"
-                                       data-lang-name="{{ $properties['lang_name'] }}"
-                                       onclick="window.triggerGoogleTranslate('{{ $gtCode }}'); return false;">
-                                       Auto
-                                    </a>
-                                @endif
                             @else
                                 {{-- No manual translation for this page --}}
                                 @if ($isGtSupported)
@@ -144,7 +129,6 @@
                                         @if (Arr::get($options, 'lang_name', true) && ($languageDisplay == 'all' || $languageDisplay == 'name'))
                                             <span class="lang-text">{{ $properties['lang_name'] }}</span>
                                         @endif
-                                        <span class="gt-badge gt-badge-auto" title="{{ trans('plugins/language::language.automatic_translation') }}">Auto</span>
                                     </a>
                                 @elseif ($fallbackBehavior !== 'hide_language')
                                     <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ $publishedUrl }}" class="gt-nav-link flex-grow-1" data-lang-code="{{ $localeCode }}" data-lang-name="{{ $properties['lang_name'] }}">
@@ -154,7 +138,6 @@
                                         @if (Arr::get($options, 'lang_name', true) && ($languageDisplay == 'all' || $languageDisplay == 'name'))
                                             <span class="lang-text">{{ $properties['lang_name'] }}</span>
                                         @endif
-                                        <span class="gt-badge gt-badge-fallback">Default</span>
                                     </a>
                                 @endif
                             @endif
@@ -209,9 +192,6 @@
                                 @if (Arr::get($options, 'lang_name', true) && ($languageDisplay == 'all' || $languageDisplay == 'name'))
                                     <span>{{ $properties['lang_name'] }}</span>
                                 @endif
-                                @if ($hasPublished && $localeCode !== $defaultLocale)
-                                    <span class="gt-badge gt-badge-published">Official</span>
-                                @endif
                             </a>
                         @elseif ($isGtSupported)
                             <a href="javascript:void(0);" onclick="window.triggerGoogleTranslate('{{ $gtCode }}'); return false;">
@@ -221,7 +201,6 @@
                                 @if (Arr::get($options, 'lang_name', true) && ($languageDisplay == 'all' || $languageDisplay == 'name'))
                                     <span>{{ $properties['lang_name'] }}</span>
                                 @endif
-                                <span class="gt-badge gt-badge-auto">Auto</span>
                             </a>
                         @endif
                     </li>
