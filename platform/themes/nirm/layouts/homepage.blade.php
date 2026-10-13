@@ -31,7 +31,8 @@
     @else
         {!! Theme::content() !!}
     @endif
-    @if (function_exists('get_posts_by_category_name'))
+    @php $showInfoSection = false; @endphp
+    @if ($showInfoSection && function_exists('get_posts_by_category_name'))
         @php
             $information_sections = get_posts_by_category_name();
         @endphp
@@ -141,6 +142,45 @@
             </section>
         @endif
     @endif
+    <section class="connect-section section_padding">
+    <div class="container">
+        <div class="connect-wrap border_radias_5px">
+            <div class="connect-text">
+                <h4>Stay Connected</h4>
+                <a class="read-btn border_radias_5px" href="/news" title="Latest News and Updates">
+                    Latest News &amp; Updates &gt;
+                </a>
+            </div>
+
+            <ul class="social-links" aria-label="Social media links">
+                <li>
+                    <a href="https://www.facebook.com/NIRMIndia" target="_blank" rel="noopener noreferrer"
+                        aria-label="Facebook (opens in a new tab)" title="Facebook">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+                            <path d="M13.5 22v-8.2h2.8l.5-3.3h-3.3V8.4c0-.9.4-1.7 1.8-1.7h1.6V3.8c-.3 0-1.3-.2-2.5-.2-2.5 0-4.2 1.5-4.2 4.3v2.6H7.4v3.3h2.8V22h3.3z"/>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com//company/national-institute-of-rock-mechanics-nirm-" target="_blank" rel="noopener noreferrer"
+                        aria-label="LinkedIn (opens in a new tab)" title="LinkedIn">
+                        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+                            <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4v11H3v-11zm6.5 0h3.8v1.5h.1c.5-1 1.8-1.8 3.7-1.8 4 0 4.7 2.6 4.7 6V20.5h-4v-5c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.700v5.1h-4v-11z"/>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://x.com/nirmrockmech" target="_blank" rel="noopener noreferrer"
+                        aria-label="X (opens in a new tab)" title="X">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                            <path d="M17.8 3h3.1l-6.8 7.7L22 21h-6.2l-4.9-6.3L5.3 21H2.2l7.2-8.3L1.8 3h6.4l4.4 5.8L17.800 3zm-1.100 16.200h1.700L7.300 4.700H5.500l11.200 14.500z"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
     @include('theme.' . Theme::getThemeName() . '::views.custom-fields.quick_links')
     @include('theme.' . Theme::getThemeName() . '::views.custom-fields.external_links')
     @include('theme.' . Theme::getThemeName() . '::views.custom-fields.galleries')
@@ -156,6 +196,37 @@
 {!! Theme::partial('footer') !!}
 
 <style>
+    .connect-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 24px 28px;
+    background: var(--body-background-color, #f5f5f5);
+    border: 1px solid #e1e1e1;
+}
+.connect-text { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+.connect-text h4 { margin: 0; }
+.social-links { display: flex; gap: 12px; list-style: none; margin: 0; padding: 0; }
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #fff;
+    color: #333;
+    border: 1px solid #d0d0d0;
+    transition: background .3s, color .3s;
+}
+.social-links a:hover,
+.social-links a:focus-visible { background: #000; color: #fff; }
+@media (max-width: 575px) {
+    .connect-wrap { justify-content: center; text-align: center; }
+    .connect-text { justify-content: center; }
+}
     .twitter-box .info-wrap:nth-child(1) h4::before{
         background: none;
     }

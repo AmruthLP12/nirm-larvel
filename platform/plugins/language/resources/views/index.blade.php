@@ -237,10 +237,10 @@
                                 </label>
                             </div>
 
-                            <div class="form-group @if ($errors->has('translation_machine_label_text')) has-error @endif">
+                            <!-- <div class="form-group @if ($errors->has('translation_machine_label_text')) has-error @endif">
                                 <label class="text-title-field" for="translation_machine_label_text">{{ trans('plugins/language::language.translation_machine_label_text') }}</label>
                                 <input id="translation_machine_label_text" name="translation_machine_label_text" type="text" class="form-control" value="{{ setting('translation_machine_label_text', 'This page has been automatically translated using Google Translate.') }}">
-                            </div>
+                            </div> -->
 
                             <div class="form-group">
                                 <label class="text-title-field">{{ trans('plugins/language::language.google_translate_languages') }}</label>
