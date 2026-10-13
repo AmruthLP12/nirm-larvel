@@ -1,313 +1,145 @@
-# 🚀 Deployment Guide
+# 🚀 NIRM.in — Safe Production Deployment Guide
 
-This guide covers deploying NIRM CMS to a production Linux server.
-
-> **Also see:** The original [DEPLOYMENT.md](../DEPLOYMENT.md) in the project root for a step-by-step deployment checklist with rollback procedures.
+This guide ensures you can deploy updates to your live production server **without losing live data, breaking user uploads, or experiencing downtime**.
 
 ---
 
-## Server Requirements
+## 📋 Pre-Flight Checklist
 
-### Minimum Hardware
-
-| Resource | Minimum | Recommended |
+| Item | What to do | Why |
 |---|---|---|
-| **CPU** | 1 core | 2+ cores |
-| **RAM** | 1 GB | 2+ GB |
-| **Disk** | 10 GB | 20+ GB (depends on media uploads) |
+| **`.env`** | **NEVER overwrite** | Contains live DB passwords, production domain, APP_KEY |
+| **`public/storage/`** | **NEVER delete or overwrite** | Contains live uploaded files, documents, and media |
+| **Database** | **Always backup first** | Allows 1-click rollback if something unexpected happens |
+| **`database/*.sqlite`** | **Do NOT copy to server** | Local test database only; server runs MariaDB/MySQL |
 
-### Required Software
+---
 
-| Software | Version |
-|---|---|
-| **PHP** | 8.0+ |
-| **MySQL** or **MariaDB** | 8.0+ / 10.4+ |
-| **Apache** or **Nginx** | 2.4+ / 1.18+ |
-| **Composer** | 2.x |
-| **Node.js** | 14+ (for building assets, not needed at runtime) |
+## 🛡️ Step 1: Create Full Backups on the Live Server
 
-### Required PHP Extensions
+Before pulling any new code, SSH into your server and create a timestamped backup of the files and the database.
 
+### 1.1 Create a Backup Folder
+```bash
+BACKUP_DIR=~/nirm_backups/backup_$(date +%Y%m%d_%H%M%S)
+mkdir -p "$BACKUP_DIR"
 ```
-curl, json, zip, mbstring, xml, mysql (pdo_mysql), gd, bcmath, 
-tokenizer, fileinfo, openssl, ctype
+
+### 1.2 Backup the Live Database (MySQL / MariaDB)
+```bash
+# Replace with your actual DB user and database name
+mysqldump -u root -p laravel_nirm_cms > "$BACKUP_DIR/live_db_backup.sql"
+```
+
+### 1.3 Backup the `.env` and `public/storage`
+```bash
+# Backup the environment configuration
+cp /var/www/nirm.in/.env "$BACKUP_DIR/.env.backup"
+
+# Backup user uploads
+cp -r /var/www/nirm.in/public/storage "$BACKUP_DIR/storage_backup"
 ```
 
 ---
 
-## Deployment Steps
+## 🧪 Step 2: Safe Staging / Port Test (Recommended Before Going Live)
 
-### 1. Prepare the Server
+If you want to test the new code on a separate port before updating the live site:
 
+### 2.1 Create a Temporary Test Database Copy
 ```bash
-# Ubuntu/Debian
-sudo apt update
-sudo apt install php8.0 php8.0-{curl,json,zip,mbstring,xml,mysql,gd,bcmath,tokenizer,fileinfo} \
-    mysql-server apache2 libapache2-mod-php8.0 composer git
+# Create a test database
+mysql -u root -p -e "CREATE DATABASE nirm_test_db;"
 
-# Enable Apache modules
-sudo a2enmod rewrite
-sudo a2enmod headers
-sudo systemctl restart apache2
+# Import the live database backup into the test database
+mysql -u root -p nirm_test_db < "$BACKUP_DIR/live_db_backup.sql"
 ```
 
-### 2. Clone the Repository
-
+### 2.2 Clone / Pull to a Test Directory
 ```bash
-cd /var/www
-git clone <REPO_URL> nirm.in
-cd nirm.in
-```
+git clone <YOUR_GIT_REPO_URL> /var/www/nirm_test
+cd /var/www/nirm_test
 
-### 3. Install Dependencies
+# Copy the server's .env to test, and change DB_DATABASE to nirm_test_db
+cp /var/www/nirm.in/.env /var/www/nirm_test/.env
+sed -i 's/DB_DATABASE=.*/DB_DATABASE=nirm_test_db/' /var/www/nirm_test/.env
 
-```bash
-# Production install (no dev dependencies)
+# Copy storage uploads
+cp -r /var/www/nirm.in/public/storage /var/www/nirm_test/public/storage
+
+# Install dependencies and migrate test DB
 composer install --no-dev --optimize-autoloader
-```
-
-### 4. Configure Environment
-
-```bash
-cp .env.example .env
-nano .env
-```
-
-**Critical production settings:**
-```dotenv
-APP_DEBUG=false
-APP_ENV=production
-APP_URL=https://nirm.in
-
-DB_DATABASE=laravel_nirm_cms
-DB_USERNAME=nirm_db_user
-DB_PASSWORD=strong_password
-
-ADMIN_DIR=cmsadmin
-```
-
-```bash
-php artisan key:generate
-```
-
-### 5. Setup Database
-
-```bash
-# Create database and user
-mysql -u root -p << 'EOF'
-CREATE DATABASE laravel_nirm_cms CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-CREATE USER 'nirm_db_user'@'localhost' IDENTIFIED BY 'strong_password';
-GRANT ALL PRIVILEGES ON laravel_nirm_cms.* TO 'nirm_db_user'@'localhost';
-FLUSH PRIVILEGES;
-EOF
-
-# Import database
-mysql -u nirm_db_user -p laravel_nirm_cms < database.sql
-```
-
-### 6. Set Permissions
-
-```bash
-sudo chown -R www-data:www-data /var/www/nirm.in
-sudo chmod -R 755 /var/www/nirm.in
-sudo chmod -R 775 /var/www/nirm.in/storage
-sudo chmod -R 775 /var/www/nirm.in/bootstrap/cache
-```
-
-### 7. Create Storage Symlink
-
-```bash
-php artisan storage:link
-```
-
-### 8. Publish Assets
-
-```bash
+php artisan migrate --force
 php artisan cms:publish:assets
 php artisan cms:media:thumbnail:generate
-```
 
-### 9. Optimize for Production
-
-```bash
-php artisan config:cache
-php artisan route:cache
-php artisan view:cache
+# Start test server on port 8082
+php artisan serve --host=0.0.0.0 --port=8082
 ```
+*Visit `http://YOUR_SERVER_IP:8082` to verify everything works.*
 
 ---
 
-## Web Server Configuration
+## 🚀 Step 3: Deploy to the Live Production Site
 
-### Apache Virtual Host
-
-```apache
-<VirtualHost *:80>
-    ServerName nirm.in
-    ServerAlias www.nirm.in
-    DocumentRoot /var/www/nirm.in/public
-
-    <Directory /var/www/nirm.in/public>
-        Options -Indexes +FollowSymLinks
-        AllowOverride All
-        Require all granted
-    </Directory>
-
-    ErrorLog ${APACHE_LOG_DIR}/nirm-error.log
-    CustomLog ${APACHE_LOG_DIR}/nirm-access.log combined
-</VirtualHost>
-```
-
-Enable the site:
-```bash
-sudo a2ensite nirm.in.conf
-sudo systemctl reload apache2
-```
-
-### Nginx Configuration
-
-```nginx
-server {
-    listen 80;
-    server_name nirm.in www.nirm.in;
-    root /var/www/nirm.in/public;
-    index index.php;
-
-    charset utf-8;
-
-    location / {
-        try_files $uri $uri/ /index.php?$query_string;
-    }
-
-    location = /favicon.ico { access_log off; log_not_found off; }
-    location = /robots.txt  { access_log off; log_not_found off; }
-
-    error_page 404 /index.php;
-
-    location ~ \.php$ {
-        fastcgi_pass unix:/var/run/php/php8.0-fpm.sock;
-        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
-        include fastcgi_params;
-    }
-
-    location ~ /\.(?!well-known).* {
-        deny all;
-    }
-}
-```
-
----
-
-## SSL/HTTPS Setup (Let's Encrypt)
-
-```bash
-sudo apt install certbot python3-certbot-apache   # For Apache
-# OR
-sudo apt install certbot python3-certbot-nginx     # For Nginx
-
-sudo certbot --apache -d nirm.in -d www.nirm.in
-# OR
-sudo certbot --nginx -d nirm.in -d www.nirm.in
-```
-
-Update `.env`:
-```dotenv
-APP_URL=https://nirm.in
-```
-
----
-
-## Updating the Live Site
+Once verified (or ready to deploy):
 
 ```bash
 cd /var/www/nirm.in
 
-# 1. Maintenance mode
-php artisan down --message="Site is being updated."
+# 1. (Optional) Turn on maintenance mode so visitors see a clean maintenance page
+php artisan down --message="Site is being updated, please check back in 2 minutes."
 
-# 2. Pull latest code
+# 2. Pull the latest code
 git pull origin master
 
-# 3. Update dependencies
+# 3. Install/Update PHP packages
 composer install --no-dev --optimize-autoloader
 
-# 4. Run new migrations
+# 4. Run database migrations (only applies new tables/columns, never deletes data)
 php artisan migrate --force
+# (If any plugin migration is needed, see MIGRATION_GUIDE.md for instructions)
 
-# 5. Publish assets
+# 5. Publish theme & plugin assets (CSS, JS, Language files)
 php artisan cms:publish:assets
+
+# 6. Generate any missing media thumbnails (for admin media gallery)
 php artisan cms:media:thumbnail:generate
 
-# 6. Clear and rebuild caches
+# 7. Clear old cached views and configs
 php artisan view:clear
 php artisan cache:clear
 php artisan config:clear
 php artisan route:clear
+
+# 8. Optimize for production speed
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 
-# 7. Go live
+# 9. Bring the site back live
 php artisan up
 ```
 
 ---
 
-## Queue Workers (Optional)
+## ⏪ Step 4: Emergency Rollback (If Needed)
 
-The CMS uses database queue. To process queued jobs:
-
-```bash
-# Run queue worker
-php artisan queue:work --daemon
-
-# Supervisor config (recommended for production)
-# /etc/supervisor/conf.d/nirm-worker.conf
-[program:nirm-worker]
-process_name=%(program_name)s_%(process_num)02d
-command=php /var/www/nirm.in/artisan queue:work database --sleep=3 --tries=3 --max-time=3600
-autostart=true
-autorestart=true
-stopasgroup=true
-killasgroup=true
-user=www-data
-numprocs=2
-redirect_stderr=true
-stdout_logfile=/var/www/nirm.in/storage/logs/worker.log
-stopwaitsecs=3600
-```
-
----
-
-## Scheduled Tasks (Cron)
-
-Add to crontab for the web server user:
-
-```bash
-sudo crontab -u www-data -e
-```
-
-```cron
-* * * * * cd /var/www/nirm.in && php artisan schedule:run >> /dev/null 2>&1
-```
-
----
-
-## Emergency Rollback
+If an unexpected error occurs and you need to restore the live site immediately:
 
 ```bash
 cd /var/www/nirm.in
 
-# Revert code
+# 1. Restore the code to the previous commit
 git reset --hard HEAD@{1}
 
-# Restore database from backup
-mysql -u nirm_db_user -p laravel_nirm_cms < ~/nirm_backups/latest/live_db_backup.sql
+# 2. Restore the database from the backup taken in Step 1
+mysql -u root -p laravel_nirm_cms < "$BACKUP_DIR/live_db_backup.sql"
 
-# Restore .env
-cp ~/nirm_backups/latest/.env.backup .env
+# 3. Restore the .env
+cp "$BACKUP_DIR/.env.backup" /var/www/nirm.in/.env
 
-# Clear cache and republish
+# 4. Clear cache and re-publish assets
 php artisan optimize:clear
 php artisan cms:publish:assets
 php artisan up
@@ -315,13 +147,9 @@ php artisan up
 
 ---
 
-## Post-Deployment Checklist
+## 🛠️ Post-Deployment Verification Checklist
 
-- [ ] Homepage loads correctly
-- [ ] Language switcher works (English, हिन्दी, ಕನ್ನಡ)
-- [ ] Admin login at `/cmsadmin` works
-- [ ] Media gallery shows thumbnails
-- [ ] Contact form submits successfully
-- [ ] SSL certificate is active (HTTPS)
-- [ ] Cron jobs are running
-- [ ] Log files are being written to `storage/logs/`
+1. [ ] **Homepage loads:** Check top bar language switcher (`English`, `हिन्दी`, `ಕನ್ನಡ`).
+2. [ ] **Admin Login:** Check `/cmsadmin` login works.
+3. [ ] **Media Gallery:** Go to `/cmsadmin/media` and check thumbnails show up properly.
+4. [ ] **Page Translations:** Edit a page, check that saving a translated slug does not append `-1` or `-2`.
