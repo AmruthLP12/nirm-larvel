@@ -132,7 +132,7 @@
                         Activities</a>
                     <ul class="dropdown-menu">
                         <li><a href="/ongoing-projects">On-going Projects</a></li>
-                        <li><a href="/completed-projects">Completed Projects</a></li>
+                        <!-- <li><a href="/completed-projects">Completed Projects</a></li> -->
                     </ul>
                 </li>
                 <li class="nav-item">

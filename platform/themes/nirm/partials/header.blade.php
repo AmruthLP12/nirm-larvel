@@ -55,15 +55,15 @@
                         <div class="col-lg-8 header-images d-lg-flex d-none align-items-center justify-content-lg-end">
                             <div class="header-ministry text-lg-end">
                                 <a href="https://mines.gov.in/" class="ministry-logo d-block">
-                                    <img src="/themes/nirm/assets/image/Ministry_of_Mines_India.svg" class="img-fluid" alt="Ministry of Mines Logo">
+                                    <img src="/themes/nirm/assets/image/Ministry_of_Mines_India.png" class="img-fluid" alt="Ministry of Mines Logo">
                                     
                                 </a>
                             </div>
-                            <div class="header-azadi text-lg-end">
+                            <!-- <div class="header-azadi text-lg-end">
                                 <a href="https://amritmahotsav.nic.in/" class="azadi-logo d-block" title="Azadi ka-amrit-mahotsav,">
                                     <img src="/themes/nirm/assets/image/international.jpg" class="img-fluid" alt="75th Indian Independence Day" style="width: 200px;">
                                 </a>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
