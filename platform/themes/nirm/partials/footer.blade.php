@@ -177,7 +177,8 @@
                     }
                 @endphp
                 <p><img alt="calander-icon" src="/themes/nirm/assets/image/calendar.svg"> Last Updated:
-                    {{$last_updated}}</p>
+                    {{$last_updated}}
+                </p>
 
                 @php
                     $count_visitors = 632;
@@ -192,6 +193,39 @@
 </footer>
 {!! Theme::footer() !!}
 
+<!-- External link message  -->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const currentHost = window.location.hostname;
+
+        document.querySelectorAll('a[href]').forEach(function (link) {
+            const href = link.getAttribute('href');
+
+            // Skip anchors, javascript:, mailto:, tel:, etc.
+            if (!href || href.startsWith('#') || href.startsWith('javascript:') || href.startsWith('mailto:') || href.startsWith('tel:')) {
+                return;
+            }
+
+            try {
+                const url = new URL(link.href, window.location.origin);
+
+                // Check if link goes to a different hostname
+                if (url.hostname && url.hostname !== currentHost) {
+                    link.addEventListener('click', function (e) {
+                        const message = "You are leaving the NIRM website and proceeding to an external link:\n\n"
+                            + url.href + "\n\nDo you want to proceed?";
+                        if (!confirm(message)) {
+                            e.preventDefault();
+                        }
+                    });
+                }
+            } catch (err) {
+                // Ignore invalid URLs
+            }
+        });
+    });
+</script>
 </body>
 @stack('modal')
 @stack('script')
