@@ -154,31 +154,41 @@
 </div>
 
             <ul class="social-links" aria-label="Social media links">
-                <li>
-                    <a href="https://www.facebook.com/NIRMIndia" target="_blank" rel="noopener noreferrer"
-                        aria-label="Facebook (opens in a new tab)" title="Facebook">
-                        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
-                            <path d="M13.5 22v-8.2h2.8l.5-3.3h-3.3V8.4c0-.9.4-1.7 1.8-1.7h1.6V3.8c-.3 0-1.3-.2-2.5-.2-2.5 0-4.2 1.5-4.2 4.3v2.6H7.4v3.3h2.8V22h3.3z"/>
-                        </svg>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.linkedin.com//company/national-institute-of-rock-mechanics-nirm-" target="_blank" rel="noopener noreferrer"
-                        aria-label="LinkedIn (opens in a new tab)" title="LinkedIn">
-                        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
-                            <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4v11H3v-11zm6.5 0h3.8v1.5h.1c.5-1 1.8-1.8 3.7-1.8 4 0 4.7 2.6 4.7 6V20.5h-4v-5c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.700v5.1h-4v-11z"/>
-                        </svg>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://x.com/nirmrockmech" target="_blank" rel="noopener noreferrer"
-                        aria-label="X (opens in a new tab)" title="X">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
-                            <path d="M17.8 3h3.1l-6.8 7.7L22 21h-6.2l-4.9-6.3L5.3 21H2.2l7.2-8.3L1.8 3h6.4l4.4 5.8L17.800 3zm-1.100 16.200h1.700L7.300 4.700H5.500l11.200 14.500z"/>
-                        </svg>
-                    </a>
-                </li>
-            </ul>
+    <li>
+        <a href="https://www.linkedin.com/in/nirm-rock-mech-india/" target="_blank" rel="noopener noreferrer"
+            aria-label="LinkedIn (opens in a new tab)" title="LinkedIn">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+                <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4v11H3v-11zm6.5 0h3.8v1.5h.1c.5-1 1.8-1.8 3.7-1.8 4 0 4.7 2.6 4.7 6V20.5h-4v-5c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.700v5.1h-4v-11z"/>
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a href="https://www.instagram.com/nirm_rockmech/" target="_blank" rel="noopener noreferrer"
+            aria-label="Instagram (opens in a new tab)" title="Instagram">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="5"/>
+                <circle cx="12" cy="12" r="4"/>
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a href="https://www.facebook.com/profile.php?id=61572224648911" target="_blank" rel="noopener noreferrer"
+            aria-label="Facebook (opens in a new tab)" title="Facebook">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+                <path d="M13.5 22v-8.2h2.8l.5-3.3h-3.3V8.4c0-.9.4-1.7 1.8-1.7h1.6V3.8c-.3 0-1.3-.2-2.5-.2-2.5 0-4.2 1.5-4.2 4.3v2.6H7.4v3.3h2.8V22h3.3z"/>
+            </svg>
+        </a>
+    </li>
+    <li>
+        <a href="https://x.com/nirmrockmech" target="_blank" rel="noopener noreferrer"
+            aria-label="X (opens in a new tab)" title="X">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                <path d="M17.8 3h3.1l-6.8 7.7L22 21h-6.2l-4.9-6.3L5.3 21H2.2l7.2-8.3L1.8 3h6.4l4.4 5.8L17.800 3zm-1.100 16.200h1.700L7.300 4.700H5.500l11.200 14.500z"/>
+            </svg>
+        </a>
+    </li>
+</ul>
         </div>
     </div>
 </section>
