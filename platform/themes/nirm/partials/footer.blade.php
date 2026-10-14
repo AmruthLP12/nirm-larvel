@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center mb-4">
                     <a href="https://india.gov.in" target="_blank"><img src="/themes/nirm/assets/image/logo1.png"
-                            alt="Logo one" class="text-center"></a>
+                            alt="Logo one" class="text-center" width="161" height="35"></a>
                 </div>
             </div>
             <div class="row">
