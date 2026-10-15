@@ -1,5 +1,5 @@
 {!! Theme::partial('header') !!}
-<main>
+<main id="main_content">
     @php
         $page = Theme::get('page');
     @endphp

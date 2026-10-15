@@ -6,32 +6,32 @@
     $areas = [
         'Underground Mines' => [
             'Areas of involvement' => '/underground-mines-areas-of-involvement',
-            'Work highlights'      => '/underground-mines-work-highlights',
-            'Clientele'            => '/underground-mines-clientele',
+            'Work highlights' => '/underground-mines-work-highlights',
+            'Clientele' => '/underground-mines-clientele',
         ],
         'Opencast Mines' => [
             'Areas of involvement' => '/opencast-mines',
-            'Work highlights'      => '/opencast-mines-work-highlights',
-            'Clientele'            => '/opencast-mines-clientele',
+            'Work highlights' => '/opencast-mines-work-highlights',
+            'Clientele' => '/opencast-mines-clientele',
         ],
         'Hydroelectric Projects' => [
             'Areas of involvement' => '/hydroelectric-projects-areas-of-involvement',
-            'Work highlights'      => '/hydroelectric-projects-work-highlights',
-            'Clientele'            => '/hydroelectric-projects-clientele',
+            'Work highlights' => '/hydroelectric-projects-work-highlights',
+            'Clientele' => '/hydroelectric-projects-clientele',
         ],
         'Nuclear Power Projects' => [
             'Areas of involvement' => '/nuclear-power-projects-area-of-involvement',
-            'Work highlights'      => '/nuclear-power-projects-work-highlights',
+            'Work highlights' => '/nuclear-power-projects-work-highlights',
         ],
         'Infrastructures Projects' => [
             'Areas of involvement' => '/infrastructures-projects-areas-of-involvement',
-            'Work highlights'      => '/infrastructures-projects-work-highlights',
-            'Clientele'            => '/infrastructures-projects-clientele',
+            'Work highlights' => '/infrastructures-projects-work-highlights',
+            'Clientele' => '/infrastructures-projects-clientele',
         ],
         'Tunneling' => [],   // no pages yet, add links here later
         'Testing Services' => [
             'Work highlights' => '/testing-services-work-highlights',
-            'Clientele'       => '/testing-services-clientele',
+            'Clientele' => '/testing-services-clientele',
         ],
         'Training & Seminars' => [
             'Work highlights' => '/training-programme',
@@ -42,38 +42,38 @@
     $departments = [
         'Engineering Geology' => [
             'Areas of Activities' => '/engineering-geological-investigations',
-            'Manpower'            => '/engineering-geological-investigations-manpower',
+            'Manpower' => '/engineering-geological-investigations-manpower',
         ],
         'Engineering Geophysics' => [
             'Areas of Activities' => '/engineering-geophysics-areas-of-activties',
-            'Manpower'            => '/engineering-geophysics-manpower',
+            'Manpower' => '/engineering-geophysics-manpower',
         ],
         'Engineering Seismology' => [
             'Areas of Activities' => '/engineering-seismology-areas-of-activities',
-            'Manpower'            => '/engineering-seismology-man-power',
+            'Manpower' => '/engineering-seismology-man-power',
         ],
         'Geotechnical Engineering' => [
             'Areas of Activities' => '/geotechnical-engineering-areas-of-activities',
-            'Manpower'            => '/geotechnical-engineering-man-power',
+            'Manpower' => '/geotechnical-engineering-man-power',
         ],
         'Numerical Modelling' => [
             'Areas of Activities' => '/numerical-modeling-areas-of-activities',
-            'Manpower'            => '/numerical-modeling-man-power',
+            'Manpower' => '/numerical-modeling-man-power',
         ],
         'geomechanics & Ground Control' => [
             'Areas of Activities' => '/geomechanics-ground-control-area-of-activities',
-            'Manpower'            => '/geomechanics-ground-control-man-power',
+            'Manpower' => '/geomechanics-ground-control-man-power',
         ],
         'Rock Blasting & Excavation Engineering' => [
             'Areas of Activities' => '/rock-blasting-excavation-engineering',
-            'Manpower'            => '/rock-blasting-excavation-engineering-man-power',
+            'Manpower' => '/rock-blasting-excavation-engineering-man-power',
         ],
         'Testing Services' => [
             'Manpower' => '/testing-services-man-power',
         ],
         'Seismotectonics' => [
             'Areas of Activities' => '/seismotectonics-area-of-activties',
-            'Manpower'            => '/seismotectonics-man-power',
+            'Manpower' => '/seismotectonics-man-power',
         ],
         'Administration & Finance' => [
             'Manpower' => '/administration-and-finance-man-power',
@@ -124,7 +124,7 @@
                                 @foreach ($row as $title => $links)
                                     <div class="col-lg-3 col-md-6 col-sm-12 my-3">
                                         <div class="mega-menu">
-                                            <h4 class="mega-menu-title">{{ $title }}</h4>
+                                            <div class="mega-menu-title" role="presentation">{{ $title }}</div>
                                             @if (!empty($links))
                                                 <ul class="inner-mega-menu">
                                                     @foreach ($links as $label => $url)
@@ -207,8 +207,7 @@
             </ul>
         </div>
         <div class="navbar-right">
-            <form class="search-form searchbar" role="search" id="hiddenSearchBox" action="/search"
-                method="get">
+            <form class="search-form searchbar" role="search" id="hiddenSearchBox" action="/search" method="get">
                 <div class="input-group">
                     <input type="search" name="q" class="form-control" placeholder="Search..">
                     <div class="input-group-btn">

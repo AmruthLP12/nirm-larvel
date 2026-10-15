@@ -1388,6 +1388,33 @@ svg:not(:root).svg-inline--fa {
 /************************************* information end *************************************/
 
 /************************************* quick-link start *************************************/
+.quick-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* centres leftover cards */
+}
+.quick-col {
+    flex: 1 1 100%; /* mobile: 1 per row */
+    max-width: 100%;
+}
+@media (min-width: 576px) {
+    .quick-col {
+        flex: 1 1 50%;
+        max-width: 50%;
+    } /* 2 per row */
+}
+@media (min-width: 768px) {
+    .quick-col {
+        flex: 1 1 33.333%;
+        max-width: 33.333%;
+    } /* 3 per row */
+}
+@media (min-width: 1200px) {
+    .quick-col {
+        flex: 1 1 16.666%;
+        max-width: 16.666%;
+    } /* 6 per row */
+}
 .quick-content {
     padding-left: 30px;
     padding-right: 30px;
