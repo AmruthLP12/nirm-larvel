@@ -99,6 +99,23 @@
     color: white;
 }
 
+.darkTheme .form-wrapper .input_box,
+.darkTheme .form-wrapper select {
+    color: #ffffff;
+    background-color: #171717;
+    border-color: #8a8a8a;
+}
+
+.darkTheme .form-wrapper .input_box::placeholder,
+.darkTheme .form-wrapper label {
+    color: #e6e6e6;
+}
+
+.darkTheme .form-wrapper input[type="text"],
+.darkTheme .form-wrapper select {
+    color: #ffffff;
+}
+
 @media (max-width: 992px) {
     .form-wrapper .Quick_Enquiry_form {
         width: 100% !important;
