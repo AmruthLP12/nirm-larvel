@@ -13,7 +13,7 @@
         transition: 0.3s;
     }
     .form-contact button[type="submit"]:hover {
-        background-color: #3d5eb3;
+        background-color: var(--color-key-light);
         color: #fff;
     }
     .form-contact input[type="text"], .form-contact input[type="email"], .form-contact textarea {
