@@ -1756,17 +1756,29 @@ svg:not(:root).svg-inline--fa {
 
 /************************************* footer-area start *************************************/
 .footer {
-    background: var(--body-extra-bgcolor);
+    background: #150202;
+    color: #ffffff;
 }
 
 /* footer-nav css */
+.footer .footer-nav,
+.footer .footer-bottom,
+.footer .footer-nav-three,
+.footer .footer-text,
+.footer .footer-copyright {
+    background-color: #150202;
+}
+
 .footer .footer-nav {
-    background-color: var(--extra-bgcolor);
     padding: 15px 0;
 }
 
-address {
-    color: var(--extra-font-color-dark);
+.footer address,
+.footer .f-title,
+.footer .list-wrapper li,
+.footer .list-wrapper li a,
+.footer .ownership p {
+    color: #ffffff;
 }
 
 ul.footer-menu-ul {
@@ -2056,7 +2068,8 @@ ul.social-ul li.social-li a.social {
 }
 
 .list-wrapper li a:hover {
-    color: rgba(var(--extra-font-color-dark), 0.7);
+    color: #ffffff;
+    opacity: 0.7;
 }
 
 @media (max-width: 992px) {
