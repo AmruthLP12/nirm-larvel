@@ -931,14 +931,26 @@ iframe.skiptranslate,
 .swiper-pagination-custom,
 .swiper-pagination-fraction {
     bottom: 50px;
+    width: fit-content;
+    left: 50%;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background-color: rgba(0, 0, 0, 0.75);
+    transform: translateX(-50%);
 }
 
 .swiper-pagination-bullet-active {
-    background: var(--extra-font-color-light);
+    background: #ffffff;
 }
 
 .swiper-pagination-bullet {
-    background: var(--extra-font-color-light);
+    background: #ffffff;
+    opacity: 1;
+}
+
+.swiper-pagination-bullet:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
 }
 
 @media (max-width: 767px) {
