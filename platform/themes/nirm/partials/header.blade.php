@@ -29,7 +29,7 @@
         .ptb-100 li {
             font-size: 16px;
             line-height: 28px;
-            font-family: "Open Sans", sans-serif;
+            font-family: "Noto Sans", sans-serif;
             color: var(--extra-font-color-dark);
         }
 

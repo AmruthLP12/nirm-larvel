@@ -1,8 +1,7 @@
 /*====================================
     google font
 ====================================*/
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap");
 
 /************************************* root start *************************************/
 /*=====================================
@@ -13,7 +12,7 @@
     --body-font-color: #808080;
     --body-font-size: 1.15rem;
     --body-bgcolor: #ffffff;
-    --body-font-family: "Poppins", sans-serif;
+    --body-font-family: "Noto Sans", sans-serif;
     --body-font-weight: 400;
     --body-font-letter-spacing: 0px;
     --body-extra-bgcolor: #f6f3f3;
@@ -21,13 +20,13 @@
 
     /* heading */
     --heading-font-color: #000000;
-    --heading-font-family: "Poppins", sans-serif;
+    --heading-font-family: "Noto Sans", sans-serif;
     --heading-font-weight: 600;
     --heading-font-style: normal;
 
     /* section-heading */
     --section-heading-font-color: #000000;
-    --section-heading-font-family: "Poppins", sans-serif;
+    --section-heading-font-family: "Noto Sans", sans-serif;
     --section-heading-font-text: none;
     --section-heading-font-weight: 600;
     --section-heading-font-style: normal;
@@ -35,7 +34,7 @@
 
     /* paragraph */
     --paragraph-font-color: #808080;
-    --paragraph-font-family: "Poppins", sans-serif;
+    --paragraph-font-family: "Noto Sans", sans-serif;
     --paragraph-font-line-height: 30px;
 
     /* general color */
@@ -61,6 +60,11 @@
 
     /* color */
     --color-white-on-blue: #fff;
+}
+
+body,
+body *:not(.fa):not([class^="icon-"]):not([class*=" icon-"]):not(.glyphicon):not([class*=" glyphicon"]) {
+    font-family: "Noto Sans", sans-serif;
 }
 
 .darkTheme {
@@ -98,7 +102,7 @@ body {
 }
 
 p {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Noto Sans", sans-serif;
     font-size: 16px;
     line-height: 28px;
     color: var(--extra-font-color-dark);
@@ -110,7 +114,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Noto Sans", sans-serif;
 }
 
 h1 {
@@ -123,7 +127,7 @@ h1 {
 .list li {
     font-size: 16px;
     line-height: 28px;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Noto Sans", sans-serif;
     color: var(--extra-font-color-dark);
 }
 
@@ -409,7 +413,7 @@ iframe.skiptranslate,
 .top-bar-element ul.top-ul li.top-li a {
     color: var(--extra-font-color-dark);
     text-align: right;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Noto Sans", sans-serif;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -459,7 +463,7 @@ iframe.skiptranslate,
 .top-button .top-btn {
     color: var(--extra-font-color-dark);
     border: 1px solid var(--heading-font-color);
-    font-family: "Poppins", sans-serif;
+    font-family: "Noto Sans", sans-serif;
     font-size: 01rem;
     font-weight: 400;
     width: 2rem;
@@ -690,7 +694,7 @@ iframe.skiptranslate,
 
 .header-bottom-area ul.navbar-nav li.nav-item a.nav-link {
     color: var(--extra-font-color-light);
-    font-family: "Open Sans", sans-serif;
+    font-family: "Noto Sans", sans-serif;
     font-size: 15px;
     font-style: normal;
     font-weight: 600;
@@ -872,7 +876,7 @@ iframe.skiptranslate,
     color: var(--extra-bgcolor);
     font-size: 16px;
     font-weight: 700;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Noto Sans", sans-serif;
     display: flex;
     align-items: center;
     line-height: 22px;
@@ -990,7 +994,7 @@ iframe.skiptranslate,
     font-size: 3rem;
     color: var(--extra-font-color-dark);
     display: inline-block;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Noto Sans", sans-serif;
     font-style: normal;
     font-weight: 700;
     text-transform: capitalize;
@@ -1005,7 +1009,7 @@ iframe.skiptranslate,
 .blog-content .blog-text-content p.blog-description {
     padding-top: 30px;
     color: var(--extra-font-color-dark);
-    font-family: "Open Sans", sans-serif;
+    font-family: "Noto Sans", sans-serif;
     font-size: 16;
     font-style: normal;
     font-weight: 400;
@@ -1023,7 +1027,7 @@ iframe.skiptranslate,
 .blog-content .blog-text-content p.blog-description3 {
     padding-top: 10px;
     color: var(--extra-font-color-dark);
-    font-family: Poppins;
+    font-family: Noto Sans;
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
@@ -1097,7 +1101,7 @@ iframe.skiptranslate,
     font-weight: 800;
     font-size: 1.4rem;
     margin-bottom: 0px;
-    font-family: "Poppins", sans-serif;
+    font-family: "Noto Sans", sans-serif;
 }
 
 .blog-contant .blog-info a {
@@ -1129,7 +1133,7 @@ iframe.skiptranslate,
 }
 
 a.blog-button {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Noto Sans", sans-serif;
     font-size: 14px;
     line-height: 1.15rem;
     text-align: center;
@@ -1261,7 +1265,7 @@ svg:not(:root).svg-inline--fa {
 
 .info-contant .news1 {
     color: var(--extra-font-color-dark);
-    font-family: "Open Sans", sans-serif;
+    font-family: "Noto Sans", sans-serif;
     font-size: 1.15rem;
     font-weight: 400;
     line-height: normal;
@@ -1338,7 +1342,7 @@ svg:not(:root).svg-inline--fa {
 
 .press-desc a {
     color: var(--extra-font-color-dark);
-    font-family: "Open Sans", sans-serif;
+    font-family: "Noto Sans", sans-serif;
     font-size: 1.165rem;
     font-style: normal;
     font-weight: 400;
@@ -1358,7 +1362,7 @@ svg:not(:root).svg-inline--fa {
 
 .press-desc p {
     font-size: 14px;
-    font-family: Poppins;
+    font-family: Noto Sans;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -1436,7 +1440,7 @@ svg:not(:root).svg-inline--fa {
     font-size: 3rem;
     color: var(--extra-font-color-dark);
     display: inline-block;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Noto Sans", sans-serif;
     font-style: normal;
     font-weight: 700;
     text-transform: capitalize;
@@ -1803,7 +1807,7 @@ ul.footer-menu-ul li.footer-menu-li {
 ul.footer-menu-ul li.footer-menu-li a.menu-item {
     font-size: 1.15rem;
     font-weight: 400;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Noto Sans", sans-serif;
     color: var(--extra-font-color-light);
     transition: 0.3s all;
 }
@@ -1852,7 +1856,7 @@ ul.footer-ul li.footer-li {
 ul.footer-ul li.footer-li a.menu-item2 {
     font-size: 1.15rem;
     font-weight: 400;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Noto Sans", sans-serif;
     color: var(--extra-font-color-dark);
 }
 
@@ -1947,7 +1951,7 @@ ul.social-ul li.social-li {
     /* color: #333333; */
     color: var(--extra-font-color-dark);
     font-weight: 500;
-    font-family: "Poppins";
+    font-family: "Noto Sans";
     /* line-height: 2.5; */
     padding: 0px 10px !important;
     display: inline-block;
@@ -2037,7 +2041,7 @@ ul.social-ul li.social-li a.social {
 
 .f-title {
     font-size: 1.9rem;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Noto Sans", sans-serif;
     font-weight: 600;
     color: var(--extra-font-color-dark);
 }
@@ -2045,7 +2049,7 @@ ul.social-ul li.social-li a.social {
 .list-wrapper li {
     margin-bottom: 12px;
     font-size: 1.15rem;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Noto Sans", sans-serif;
     color: var(--extra-font-color-dark);
 }
 
@@ -2062,7 +2066,7 @@ ul.social-ul li.social-li a.social {
 
 .list-wrapper li a {
     font-size: 1.15rem;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Noto Sans", sans-serif;
     color: var(--extra-font-color-dark);
     transition: 0.3s all;
 }
@@ -2269,7 +2273,7 @@ a.VIpgJd-ZVi9od-l4eHX-hSRGPd {
 .ptb-100 li {
     font-size: 16px;
     line-height: 28px;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Noto Sans", sans-serif;
     color: var(--extra-font-color-dark);
 }
 
