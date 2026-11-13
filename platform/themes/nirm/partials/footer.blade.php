@@ -112,7 +112,7 @@
                 <li>
                     <a href="https://www.linkedin.com/in/nirm-rock-mech-india/" class="social" target="_blank"
                         rel="noopener noreferrer" aria-label="LinkedIn (opens in a new tab)" title="LinkedIn">
-                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
                             focusable="false">
                             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
@@ -124,7 +124,7 @@
                 <li>
                     <a href="https://www.instagram.com/nirm_rockmech/" class="social" target="_blank"
                         rel="noopener noreferrer" aria-label="Instagram (opens in a new tab)" title="Instagram">
-                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
                             focusable="false">
                             <rect x="3" y="3" width="18" height="18" rx="5" />
@@ -136,7 +136,7 @@
                 <li>
                     <a href="https://www.facebook.com/profile.php?id=61572224648911" class="social" target="_blank"
                         rel="noopener noreferrer" aria-label="Facebook (opens in a new tab)" title="Facebook">
-                        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
                             focusable="false">
                             <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
@@ -146,7 +146,7 @@
                 <li>
                     <a href="https://x.com/nirmrockmech" class="social" target="_blank" rel="noopener noreferrer"
                         aria-label="X (opens in a new tab)" title="X">
-                        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"
                             focusable="false">
                             <path
                                 d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />

@@ -1480,13 +1480,13 @@ svg:not(:root).svg-inline--fa {
 }
 
 .quick-box .quick-link-wrapper:hover {
-    border-color: #ffd700;
+    border-color: var(--color-key-light);
     background: linear-gradient(
         135deg,
-        rgba(255, 215, 0, 0.1) 0%,
-        rgba(255, 215, 0, 0.2) 100%
+        rgba(61, 94, 179, 0.1) 0%,
+        rgba(61, 94, 179, 0.2) 100%
     );
-    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+    box-shadow: 0 6px 20px rgba(61, 94, 179, 0.4);
     transform: translateY(-5px);
 }
 
@@ -1499,12 +1499,12 @@ svg:not(:root).svg-inline--fa {
 
 .quick-box .quick-icon i {
     font-size: 48px;
-    color: #10399d;
+    color: var(--color-key);
     transition: all 0.3s ease;
 }
 
 .quick-box .quick-link-wrapper:hover .quick-icon i {
-    color: #ffd700;
+    color: var(--color-key-light);
     transform: scale(1.1);
 }
 
@@ -1524,7 +1524,7 @@ svg:not(:root).svg-inline--fa {
 }
 
 .quick-box .quick-link-wrapper:hover .quick-title span {
-    color: #000;
+    color: var(--color-key-light);
 }
 
 /************************************* quick-link end *************************************/
@@ -1614,7 +1614,8 @@ svg:not(:root).svg-inline--fa {
 }
 
 .client-slider .external-icon i {
-    font-size: 42px;
+    font-size: 48px;
+    color: var(--color-key);
     transition: all 0.3s ease;
 }
 
@@ -1661,10 +1662,10 @@ svg:not(:root).svg-inline--fa {
 
 .client-slider .swiper-button-next:hover,
 .client-slider .swiper-button-prev:hover {
-    background: #ffd700;
-    color: #000;
+    background: var(--color-key-light);
+    color: #ffffff;
     transform: scale(1.1);
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+    box-shadow: 0 4px 15px rgba(61, 94, 179, 0.5);
 }
 
 .client-slider .swiper-button-next.swiper-button-disabled,
@@ -1907,6 +1908,8 @@ ul.footer-ul li.footer-li a.menu-item2 {
 }
 .footer .footer-nav-three .social-ul a.social svg {
     display: block;
+    width: 24px;
+    height: 24px;
     stroke: currentColor;
 }
 .footer .footer-nav-three .social-ul a.social:hover,
@@ -2004,6 +2007,7 @@ ul.social-ul li.social-li a.social {
 
 .footer-copyright img {
     width: 40px;
+    height: 24px;
 }
 
 .footer-copyright .copy {
