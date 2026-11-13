@@ -63,7 +63,7 @@ button.accordion-button.collapsed {
     font-size: 16px;
     font-weight: 300;
     line-height: 26px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
 }
 
 .accordion-button:focus {

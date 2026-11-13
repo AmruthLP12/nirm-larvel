@@ -63,6 +63,11 @@
     --color-key: #10399d;
     --color-key-darkest: #150202;
     --color-key-light: #3d5eb3;
+    --type-body: 16px;
+    --type-small: 14px;
+    --type-h1: 32px;
+    --type-h2: 24px;
+    --type-h3: 20px;
 }
 
 body,
@@ -106,7 +111,7 @@ body {
 
 p {
     font-family: "Noto Sans", sans-serif;
-    font-size: 16px;
+    font-size: var(--type-body);
     line-height: 28px;
     color: var(--extra-font-color-dark);
 }
@@ -121,7 +126,16 @@ h6 {
 }
 
 h1 {
+    font-size: var(--type-h1);
     font-weight: 700;
+}
+
+h2 {
+    font-size: var(--type-h2);
+}
+
+h3 {
+    font-size: var(--type-h3);
 }
 
 .list {
@@ -2182,6 +2196,30 @@ ul.social-ul li.social-li a.social {
     border-color: #666666;
 }
 
+/* DBIM typography and table alignment */
+body {
+    font-size: var(--type-body);
+    text-align: left;
+}
+
+table {
+    font-family: "Noto Sans", sans-serif;
+}
+
+table thead th {
+    text-align: center;
+}
+
+table tbody td {
+    text-align: left;
+}
+
+table tbody td.numeric,
+table tbody td.number,
+table tbody td[data-type="number"] {
+    text-align: right;
+}
+
 /* Interactive control states */
 button,
 input[type="button"],
@@ -2198,6 +2236,19 @@ a.map-link {
         color 0.2s ease,
         box-shadow 0.2s ease,
         transform 0.2s ease;
+}
+
+button:not(.top-btn),
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+.btn:not(.top-btn),
+.button,
+a.blog-button,
+a.read-btn,
+a.map-link {
+    min-height: 44px;
+    padding: 10px 16px;
 }
 
 button:hover:not(:disabled),

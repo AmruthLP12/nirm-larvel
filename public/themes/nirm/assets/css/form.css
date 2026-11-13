@@ -1,5 +1,5 @@
 * {
-    font-family: "Poppins", sans-serif;
+    font-family: "Noto Sans", sans-serif;
 }
 
 .form-wrapper .input_box {
@@ -36,7 +36,7 @@
 
 .form-wrapper label {
     color: #000000;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 15px;
     font-weight: 300;
     line-height: 30px;
@@ -76,7 +76,7 @@
 }
 
 .submit-btn {
-    font-family: "Poppins", sans-serif;
+    font-family: "Noto Sans", sans-serif;
     font-size: 14px;
     line-height: 1.15rem;
     text-align: center;

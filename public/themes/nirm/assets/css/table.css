@@ -1,4 +1,6 @@
 .table-wrapper table {
+    width: 100%;
+    font-family: "Noto Sans", sans-serif;
     border-radius: 10px;
     border-collapse:separate;
     border-spacing: 0px;
@@ -8,7 +10,6 @@
     background-color: var(--extra-bgcolor);
     color: white;
     font-weight: 400;
-    text-transform: uppercase;
     text-align: center;
 }
 
@@ -41,4 +42,11 @@
 .table-wrapper table tbody tr td {
     padding-left: 10px;
     padding-right: 10px;
+    text-align: left;
+}
+
+.table-wrapper table tbody tr td.numeric,
+.table-wrapper table tbody tr td.number,
+.table-wrapper table tbody tr td[data-type="number"] {
+    text-align: right;
 }
