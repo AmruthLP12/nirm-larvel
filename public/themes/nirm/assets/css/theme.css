@@ -2131,6 +2131,53 @@ ul.social-ul li.social-li a.social {
     opacity: 0.7;
 }
 
+/* Homepage editor content */
+.darkTheme #main_content > section[style*="color"] {
+    color: #ffffff !important;
+}
+
+.darkTheme #main_content > section[style*="color"] > .container > .row > .col-xl-8 > h1,
+.darkTheme #main_content > section[style*="color"] > .container > .row > .col-xl-8 > p {
+    color: #ffffff !important;
+}
+
+/* Preserve the light functional palette for homepage cards. */
+.darkTheme #main_content > section[style*="color"] article,
+.darkTheme #main_content > section[style*="color"] aside > div {
+    background-color: #ffffff !important;
+}
+
+.darkTheme #main_content > section[style*="color"] article h2,
+.darkTheme #main_content > section[style*="color"] article p,
+.darkTheme #main_content > section[style*="color"] aside h2,
+.darkTheme #main_content > section[style*="color"] aside h3,
+.darkTheme #main_content > section[style*="color"] aside p {
+    color: #333333 !important;
+}
+
+.darkTheme .connect-wrap,
+.darkTheme .twitter-feed {
+    background-color: var(--body-extra-bgcolor) !important;
+    color: #ffffff;
+    border-color: #666666 !important;
+}
+
+.darkTheme .connect-text h4,
+.darkTheme .tweet-author,
+.darkTheme .tweet-content p {
+    color: #ffffff !important;
+}
+
+.darkTheme .social-links a {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+.darkTheme .tweet {
+    border-color: #666666;
+}
+
 /* Interactive control states */
 button,
 input[type="button"],
