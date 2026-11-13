@@ -62,7 +62,18 @@ class PageRepository extends RepositoriesAbstract implements PageInterface
     {
         $pages = $this->model->where('status', BaseStatusEnum::PUBLISHED);
         foreach (explode(' ', $query) as $term) {
-            $pages = $pages->where('name', 'LIKE', '%' . $term . '%');
+            $term = trim($term);
+            if ($term === '') {
+                continue;
+            }
+
+            $pages = $pages->where(function ($builder) use ($term) {
+                $like = '%' . $term . '%';
+
+                $builder->where('name', 'LIKE', $like)
+                    ->orWhere('description', 'LIKE', $like)
+                    ->orWhere('content', 'LIKE', $like);
+            });
         }
 
         $data = $pages

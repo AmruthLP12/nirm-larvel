@@ -181,7 +181,18 @@ class PostRepository extends RepositoriesAbstract implements PostInterface
     {
         $data = $this->model->with('slugable')->where('status', BaseStatusEnum::PUBLISHED);
         foreach (explode(' ', $query) as $term) {
-            $data = $data->where('name', 'LIKE', '%' . $term . '%');
+            $term = trim($term);
+            if ($term === '') {
+                continue;
+            }
+
+            $data = $data->where(function ($builder) use ($term) {
+                $like = '%' . $term . '%';
+
+                $builder->where('name', 'LIKE', $like)
+                    ->orWhere('description', 'LIKE', $like)
+                    ->orWhere('content', 'LIKE', $like);
+            });
         }
 
         $data = $data
