@@ -66,7 +66,7 @@
                     <div class="col-lg-8 header-images d-lg-flex d-none align-items-center justify-content-lg-end">
                         <div class="header-ministry text-lg-end">
                             <a href="https://mines.gov.in/" class="ministry-logo d-block">
-                                <img src="/themes/nirm/assets/image/Ministry_of_Mines_India.png" class="img-fluid"
+                                <img src="/themes/nirm/assets/image/Ministry_of_Mines_India.webp" class="img-fluid"
                                     alt="Ministry of Mines Logo" width="1263" height="569">
 
                             </a>
