@@ -53,7 +53,7 @@ class PageTable extends TableAbstract
         $data = $this->table
             ->eloquent($this->query())
             ->editColumn('name', function ($item) {
-                if (!Auth::user()->hasPermission('posts.edit')) {
+                if (!Auth::user()->hasPermission('pages.edit')) {
                     $name = $item->name;
                 } else {
                     $name = Html::link(route('pages.edit', $item->id), $item->name);
